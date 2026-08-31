@@ -692,6 +692,26 @@
 
 ---
 
+### Chapter 26: Applications of Embodied AI — When AI Steps into the Physical World of the Fab
+
+- 26.1 From "Thinking" to "Acting"
+  - Definition of embodied AI and the fab's strong demand
+  - Relationship to NSA full fusion (Ch. 21): the physical manifestation of the intelligent loop
+- 26.2 The Embodied AI Technology Stack
+  - Multimodal perception, world models, cognitive planning, action execution, learning and feedback
+  - VLA (Vision-Language-Action) models
+- 26.3 Embodied AI Scenarios in the Fab
+  - Intelligent AMHS overhead hoists and AGVs
+  - Cleanroom robotic arms and EFEM auto load/unload
+  - Mobile manipulation robots for inspection and maintenance
+  - Humanoid robots (exploratory)
+- 26.4 The Fusion of Embodied AI and Ontology
+  - Ontology as the world model: verifiability and orchestratability
+- 26.5 Current Practice and Cases
+- 26.6 Challenges and Outlook
+  - Technical, cost, and organizational challenges and the evolution path
+- 26.7 Chapter Summary
+
 ## References
 
 See [references.md](computer://references.md), comprising 77 academic references organized into the following seven categories:

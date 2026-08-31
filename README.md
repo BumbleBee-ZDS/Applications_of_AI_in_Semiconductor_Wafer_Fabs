@@ -25,7 +25,7 @@
 
 <div align="center">
 
-![License](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey) ![Chapters](https://img.shields.io/badge/25%20Chapters-1a237e) ![Languages](https://img.shields.io/badge/3%20Languages-green) ![Demos](https://img.shields.io/badge/20%2B%20Demos-FF9800)
+![License](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey) ![Chapters](https://img.shields.io/badge/26%20Chapters-1a237e) ![Languages](https://img.shields.io/badge/3%20Languages-green) ![Demos](https://img.shields.io/badge/20%2B%20Demos-FF9800)
 
 </div>
 
@@ -49,7 +49,7 @@
 | 落地任务 | 良率分析、虚拟量测、缺陷检测、智能排程、预测性维护、能源管理、NPI协同、数据安全、供应链透明化 |
 | 产业案例 | 台积电、三星、Intel、SK海力士、美光、格罗方德、Palantir、NVIDIA、KLA、ASML |
 
-> **本书数据**：25 章 · 3 种语言 · 20+ Demo 脚本 · 47 张配图 · 100+ 产业案例引用
+> **本书数据**：26 章 · 3 种语言 · 20+ Demo 脚本 · 47 张配图 · 100+ 产业案例引用
 
 ## 🖥️ Demo 可视化
 
@@ -116,7 +116,8 @@
 
 第六部分  Ontology 专章
 ├── 第 24 章 Palantir 与本体论——从击毙本拉登到三星良率飞跃
-└── 第 25 章 Ontology 在半导体晶圆厂的构建与应用
+├── 第 25 章 Ontology 在半导体晶圆厂的构建与应用
+└── 第 26 章 具身智能的应用——当AI走进晶圆厂的物理世界
 ```
 
 ### 双线交织结构

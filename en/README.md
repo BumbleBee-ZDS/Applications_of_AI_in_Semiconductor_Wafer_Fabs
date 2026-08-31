@@ -71,7 +71,8 @@ Part V    LLM and Agent
 
 Part VI   Ontology
 ├── Chapter 24   Palantir and Ontology — From Killing Bin Laden to Samsung's Yield Leap
-└── Chapter 25   Building and Applying Ontology in Semiconductor Wafer Fabs
+├── Chapter 25   Building and Applying Ontology in Semiconductor Wafer Fabs
+└── Chapter 26   Applications of Embodied AI — When AI Steps into the Physical World of the Fab
 ```
 
 ### Dual-Mainline Interwoven Structure
