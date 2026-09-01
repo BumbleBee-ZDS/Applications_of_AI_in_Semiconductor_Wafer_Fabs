@@ -745,7 +745,10 @@
 - 27.18 Experiment 16: LLM Agent with Tool Use (llm_agent_tool_use)
 - 27.19 Experiment 17: Chain-of-Thought RCA (llm_chain_of_thought_rca)
 - 27.20 Experiment 18: LLM Yield Report Automation (llm_report_automation)
-- 27.21 From Experiments to Production: A Retrofitting Guide
+- 27.21 Experiment 19: Multi-Agent Collaboration (multi_agent_collaboration)
+- 27.22 Experiment 20: Agent Task Decomposition & Execution (agent_task_decomposition)
+- 27.23 Experiment 21: Reflexion Agent (reflexion_agent)
+- 27.24 From Experiments to Production: A Retrofitting Guide
 
 ## References
 

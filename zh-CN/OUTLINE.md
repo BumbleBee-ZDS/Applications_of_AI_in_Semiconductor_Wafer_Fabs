@@ -745,7 +745,10 @@
 - 27.18 实验十六：LLM Agent 工具调用（llm_agent_tool_use）
 - 27.19 实验十七：思维链良率根因分析（llm_chain_of_thought_rca）
 - 27.20 实验十八：LLM 良率周报自动生成（llm_report_automation）
-- 27.21 从实验到生产：改造指引
+- 27.21 实验十九：多 Agent 协作诊断（multi_agent_collaboration）
+- 27.22 实验二十：Agent 任务分解与执行（agent_task_decomposition）
+- 27.23 实验二十一：反思型 Agent（reflexion_agent）
+- 27.24 从实验到生产：改造指引
 
 ## 参考文献
 

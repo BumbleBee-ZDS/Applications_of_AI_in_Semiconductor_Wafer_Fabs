@@ -326,7 +326,43 @@ python llm_report_automation.py    # CLI
 python web_app.py                  # Web UI http://127.0.0.1:5008
 ```
 
-## 27.21 From Experiments to Production: Adaptation Guide
+## 27.21 Experiment 19: Multi-Agent Collaboration (multi_agent_collaboration)
+
+Corresponds to **Chapter 23 (multi-agent architecture)**. Simulates fab multi-agent collaboration: a Coordinator agent consults four specialists — process, equipment, yield, dispatch — and synthesizes their opinions into a final decision, demonstrating cross-department orchestration. Supports DeepSeek API and offline Mock. Code and docs are bilingual (EN/ZH).
+
+```bash
+cd experiments/multi_agent_collaboration
+pip install requests matplotlib flask
+echo "DEEPSEEK_API_KEY=your_key" > .env   # optional
+python multi_agent_collaboration.py  # CLI
+python web_app.py                  # Web UI http://127.0.0.1:5009
+```
+
+## 27.22 Experiment 20: Agent Task Decomposition & Execution (agent_task_decomposition)
+
+Corresponds to **Chapter 17 (SA Symbolic-Action Fusion)** and Chapter 23 (Agent planning). Implements a plan-then-execute Agent: decomposes a high-level goal into executable subtasks, runs each via tools, and synthesizes a completion report — "symbolic planning gives direction, action execution lands it". Supports DeepSeek API and offline Mock. Code and docs are bilingual (EN/ZH).
+
+```bash
+cd experiments/agent_task_decomposition
+pip install requests matplotlib flask
+echo "DEEPSEEK_API_KEY=your_key" > .env   # optional
+python agent_task_decomposition.py  # CLI
+python web_app.py                  # Web UI http://127.0.0.1:5010
+```
+
+## 27.23 Experiment 21: Reflexion Agent (reflexion_agent)
+
+Corresponds to **Chapter 23 (Agent self-improvement)**. Implements the Reflexion loop: the Agent attempts a load-balancing dispatch problem, evaluates, reflects on its failure, and retries with the reflection, improving round by round — demonstrating Agent self-improvement. Supports DeepSeek API and offline Mock. Code and docs are bilingual (EN/ZH).
+
+```bash
+cd experiments/reflexion_agent
+pip install requests matplotlib flask
+echo "DEEPSEEK_API_KEY=your_key" > .env   # optional
+python reflexion_agent.py          # CLI
+python web_app.py                  # Web UI http://127.0.0.1:5011
+```
+
+## 27.24 From Experiments to Production: Adaptation Guide
 
 All experiments in this chapter are MVPs. Moving to a production environment typically requires the following adaptations (see each experiment's README for complete design documentation):
 

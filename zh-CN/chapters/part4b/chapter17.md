@@ -113,3 +113,4 @@
 本章为接下来四章的融合方向建立了理论框架。第13-16章将分别深入NB、NA、SA和NSA融合方向，每个方向都将在晶圆厂三大核心部门（PID/YED、MFG、PE/EE）中展开具体的技术路径和应用场景。
 
 > **本章配套实验**：两个实验分别对应本章两条融合路径——第27章 27.8 节的 LoRA 微调（`demos/experiments/fab_llm_fine_tuning`）演示连接主义方法与大模型的分工协作；27.3 节的 Ontology Text2SQL（`demos/experiments/fab_ontology_text2sql`）演示符号语义层如何约束 LLM 的生成行为。
+> **本章配套实验**：第27章 27.22 节的 Agent 任务分解与执行实验（`demos/experiments/agent_task_decomposition`）把高层目标分解为可执行子任务并逐一执行，直接演示本章"符号规划做方向、行为执行做落地"的 SA 融合思想。

@@ -272,6 +272,8 @@ Agent与数字孪生的结合在三个层面发挥作用：
 
 > **本章配套实验**：第27章 27.18 节的 LLM Agent 工具调用实验（`demos/experiments/llm_agent_tool_use`）实现 ReAct 循环，演示 LLM 如何自主调用工具完成"感知→规划→行动→观察"，是 Agent 系统的核心机制。
 
+> **本章配套实验**：第27章 27.21 节的多 Agent 协作诊断实验（`demos/experiments/multi_agent_collaboration`）演示主持人 Agent 编排四个专业 Agent 协同诊断；27.23 节的反思型 Agent（`demos/experiments/reflexion_agent`）演示 Agent 通过"评估+反思+重试"实现自我改进。
+
 ## 23.7 Demo可视化：多Agent协同框架
 
 ![Agent系统Demo](../../images/demo_ch23_agent_system.png)

@@ -326,7 +326,43 @@ python llm_report_automation.py    # 命令行 / CLI
 python web_app.py                  # Web 界面 http://127.0.0.1:5008
 ```
 
-## 27.21 从实验到生产：改造指引
+## 27.21 实验十九：多 Agent 协作诊断（multi_agent_collaboration）
+
+对应**第23章（多 Agent 系统架构）**。模拟晶圆厂多 Agent 协作：主持人 Agent 收到质量问题后分别咨询工艺、设备、良率、调度四个专业 Agent，收集意见后汇总为最终决策——演示跨部门协同的 Agent 编排。支持 DeepSeek API 与离线 Mock。代码与说明均为中英双语。
+
+```bash
+cd experiments/multi_agent_collaboration
+pip install requests matplotlib flask
+echo "DEEPSEEK_API_KEY=你的key" > .env   # 可选
+python multi_agent_collaboration.py  # 命令行 / CLI
+python web_app.py                  # Web 界面 http://127.0.0.1:5009
+```
+
+## 27.22 实验二十：Agent 任务分解与执行（agent_task_decomposition）
+
+对应**第17章（SA 符号行为融合）**与第23章 Agent 规划组件。实现规划-执行型 Agent：把高层目标自动分解为可执行子任务，逐一调用工具执行并汇总为完成报告——演示"符号规划做方向，行为执行做落地"。支持 DeepSeek API 与离线 Mock。代码与说明均为中英双语。
+
+```bash
+cd experiments/agent_task_decomposition
+pip install requests matplotlib flask
+echo "DEEPSEEK_API_KEY=你的key" > .env   # 可选
+python agent_task_decomposition.py  # 命令行 / CLI
+python web_app.py                  # Web 界面 http://127.0.0.1:5010
+```
+
+## 27.23 实验二十一：反思型 Agent（reflexion_agent）
+
+对应**第23章（Agent 自我改进）**。实现 Reflexion 循环：Agent 尝试负载均衡派工 → 评估 → 自我反思失败原因 → 携带反思重试，逐轮改进——演示 Agent 的自我改进机制。支持 DeepSeek API 与离线 Mock。代码与说明均为中英双语。
+
+```bash
+cd experiments/reflexion_agent
+pip install requests matplotlib flask
+echo "DEEPSEEK_API_KEY=你的key" > .env   # 可选
+python reflexion_agent.py          # 命令行 / CLI
+python web_app.py                  # Web 界面 http://127.0.0.1:5011
+```
+
+## 27.24 从实验到生产：改造指引
 
 本章实验均为 MVP 形态，走向生产环境通常还需要以下改造（各实验的完整设计文档见其目录内 README）：
 
