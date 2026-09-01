@@ -742,7 +742,10 @@
 - 27.15 Experiment 13: CNN Wafer Defect Classification (wafer_defect_cnn)
 - 27.16 Experiment 14: Q-Learning Dispatch (rl_dispatch_basic)
 - 27.17 Experiment 15: Expert-System Defect Diagnosis (expert_system_rca)
-- 27.18 From Experiments to Production: A Retrofitting Guide
+- 27.18 Experiment 16: LLM Agent with Tool Use (llm_agent_tool_use)
+- 27.19 Experiment 17: Chain-of-Thought RCA (llm_chain_of_thought_rca)
+- 27.20 Experiment 18: LLM Yield Report Automation (llm_report_automation)
+- 27.21 From Experiments to Production: A Retrofitting Guide
 
 ## References
 

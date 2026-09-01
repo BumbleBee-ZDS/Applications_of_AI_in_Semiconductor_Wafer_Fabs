@@ -196,6 +196,8 @@ IKAS's Smart RCA platform fuses multi-source data (FDC, SPC, MES, YMS), using Go
 
 Palantir's AIP platform is the most systematic practice of NB fusion in the industrial domain—LLM (Neural) and Ontology (Symbolic) are unified at the architectural level. AIP's dual-pillar architecture (knowledge tree + ML) ensures that every step of the LLM's reasoning is based on structured data in the Ontology, achieving "verifiable AI reasoning."
 
+> **Chapter experiment**: Experiment 17 in Chapter 27 (`demos/experiments/llm_chain_of_thought_rca`) uses Chain-of-Thought for stepwise root-cause reasoning and verifies conclusions with symbolic rules — a direct demo of this section's neuro-symbolic fusion and arbitration.
+
 ## 18.7 Demo Visualization: NB Fusion (LLM + Knowledge Graph) Driven Verifiable Yield Analysis
 
 ![NB Fusion Demo](../../images/demo_ch18_nb_fusion.png)

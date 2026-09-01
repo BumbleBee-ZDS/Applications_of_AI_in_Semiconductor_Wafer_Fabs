@@ -270,6 +270,8 @@ Agent與數字孿生的結合在三個層面發揮作用：
 
 ![Agent系統架構](../../images/flow_ch23_agent.png)
 
+> **本章配套實驗**：第27章 27.18 節的 LLM Agent 工具呼叫實驗（`demos/experiments/llm_agent_tool_use`）實作 ReAct 循環，演示 LLM 如何自主呼叫工具完成「感知→規劃→行動→觀察」，是 Agent 系統的核心機制。
+
 ## 23.7 Demo視覺化：多Agent協同框架
 
 ![Agent系統Demo](../../images/demo_ch23_agent_system.png)

@@ -196,6 +196,8 @@ IKAS的Smart RCA平台融合多源数据（FDC、SPC、MES、YMS），使用Gold
 
 Palantir的AIP平台是NB融合在工业领域最系统化的实践——LLM（Neural）与Ontology（Symbolic）在架构层面统一。AIP的双支柱架构（知识树+ML）使得LLM的每一步推理都基于Ontology中的结构化数据，实现了"可验证的AI推理"。
 
+> **本章配套实验**：第27章 27.19 节的思维链良率根因分析实验（`demos/experiments/llm_chain_of_thought_rca`）用 CoT 让 LLM 分步推理根因，并以符号规则校验结论，直接演示本节的神经符号融合与仲裁。
+
 ## 18.7 Demo可视化：NB融合（LLM+知识图谱）驱动的可验证良率分析
 
 ![NB融合Demo](../../images/demo_ch18_nb_fusion.png)

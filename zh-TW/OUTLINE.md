@@ -742,7 +742,10 @@
 - 27.15 實驗十三：CNN 晶圓缺陷分類（wafer_defect_cnn）
 - 27.16 實驗十四：Q-Learning 智慧派工（rl_dispatch_basic）
 - 27.17 實驗十五：專家系統缺陷診斷（expert_system_rca）
-- 27.18 從實驗到生產：改造指引
+- 27.18 實驗十六：LLM Agent 工具呼叫（llm_agent_tool_use）
+- 27.19 實驗十七：思維鏈良率根因分析（llm_chain_of_thought_rca）
+- 27.20 實驗十八：LLM 良率週報自動生成（llm_report_automation）
+- 27.21 從實驗到生產：改造指引
 
 ## 參考文獻
 

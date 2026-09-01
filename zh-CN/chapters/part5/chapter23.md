@@ -270,6 +270,8 @@ Agent与数字孪生的结合在三个层面发挥作用：
 
 ![Agent系统架构](../../images/flow_ch23_agent.png)
 
+> **本章配套实验**：第27章 27.18 节的 LLM Agent 工具调用实验（`demos/experiments/llm_agent_tool_use`）实现 ReAct 循环，演示 LLM 如何自主调用工具完成"感知→规划→行动→观察"，是 Agent 系统的核心机制。
+
 ## 23.7 Demo可视化：多Agent协同框架
 
 ![Agent系统Demo](../../images/demo_ch23_agent_system.png)

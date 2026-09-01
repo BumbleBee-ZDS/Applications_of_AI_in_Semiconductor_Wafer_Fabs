@@ -273,6 +273,8 @@ Part 6 will delve into Ontology — this is not just a technical solution for da
 
 ![Agent System Architecture](../../images/flow_ch23_agent.png)
 
+> **Chapter experiment**: Experiment 16 in Chapter 27 (`demos/experiments/llm_agent_tool_use`) implements the ReAct loop, showing how an LLM autonomously calls tools through perceive→plan→act→observe — the core mechanism of Agent systems.
+
 ## 23.7 Demo Visualization: Multi-Agent Collaboration Framework
 
 ![Agent System Demo](../../images/demo_ch23_agent_system.png)

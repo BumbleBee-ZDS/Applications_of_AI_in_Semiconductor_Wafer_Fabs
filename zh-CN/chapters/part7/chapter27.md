@@ -290,7 +290,43 @@ python expert_system_rca.py       # 命令行 / CLI
 python web_app.py                 # Web 界面 http://127.0.0.1:5005
 ```
 
-## 27.18 从实验到生产：改造指引
+## 27.18 实验十六：LLM Agent 工具调用（llm_agent_tool_use）
+
+对应**第23章（Agent 系统在晶圆厂的实践）**。实现 ReAct（推理+行动）Agent：LLM 自主决定调用工具（查WIP/设备状态/利用率/工艺规格），根据工具结果继续推理直到给出最终回答，完整演示"感知→规划→行动→观察"循环。支持 DeepSeek API 与离线 Mock。代码与说明均为中英双语。
+
+```bash
+cd experiments/llm_agent_tool_use
+pip install requests matplotlib flask
+echo "DEEPSEEK_API_KEY=你的key" > .env   # 可选
+python llm_agent_tool_use.py       # 命令行 / CLI
+python web_app.py                  # Web 界面 http://127.0.0.1:5006
+```
+
+## 27.19 实验十七：思维链良率根因分析（llm_chain_of_thought_rca）
+
+对应**第18章（NB 神经符号融合）**。用思维链（Chain-of-Thought）让 LLM 按"观察→假设→验证→结论"分步推理良率根因，并用 IF-THEN 符号规则校验 LLM 结论——演示神经与符号的结合与仲裁。支持 DeepSeek API 与离线 Mock。代码与说明均为中英双语。
+
+```bash
+cd experiments/llm_chain_of_thought_rca
+pip install requests matplotlib flask
+echo "DEEPSEEK_API_KEY=你的key" > .env   # 可选
+python llm_chain_of_thought_rca.py  # 命令行 / CLI
+python web_app.py                  # Web 界面 http://127.0.0.1:5007
+```
+
+## 27.20 实验十八：LLM 良率周报自动生成（llm_report_automation）
+
+对应**第22章（LLM在晶圆厂的应用·良率报告生成）**。把结构化良率数据（周趋势、缺陷TOP、设备状态）交给 LLM，自动生成专业良率周报（数据→文本），并可视化数据图表。支持 DeepSeek API 与离线 Mock。代码与说明均为中英双语。
+
+```bash
+cd experiments/llm_report_automation
+pip install requests matplotlib flask
+echo "DEEPSEEK_API_KEY=你的key" > .env   # 可选
+python llm_report_automation.py    # 命令行 / CLI
+python web_app.py                  # Web 界面 http://127.0.0.1:5008
+```
+
+## 27.21 从实验到生产：改造指引
 
 本章实验均为 MVP 形态，走向生产环境通常还需要以下改造（各实验的完整设计文档见其目录内 README）：
 

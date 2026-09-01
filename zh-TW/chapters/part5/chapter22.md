@@ -212,6 +212,8 @@ LLM在晶圓廠的應用仍處於早期階段，但它的發展速度遠超此�
 
 > **本章配套實驗**：第27章 27.14 節的 LLM RAG 製程文件問答實驗（`demos/experiments/llm_rag_spec_qa`）實作了 SPEC 文件檢索 + LLM 生成帶引用的回答，對應本章製程文件管理場景；支援 DeepSeek API 與離線 Mock 兩種模式。
 
+> **本章配套實驗**：第27章 27.20 節的 LLM 良率週報自動生成實驗（`demos/experiments/llm_report_automation`）將結構化良率數據交給 LLM 自動生成週報，對應本節的良率報告自動生成場景。
+
 ## 22.6 Demo視覺化：LLM在晶圓廠的應用
 
 ![LLM在晶圓廠應用Demo](../../images/demo_ch22_llm_fab.png)

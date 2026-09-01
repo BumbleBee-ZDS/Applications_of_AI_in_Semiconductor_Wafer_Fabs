@@ -290,7 +290,43 @@ python expert_system_rca.py       # CLI
 python web_app.py                 # Web UI http://127.0.0.1:5005
 ```
 
-## 27.18 From Experiments to Production: Adaptation Guide
+## 27.18 Experiment 16: LLM Agent with Tool Use (llm_agent_tool_use)
+
+Corresponds to **Chapter 23 (Agent Systems in the Wafer Fab)**. Implements a ReAct (Reasoning+Acting) Agent: the LLM autonomously calls tools (WIP / tool status / utilization / specs), reasons from results, and produces a final answer — the full perceive→plan→act→observe loop. Supports DeepSeek API and offline Mock. Code and docs are bilingual (EN/ZH).
+
+```bash
+cd experiments/llm_agent_tool_use
+pip install requests matplotlib flask
+echo "DEEPSEEK_API_KEY=your_key" > .env   # optional
+python llm_agent_tool_use.py       # CLI
+python web_app.py                  # Web UI http://127.0.0.1:5006
+```
+
+## 27.19 Experiment 17: Chain-of-Thought RCA (llm_chain_of_thought_rca)
+
+Corresponds to **Chapter 18 (NB Neuro-Symbolic Fusion)**. Guides the LLM to reason step by step — observe → hypothesize → verify → conclude — over yield root causes, then verifies the conclusion with IF-THEN symbolic rules, demonstrating neural+symbolic combination and arbitration. Supports DeepSeek API and offline Mock. Code and docs are bilingual (EN/ZH).
+
+```bash
+cd experiments/llm_chain_of_thought_rca
+pip install requests matplotlib flask
+echo "DEEPSEEK_API_KEY=your_key" > .env   # optional
+python llm_chain_of_thought_rca.py  # CLI
+python web_app.py                  # Web UI http://127.0.0.1:5007
+```
+
+## 27.20 Experiment 18: LLM Yield Report Automation (llm_report_automation)
+
+Corresponds to **Chapter 22 (LLMs in Wafer Fabs · yield report generation)**. Feeds structured yield data (weekly trend, defect TOP, tool status) to the LLM, which writes a professional yield weekly report (data→text), alongside data charts. Supports DeepSeek API and offline Mock. Code and docs are bilingual (EN/ZH).
+
+```bash
+cd experiments/llm_report_automation
+pip install requests matplotlib flask
+echo "DEEPSEEK_API_KEY=your_key" > .env   # optional
+python llm_report_automation.py    # CLI
+python web_app.py                  # Web UI http://127.0.0.1:5008
+```
+
+## 27.21 From Experiments to Production: Adaptation Guide
 
 All experiments in this chapter are MVPs. Moving to a production environment typically requires the following adaptations (see each experiment's README for complete design documentation):
 
