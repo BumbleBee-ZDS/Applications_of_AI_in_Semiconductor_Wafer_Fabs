@@ -251,6 +251,8 @@ Synopsys的DSO.ai使用强化学习进行芯片布局优化——与AlphaChip类
 
 *Demo说明：左上为RL在参数空间中的搜索轨迹与良率响应面，右上为RL优化收敛曲线，右中为不同DOE方法的实验效率对比，下排展示了R2R控制效果、多参数改善对比和RL策略决策映射。模拟脚本见 `demos/demo_ch16_rl_optimization.py`。*
 
+> **本章配套实验**：第27章 27.16 节的 Q-Learning 智能派工实验（`demos/experiments/rl_dispatch_basic`）用 Q-Learning 学习派工策略并与随机派工对比，直接对应本节的强化学习调度，配套 Web 界面可视化学习曲线与甘特图。
+
 ## 16.8 Demo可视化：多智能体强化学习调度
 
 ![多智能体强化学习Demo](../../images/demo_ch16_marl.png)

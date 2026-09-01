@@ -70,8 +70,9 @@ print('  Takeaway: more clustered defects -> lower yield at same D0.')
 # Part 2: 良率爬坡 S 曲线 / S-curve yield ramp
 # ============================================================
 def ramp_curve(t, y_start, y_max, k, t0):
-    """Logistic 型爬坡曲线 / logistic ramp curve"""
-    return y_max / (1 + (y_max / y_start - 1) * np.exp(-k * (t - t0)))
+    """S形爬坡曲线: t=0 时≈y_start, t0 为爬升最陡(拐点)时间, 渐近 y_max
+    S-shaped ramp: starts near y_start at t=0, steepest at t0, asymptotic to y_max"""
+    return y_start + (y_max - y_start) / (1 + np.exp(-k * (t - t0)))
 
 months = np.linspace(0, 24, 300)
 y_fast = ramp_curve(months, 30, 93, 0.38, 8.5)   # 快学习率 fast learner

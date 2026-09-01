@@ -251,6 +251,8 @@ Synopsys的DSO.ai使用強化學習進行晶片佈局最佳化——與AlphaChip
 
 *Demo說明：左上為RL在參數空間中的搜尋軌跡與良率回應面，右上為RL最佳化收斂曲線，右中為不同DOE方法的實驗效率對比，下排展示了R2R控制效果、多參數改善對比和RL策略決策映射。模擬指令碼見 `demos/demo_ch16_rl_optimization.py`。*
 
+> **本章配套實驗**：第27章 27.16 節的 Q-Learning 智慧派工實驗（`demos/experiments/rl_dispatch_basic`）用 Q-Learning 學習派工策略並與隨機派工對比，直接對應本節的強化學習排程，配套 Web 介面視覺化學習曲線與甘特圖。
+
 ## 16.8 Demo視覺化：多智慧體強化學習排程
 
 ![多智慧體強化學習Demo](../../images/demo_ch16_marl.png)

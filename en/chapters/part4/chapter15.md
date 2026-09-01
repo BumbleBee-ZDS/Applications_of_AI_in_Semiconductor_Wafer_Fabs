@@ -241,6 +241,8 @@ The application of connectionism in wafer fabs has become quite mature—especia
 
 *Demo description: The top row shows the feature map extraction process through each convolutional layer of the CNN, bottom-left is the activation intensity heatmap of 16 filters, bottom-right is the defect type probability distribution output by the classifier. Simulation script: `demos/demo_ch15_cnn_detection.py`.*
 
+> **Chapter experiment**: Experiment 13 in Chapter 27 (`demos/experiments/wafer_defect_cnn`) generates synthetic wafer maps and classifies them with a neural net, mapping directly to this section's deep-learning defect inspection, with an interactive Web UI.
+
 ## 15.8 Demo Visualization: Deep Learning Yield Prediction and Virtual Metrology
 
 ![Deep Learning Yield Prediction Demo](../../images/demo_ch15_yield_prediction.png)

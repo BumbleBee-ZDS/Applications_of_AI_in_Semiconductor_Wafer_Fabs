@@ -241,6 +241,8 @@ Applied Materials的AIx平台將深度學習應用於設備級即時製程分析
 
 *Demo說明：上排展示了CNN各卷積層的特徵圖提取過程，下左為16個濾波器的啟用強度熱力圖，下右為分類器輸出的缺陷型別機率分佈。模擬指令碼見 `demos/demo_ch15_cnn_detection.py`。*
 
+> **本章配套實驗**：第27章 27.15 節的 CNN 晶圓缺陷分類實驗（`demos/experiments/wafer_defect_cnn`）生成模擬晶圓圖並用神經網路自動分類，直接對應本節的深度學習缺陷檢測，配套 Web 介面可互動預測。
+
 ## 15.8 Demo視覺化：深度學習良率預測與虛擬量測
 
 ![深度學習良率預測Demo](../../images/demo_ch15_yield_prediction.png)

@@ -257,7 +257,40 @@ echo "DEEPSEEK_API_KEY=你的key" > .env   # 可選，不設定則用 Mock LLM
 python llm_rag_spec_qa.py
 ```
 
-## 27.15 從實驗到生產：改造指引
+## 27.15 實驗十三：CNN 晶圓缺陷分類（wafer_defect_cnn）
+
+對應**第15章（連接主義在晶圓廠的應用）**。生成四種缺陷模式（中心/邊緣環形/簇狀/無缺陷）的模擬晶圓圖，用神經網路（MLP 模擬 CNN 分類思想，零 GPU 依賴）自動分類，視覺化樣本、混淆矩陣與預測。配套 Web 介面可互動「生成並預測」。程式與說明均為中英雙語。
+
+```bash
+cd experiments/wafer_defect_cnn
+pip install numpy matplotlib scikit-learn flask
+python wafer_defect_cnn.py        # 命令列 / CLI
+python web_app.py                 # Web 介面 http://127.0.0.1:5003
+```
+
+## 27.16 實驗十四：Q-Learning 智慧派工（rl_dispatch_basic）
+
+對應**第16章（行為主義在晶圓廠的應用）**與第12章智慧排程。實作微型派工環境（快/慢兩台設備、隨機到達批次），用 Q-Learning 學習派工策略，與隨機派工對比總獎勵，視覺化學習曲線與排程甘特圖。程式與說明均為中英雙語。
+
+```bash
+cd experiments/rl_dispatch_basic
+pip install numpy matplotlib flask
+python rl_dispatch_basic.py       # 命令列 / CLI
+python web_app.py                 # Web 介面 http://127.0.0.1:5004
+```
+
+## 27.17 實驗十五：專家系統缺陷診斷（expert_system_rca）
+
+對應**第14章（符號主義在晶圓廠的應用）**。實作前向推理專家系統：將工程師的缺陷-根因經驗編碼為 IF-THEN 規則，輸入觀察事實自動推理出帶置信度的診斷與建議，並視覺化推理鏈。配套 Web 介面可勾選事實互動診斷。程式與說明均為中英雙語。
+
+```bash
+cd experiments/expert_system_rca
+pip install numpy matplotlib flask
+python expert_system_rca.py       # 命令列 / CLI
+python web_app.py                 # Web 介面 http://127.0.0.1:5005
+```
+
+## 27.18 從實驗到生產：改造指引
 
 本章實驗均為 MVP 形態，走向生產環境通常還需要以下改造（各實驗的完整設計文件見其目錄內 README）：
 

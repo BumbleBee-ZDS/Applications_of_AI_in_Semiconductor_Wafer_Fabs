@@ -739,7 +739,10 @@
 - 27.12 實驗十：良率模型與爬坡模擬（yield_modeling_ramp）
 - 27.13 實驗十一：預測性維護 RUL 預測（predictive_maintenance_rul）
 - 27.14 實驗十二：LLM RAG 製程文件問答（llm_rag_spec_qa）
-- 27.15 從實驗到生產：改造指引
+- 27.15 實驗十三：CNN 晶圓缺陷分類（wafer_defect_cnn）
+- 27.16 實驗十四：Q-Learning 智慧派工（rl_dispatch_basic）
+- 27.17 實驗十五：專家系統缺陷診斷（expert_system_rca）
+- 27.18 從實驗到生產：改造指引
 
 ## 參考文獻
 

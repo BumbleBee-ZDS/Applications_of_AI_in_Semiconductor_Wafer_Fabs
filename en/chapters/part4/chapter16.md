@@ -251,6 +251,8 @@ Each of the three paradigms has its domains of strength and its limitations. Tru
 
 *Demo description: Top-left shows the RL search trajectory in parameter space and yield response surface, top-right is the RL optimization convergence curve, middle-right is the experimental efficiency comparison of different DOE methods, and the bottom row shows R2R control effects, multi-parameter improvement comparison, and RL policy decision mapping. Simulation script: `demos/demo_ch16_rl_optimization.py`.*
 
+> **Chapter experiment**: Experiment 14 in Chapter 27 (`demos/experiments/rl_dispatch_basic`) trains a Q-Learning dispatch policy and compares it against random dispatch, mapping to this section's RL scheduling, with a Web UI showing learning curves and a Gantt chart.
+
 ## 16.8 Demo Visualization: Multi-Agent Reinforcement Learning Scheduling
 
 ![Multi-Agent Reinforcement Learning Demo](../../images/demo_ch16_marl.png)

@@ -257,7 +257,40 @@ echo "DEEPSEEK_API_KEY=your_key" > .env   # optional; Mock LLM otherwise
 python llm_rag_spec_qa.py
 ```
 
-## 27.15 From Experiments to Production: Adaptation Guide
+## 27.15 Experiment 13: CNN Wafer Defect Classification (wafer_defect_cnn)
+
+Corresponds to **Chapter 15 (Connectionism in the Wafer Fab)**. Generates synthetic wafer maps of four defect patterns (center / edge-ring / cluster / none) and classifies them with a neural network (MLP mirroring CNN, GPU-free), visualizing samples, a confusion matrix, and predictions. The Web UI supports interactive "generate & predict". Code and docs are bilingual (EN/ZH).
+
+```bash
+cd experiments/wafer_defect_cnn
+pip install numpy matplotlib scikit-learn flask
+python wafer_defect_cnn.py        # CLI
+python web_app.py                 # Web UI http://127.0.0.1:5003
+```
+
+## 27.16 Experiment 14: Q-Learning Dispatch (rl_dispatch_basic)
+
+Corresponds to **Chapter 16 (Behaviorism in the Wafer Fab)** and Chapter 12 (Smart Scheduling). Implements a micro dispatch environment (fast/slow tools, random arrivals), learns a dispatch policy with Q-Learning, compares total reward against random dispatch, and visualizes learning curves and a Gantt chart. Code and docs are bilingual (EN/ZH).
+
+```bash
+cd experiments/rl_dispatch_basic
+pip install numpy matplotlib flask
+python rl_dispatch_basic.py       # CLI
+python web_app.py                 # Web UI http://127.0.0.1:5004
+```
+
+## 27.17 Experiment 15: Expert-System Defect Diagnosis (expert_system_rca)
+
+Corresponds to **Chapter 14 (Symbolism in the Wafer Fab)**. Implements a forward-chaining expert system: engineers' defect-to-root-cause experience encoded as IF-THEN rules; given observed facts, it infers a confident diagnosis and advice, visualizing the inference chain. The Web UI supports interactive fact selection. Code and docs are bilingual (EN/ZH).
+
+```bash
+cd experiments/expert_system_rca
+pip install numpy matplotlib flask
+python expert_system_rca.py       # CLI
+python web_app.py                 # Web UI http://127.0.0.1:5005
+```
+
+## 27.18 From Experiments to Production: Adaptation Guide
 
 All experiments in this chapter are MVPs. Moving to a production environment typically requires the following adaptations (see each experiment's README for complete design documentation):
 

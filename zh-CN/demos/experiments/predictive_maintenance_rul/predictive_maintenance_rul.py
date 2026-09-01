@@ -36,9 +36,10 @@ print('[Part 1] 退化数据 / Degradation Data')
 print(f'  设备在第 {fail_idx} 天越过失效阈值 {threshold} (实际RUL=0)')
 print(f'  Equipment crosses failure threshold {threshold} at day {fail_idx}.')
 
-# 用前 200 天数据拟合指数/幂律退化模型, 外推预测 RUL
-# fit an exponential degradation model on the first 200 days, extrapolate RUL
-train_n = 200
+# 用失效前 80% 生命周期的数据拟合退化模型, 在设备仍健康时外推预测 RUL
+# fit the degradation model on the first 80% of lifetime (while still healthy),
+# then extrapolate to predict RUL BEFORE failure
+train_n = min(200, int(fail_idx * 0.8))
 y = health[:train_n] - baseline     # 退化增量 degradation increment
 x = t[:train_n].astype(float)
 # 幂律拟合: y = a * x^b  ->  log(y) = log(a) + b*log(x)

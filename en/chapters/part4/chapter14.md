@@ -240,6 +240,8 @@ This fusion direction represents the future of symbolism—not used alone, but c
 
 The value of symbolism in wafer fabs is not to replace deep learning—it cannot identify defects from images, nor can it predict equipment faults from time-series signals. Its value lies in organization and reasoning: organizing heterogeneous data scattered across dozens of systems into a unified semantic network, allowing both humans and machines to perform association queries and causal reasoning on this network. The above cases—Samsung's KG+LLM sensor analysis, yieldWerx's root cause knowledge graphs, IKAS's Smart RCA—prove that this capability is transitioning from an academic concept to a commercial product. The next two chapters will turn to connectionism and behaviorism, which provide the ability to learn and optimize from data, complementing symbolism. The fusion of the three will reach its climax in Part 5 (LLM/Agent) and Part 6 (Ontology).
 
+> **Chapter experiment**: Experiment 15 in Chapter 27 (`demos/experiments/expert_system_rca`) encodes defect-to-root-cause experience as IF-THEN rules with forward chaining, mapping to this section's expert-system application; select facts to diagnose interactively.
+
 ## 14.7 Demo Visualization: Knowledge Graph-Based Yield Root Cause Analysis
 
 ![Knowledge Graph Root Cause Analysis Demo](../../images/demo_ch14_kg_rca.png)
