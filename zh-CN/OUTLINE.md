@@ -712,6 +712,32 @@
   - 技术、成本、组织挑战与演进路径
 - 26.7 本章小结
 
+## 第七部分：动手实验实验室
+
+### 第27章 动手实验实验室——把关键概念跑起来
+
+- 27.1 为什么需要动手实验
+- 27.2 实验环境准备
+- 27.3 实验一：Ontology 驱动的 Text2SQL（fab_ontology_text2sql）
+  - 本体三段式架构：语义层/动力层/动态层，受控 SQL 生成
+- 27.4 实验二：晶圆厂 Ontology MVP——根因分析 Agent（wafer_ontology_mvp）
+  - NetworkX 本体图 + LangGraph ReAct，"对象-链接-动作"三层映射
+- 27.5 实验三：FabGraph 双图谱知识平台（FabGraph_MVP）
+  - Schema/Lineage 图谱 + NL2SQL + 图算法
+- 27.6 实验四：K8s 式声明式调度（C9S_agent）
+  - 控制论调谐循环，四 Agent 协作，与命令式管道对比
+- 27.7 实验五：产能规划 PTA Agent（FabCapacityAgent）
+  - OEE 监控、瓶颈检测、蒙特卡洛 What-If 仿真
+- 27.8 实验六：LoRA 微调两阶段查询增强（fab_llm_fine_tuning）
+  - 数据合成→训练→推理→量化评估全链路
+- 27.9 实验七：RTD 实时派工与人机协同（fab_ai_rtd_mvp）
+  - 感知→RAG 诊断→调度→仿真→L1-L4 分级审批→审计
+- 27.10 实验八：CIM 可信系统红蓝对抗（wafer-trust-guard）
+  - 规则+嵌入+LLM Judge+记忆闭环的四层验证
+- 27.11 实验九：多 Agent 评估框架（fab_agent_test）
+  - 过程质量/资源成本/系统韧性三维实时评估
+- 27.12 从实验到生产：改造指引
+
 ## 参考文献
 
 详见 [references.md](computer://references.md)，共收录77篇学术文献，按以下七大类别组织：

@@ -77,7 +77,7 @@ Pure online reinforcement learning (agents trial-and-error in the real environme
 
 **Offline RL**: Learning only from historical data, without actual interaction with the environment. The agent learns optimal policies from already collected interaction records (such as process logs, parameter adjustment records, and corresponding yield results) rather than trial-and-error in the real environment. This enables reinforcement learning to leverage existing data without disrupting production.
 
-**Decision Transformer**: Recasting reinforcement learning as a sequence modeling problem. State-action-reward triples are input as sequences to a Transformer, and the model learns to generate action sequences given a target return. This approach can directly leverage the pre-training capabilities of LLMs.
+**Decision Transformer**: Recasting reinforcement learning as a sequence modeling problem[102]. State-action-reward triples are input as sequences to a Transformer, and the model learns to generate action sequences given a target return. This approach can directly leverage the pre-training capabilities of LLMs.
 
 **Model-Based RL**: First learning the environment's dynamics model (given the current state and action, predict the next state and reward), then planning and optimizing on the learned model. In fabs, a digital twin of the process can first be constructed, and reinforcement learning exploration and training can be conducted on the digital twin before deploying the learned policy to the real production line.
 
@@ -97,7 +97,7 @@ Value-based methods learn the state-action value function $Q(s,a)$ and then deri
 | Double DQN | Addresses Q-value overestimation |
 | Dueling DQN | Separates state value and action advantage modeling |
 | Rainbow | Combines multiple DQN improvements |
-| Conservative Q-Learning (CQL) | Offline RL, prevents overestimation of out-of-distribution actions |
+| Conservative Q-Learning (CQL)[101] | Offline RL, prevents overestimation of out-of-distribution actions |
 
 ### Policy-Based Methods
 

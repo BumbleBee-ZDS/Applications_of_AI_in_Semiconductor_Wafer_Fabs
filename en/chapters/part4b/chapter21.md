@@ -323,7 +323,7 @@ Samsung's autonomous manufacturing system is the industrial practice closest to 
 
 ### Palantir + NVIDIA: NSA Architecture of AIOS-RA
 
-Palantir and NVIDIA jointly released AIOS-RA (AI Operating System Reference Architecture), defining an industrial-grade architecture for NSA full fusion:
+Palantir and NVIDIA jointly released AIOS-RA (AI Operating System Reference Architecture), defining an industrial-grade architecture for NSA full fusion[94]:
 
 - **Perception layer (Neural)**: NVIDIA's GPU-accelerated deep learning processes multimodal sensor data (images, signals, time-series)
 - **Cognition layer (Symbolic)**: Palantir's Ontology provides a unified data semantic model and reasoning engine
@@ -418,3 +418,5 @@ The cross-fusion of the three paradigms is the overarching trend of AI developme
 *Demo description: Top-left is the NSA closed-loop architecture diagram, top is the four-stage evolution path. Middle row shows digital twin precision, autonomous decision accuracy, and multimodal fusion gains, respectively. Bottom row shows the self-healing equipment system, full-stack yield intelligence, and closed-loop latency analysis. Bottom is the NB/NA/SA/NSA full-dimension comparison matrix. See simulation script at `demos/demo_ch21_nsa_fusion.py`.*
 
 ![NSA Four-Stage Evolution Path](../../images/flow_ch21_evolution.png)
+
+> **Hands-on experiment for this chapter**: The multi-Agent evaluation framework in Section 27.11 of Chapter 27 (`demos/experiments/fab_agent_test`) answers the "how to evaluate" question for NSA full-fusion systems — from process quality and resource cost to resilience under injected faults, providing a reusable three-dimensional evaluation method for end-to-end agents.

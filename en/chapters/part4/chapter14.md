@@ -245,3 +245,5 @@ The value of symbolism in wafer fabs is not to replace deep learning—it cannot
 ![Knowledge Graph Root Cause Analysis Demo](../../images/demo_ch14_kg_rca.png)
 
 *Demo description: Top-left is the yield root cause analysis knowledge graph visualization, top-right is the rule engine reasoning chain, bottom-left is the reasoning timeline, bottom-right is the comparison between traditional methods and KG methods. Simulation script: `demos/demo_ch14_kg_rca.py`.*
+
+> **Hands-on experiments for this chapter**: Two experiments echo this chapter — the Wafer Fab Ontology MVP in Section 27.4 of Chapter 27 (`demos/experiments/wafer_ontology_mvp`) demonstrates the complete engineering form of knowledge-graph-assisted root cause analysis; FabGraph in Section 27.5 (`demos/experiments/FabGraph_MVP`) shows how symbolic metadata governance supports semantic retrieval and NL2SQL.

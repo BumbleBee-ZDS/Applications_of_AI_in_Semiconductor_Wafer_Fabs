@@ -205,9 +205,9 @@ AI Megafactory的核心應用包括：
 
 ### 強化學習在排程量產中的驗證
 
-雖然RL在晶圓廠排程中的研究由來已久，但真正在產線上驗證的案例正在積累：
+雖然RL在晶圓廠排程中的研究由來已久，但真正在產線上驗證的案例正在積累[88]：
 
-**AISSI專案（2021-2024）**：由Bosch、Nexperia、Bosch Sensortec、D-SIMLAB、SYSTEMA和KIT聯合開展，使用深度RL代理進行工廠排程。三個用例：外延工作中心排程（Nexperia）、全廠排程（Bosch）、全球Cycle Time預測（Bosch Sensortec）。結果：產出比文獻基準高9%，Cycle Time預測準確率80-90%。成果正在向Bosch和Nexperia的產線轉移。
+**AISSI專案（2021-2024）**：由Bosch、Nexperia、Bosch Sensortec、D-SIMLAB、SYSTEMA和KIT聯合開展，使用深度RL代理進行工廠排程[87]。三個用例：外延工作中心排程（Nexperia）、全廠排程（Bosch）、全球Cycle Time預測（Bosch Sensortec）。結果：產出比文獻基準高9%，Cycle Time預測準確率80-90%。成果正在向Bosch和Nexperia的產線轉移。
 
 **ICTC 2025論文**：在實際工業資料集上驗證RL排程——吞吐量提升5.3%，Cycle Time降低7.3%，延遲指標相對改善19.2%，設備利用率達87.9%。
 
@@ -234,3 +234,5 @@ MFG的挑戰——NP-Hard排程、重入式流程、動態事件響應、多目�
 ![智慧排程Demo](../../images/demo_ch7_smart_scheduling.png)
 
 *Demo說明：上圖對比了傳統FIFO派工與RL智慧派工的甘特圖。下排展示了設備利用率對比、關鍵KPI對比和RL訓練的獎勵收斂曲線。模擬指令碼見 `demos/demo_ch7_smart_scheduling.py`。*
+
+> **本章配套實驗**：第27章 27.6 節的 K8s 式宣告式排程實驗（`demos/experiments/C9S_agent`）把本章討論的智慧排程思想做成了可互動的系統——用「期望態-實際態」調諧迴圈取代人工排程腳本，並可在介面注入設備故障觀察系統自愈，零外部依賴、秒級啟動。

@@ -312,7 +312,7 @@ L3Harris, as a complex manufacturer, used Palantir Warp Speed to implement an SA
 
 ### Flexciton: Mixed-Integer Programming + RL Scheduling System
 
-Flexciton's wafer fab scheduling system embodies the practice of SA fusion in MFG:
+Flexciton's wafer fab scheduling system embodies the practice of SA fusion in MFG[89][90]:
 
 - **Symbolic layer**: Mixed-integer programming (MIP) defines the globally optimal structure of scheduling — task assignment satisfying process constraints, equipment constraints, and delivery constraints
 - **Behavioral layer**: RL policy makes real-time fine-tuning within the MIP framework — handling dynamic events such as equipment failures and urgent insertions
@@ -340,3 +340,5 @@ The challenges facing SA fusion differ from those of NA fusion — its bottlenec
 *Demo description: Top-left is the HTN task decomposition tree, top-center is the comparison of pure RL vs pure symbolic vs SA fusion, top-right is the automated exception response workflow. Middle row shows the PM Gantt chart, multi-agent symbolic-action architecture, and symbolic constraints accelerating RL convergence, respectively. Bottom is the SA fusion full-dimension radar chart comparison. See simulation script at `demos/demo_ch20_sa_fusion.py`.*
 
 ![Multi-Agent Symbolic-Action Architecture](../../images/flow_ch20_multiagent.png)
+
+> **Hands-on experiment for this chapter**: The K8s-style declarative scheduling experiment in Section 27.6 of Chapter 27 (`demos/experiments/C9S_agent`) is a vivid SA-fusion case of this chapter — the symbolic system defines goals and constraints (declarative targets) while the behavioral system keeps converging toward them (reconciliation loop), with a built-in comparison against the traditional imperative pipeline.

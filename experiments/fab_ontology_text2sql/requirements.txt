@@ -1,0 +1,5 @@
+streamlit>=1.36
+pandas>=2.0
+numpy>=1.26
+openai>=1.30
+python-dotenv>=1.0

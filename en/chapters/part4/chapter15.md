@@ -248,3 +248,5 @@ The application of connectionism in wafer fabs has become quite mature—especia
 *Demo description: Top-left is the DNN model architecture diagram, top-right is the yield prediction scatter plot (DNN R2=0.94 vs Linear Regression R2=0.78), bottom-left is the virtual metrology time-series comparison, bottom-right is the feature importance ranking. Simulation script: `demos/demo_ch15_yield_prediction.py`.*
 
 ![Deep Learning Model Training Pipeline](../../images/flow_ch15_training_pipeline.png)
+
+> **Hands-on experiment for this chapter**: The LoRA fine-tuning experiment in Section 27.8 of Chapter 27 (`demos/experiments/fab_llm_fine_tuning`) walks through the full "data synthesis → LoRA training → inference → quantitative evaluation" pipeline, using a 0.5B small model for domain preprocessing to assist a large model — an LLM-era extension of this chapter's "AI acceleration under data scarcity" theme.

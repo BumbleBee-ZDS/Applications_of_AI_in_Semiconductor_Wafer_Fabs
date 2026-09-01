@@ -248,3 +248,5 @@ Applied Materials的AIx平台将深度学习应用于设备级实时工艺分析
 *Demo说明：左上为DNN模型架构示意图，右上为良率预测散点图（DNN R2=0.94 vs 线性回归 R2=0.78），左下为虚拟量测时序对比，右下为特征重要性排序。模拟脚本见 `demos/demo_ch15_yield_prediction.py`。*
 
 ![深度学习模型训练流程](../../images/flow_ch15_training_pipeline.png)
+
+> **本章配套实验**：第27章 27.8 节的 LoRA 微调实验（`demos/experiments/fab_llm_fine_tuning`）完整走通"数据合成 → LoRA 训练 → 推理 → 量化评估"链路，用 0.5B 小模型做领域预处理辅助大模型——是本章"数据稀缺场景下的 AI 加速"在 LLM 时代的延伸。

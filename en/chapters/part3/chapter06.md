@@ -157,7 +157,7 @@ This system's value lies not only in efficiency improvement but in a **qualitati
 
 ### SK Hynex/Gauss Labs: Panoptes Virtual Metrology System
 
-Gauss Labs, an AI company invested in by SK Hynix, developed the Panoptes Virtual Metrology (VM) system, deployed on SK Hynix's mass production line in December 2022.
+Gauss Labs, an AI company invested in by SK Hynix, developed the Panoptes Virtual Metrology (VM) system, deployed on SK Hynix's mass production line in December 2022[91][92].
 
 The core idea of virtual metrology is to use equipment sensor data (temperature, pressure, gas flow, etc.) to predict wafer metrology results (film thickness, refractive index, etc.) without actual measurement. This makes "metrology data for every wafer" possible — traditionally only sampled wafers are measured.
 

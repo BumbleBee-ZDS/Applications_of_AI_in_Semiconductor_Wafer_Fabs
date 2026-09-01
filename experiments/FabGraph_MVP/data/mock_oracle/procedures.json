@@ -1,0 +1,78 @@
+[
+  {
+    "procedure_name": "SP_CALC_YIELD",
+    "schema_name": "FAB",
+    "definition": "CREATE OR REPLACE PROCEDURE SP_CALC_YIELD AS\nBEGIN\n  -- 读取: LOT_HISTORY, WAFER_RESULT; 写入: YIELD_SUMMARY\n  -- 业务逻辑省略（模拟）\n  NULL;\nEND;",
+    "input_tables": [
+      "LOT_HISTORY",
+      "WAFER_RESULT"
+    ],
+    "output_tables": [
+      "YIELD_SUMMARY"
+    ],
+    "description": "按批次计算良率并写入汇总表"
+  },
+  {
+    "procedure_name": "SP_AGGREGATE_DEFECT",
+    "schema_name": "FAB",
+    "definition": "CREATE OR REPLACE PROCEDURE SP_AGGREGATE_DEFECT AS\nBEGIN\n  -- 读取: DEFECT_DATA, WAFER_RESULT; 写入: YIELD_SUMMARY\n  -- 业务逻辑省略（模拟）\n  NULL;\nEND;",
+    "input_tables": [
+      "DEFECT_DATA",
+      "WAFER_RESULT"
+    ],
+    "output_tables": [
+      "YIELD_SUMMARY"
+    ],
+    "description": "聚合缺陷数据回写良率汇总"
+  },
+  {
+    "procedure_name": "SP_PROCESS_TRACE",
+    "schema_name": "FAB",
+    "definition": "CREATE OR REPLACE PROCEDURE SP_PROCESS_TRACE AS\nBEGIN\n  -- 读取: PROCESS_FLOW, LOT_HISTORY, EQUIPMENT_LOG; 写入: EQUIPMENT_LOG\n  -- 业务逻辑省略（模拟）\n  NULL;\nEND;",
+    "input_tables": [
+      "PROCESS_FLOW",
+      "LOT_HISTORY",
+      "EQUIPMENT_LOG"
+    ],
+    "output_tables": [
+      "EQUIPMENT_LOG"
+    ],
+    "description": "追溯批次工艺流程并更新设备日志"
+  },
+  {
+    "procedure_name": "SP_RECIPE_VALIDATION",
+    "schema_name": "FAB",
+    "definition": "CREATE OR REPLACE PROCEDURE SP_RECIPE_VALIDATION AS\nBEGIN\n  -- 读取: RECIPE_PARAM, EQUIPMENT_LOG, SPC_DATA; 写入: 无\n  -- 业务逻辑省略（模拟）\n  NULL;\nEND;",
+    "input_tables": [
+      "RECIPE_PARAM",
+      "EQUIPMENT_LOG",
+      "SPC_DATA"
+    ],
+    "output_tables": [],
+    "description": "校验配方参数与SPC测量偏差"
+  },
+  {
+    "procedure_name": "SP_WAFER_INSPECT",
+    "schema_name": "FAB",
+    "definition": "CREATE OR REPLACE PROCEDURE SP_WAFER_INSPECT AS\nBEGIN\n  -- 读取: WAFER_RESULT; 写入: DEFECT_DATA\n  -- 业务逻辑省略（模拟）\n  NULL;\nEND;",
+    "input_tables": [
+      "WAFER_RESULT"
+    ],
+    "output_tables": [
+      "DEFECT_DATA"
+    ],
+    "description": "根据测试失败数插入缺陷记录"
+  },
+  {
+    "procedure_name": "SP_DAILY_YIELD_REPORT",
+    "schema_name": "FAB",
+    "definition": "CREATE OR REPLACE PROCEDURE SP_DAILY_YIELD_REPORT AS\nBEGIN\n  -- 读取: LOT_HISTORY, YIELD_SUMMARY, PROCESS_FLOW; 写入: 无\n  -- 业务逻辑省略（模拟）\n  NULL;\nEND;",
+    "input_tables": [
+      "LOT_HISTORY",
+      "YIELD_SUMMARY",
+      "PROCESS_FLOW"
+    ],
+    "output_tables": [],
+    "description": "生成每日良率报告"
+  }
+]

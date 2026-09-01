@@ -16,3 +16,8 @@ Thumbs.db
 .vscode/
 .idea/
 *.swp
+
+# 环境变量与密钥（切勿提交）
+.env
+.env.*
+!.env.example

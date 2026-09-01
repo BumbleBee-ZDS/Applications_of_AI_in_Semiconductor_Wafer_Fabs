@@ -157,7 +157,7 @@ PID工程师需要在更少的试产轮次内收敛工艺——这意味着每�
 
 ### SK海力士/Gauss Labs：Panoptes虚拟量测系统
 
-SK海力士投资的AI公司Gauss Labs开发了Panoptes虚拟量测（Virtual Metrology, VM）系统，2022年12月在SK海力士量产产线部署。
+SK海力士投资的AI公司Gauss Labs开发了Panoptes虚拟量测（Virtual Metrology, VM）系统，2022年12月在SK海力士量产产线部署[91][92]。
 
 虚拟量测的核心思路是：用设备传感器数据（温度、压力、气体流量等）预测晶圆的量测结果（膜厚、折射率等），无需实际测量。这使得"每片晶圆都有量测数据"成为可能——传统上只有抽样晶圆会被量测。
 

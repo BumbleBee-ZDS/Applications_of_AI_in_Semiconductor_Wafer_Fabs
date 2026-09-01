@@ -1,0 +1,267 @@
+[
+  {
+    "sql_id": 1,
+    "category": "simple",
+    "sql": "SELECT * FROM LOT_HISTORY WHERE STATUS = 'ACTIVE'"
+  },
+  {
+    "sql_id": 2,
+    "category": "simple",
+    "sql": "SELECT LOT_ID, PRODUCT_ID, QTY_IN, QTY_OUT FROM LOT_HISTORY WHERE LOT_TYPE = 'P'"
+  },
+  {
+    "sql_id": 3,
+    "category": "simple",
+    "sql": "SELECT WFR_ID, YIELD_VAL FROM WAFER_RESULT WHERE TEST_DT >= '2024-01-01'"
+  },
+  {
+    "sql_id": 4,
+    "category": "simple",
+    "sql": "SELECT EQP_ID, STATUS_CD FROM EQUIPMENT_LOG WHERE UTIL_RATE > 0.8"
+  },
+  {
+    "sql_id": 5,
+    "category": "simple",
+    "sql": "SELECT DEFECT_ID, DEFECT_CD, DEFECT_CNT FROM DEFECT_DATA WHERE DEFECT_CNT > 10"
+  },
+  {
+    "sql_id": 6,
+    "category": "simple",
+    "sql": "SELECT RECIPE_ID, PARAM_NAME, TARGET_VAL FROM RECIPE_PARAM"
+  },
+  {
+    "sql_id": 7,
+    "category": "simple",
+    "sql": "SELECT * FROM SPC_DATA WHERE OOC_FLAG = 'Y'"
+  },
+  {
+    "sql_id": 8,
+    "category": "simple",
+    "sql": "SELECT LOT_ID, YIELD_PCT FROM YIELD_SUMMARY WHERE YIELD_PCT < 0.9"
+  },
+  {
+    "sql_id": 9,
+    "category": "join",
+    "sql": "SELECT l.LOT_ID, l.PRODUCT_ID, w.YIELD_VAL FROM LOT_HISTORY l JOIN WAFER_RESULT w ON l.WFR_ID = w.WFR_ID"
+  },
+  {
+    "sql_id": 10,
+    "category": "join",
+    "sql": "SELECT w.WFR_ID, d.DEFECT_CNT FROM WAFER_RESULT w JOIN DEFECT_DATA d ON w.WFR_ID = d.WFR_ID"
+  },
+  {
+    "sql_id": 11,
+    "category": "join",
+    "sql": "SELECT l.LOT_ID, y.YIELD_PCT FROM LOT_HISTORY l JOIN YIELD_SUMMARY y ON l.LOT_ID = y.LOT_ID"
+  },
+  {
+    "sql_id": 12,
+    "category": "join",
+    "sql": "SELECT e.EQP_ID, s.MEASURE_VAL FROM EQUIPMENT_LOG e JOIN SPC_DATA s ON e.EQP_ID = s.EQP_ID"
+  },
+  {
+    "sql_id": 13,
+    "category": "join",
+    "sql": "SELECT r.RECIPE_ID, r.PARAM_NAME, s.MEASURE_VAL FROM RECIPE_PARAM r JOIN SPC_DATA s ON r.PARAM_ID = s.PARAM_ID"
+  },
+  {
+    "sql_id": 14,
+    "category": "join",
+    "sql": "SELECT l.LOT_ID, p.STEP_NAME FROM LOT_HISTORY l JOIN PROCESS_FLOW p ON l.LOT_ID = p.LOT_ID"
+  },
+  {
+    "sql_id": 15,
+    "category": "join",
+    "sql": "SELECT l.LOT_ID, l.PRODUCT_ID, w.YIELD_VAL, d.DEFECT_CNT FROM LOT_HISTORY l JOIN WAFER_RESULT w ON l.WFR_ID = w.WFR_ID JOIN DEFECT_DATA d ON w.WFR_ID = d.WFR_ID"
+  },
+  {
+    "sql_id": 16,
+    "category": "join",
+    "sql": "SELECT l.LOT_ID, y.YIELD_PCT, s.MEASURE_VAL FROM LOT_HISTORY l JOIN YIELD_SUMMARY y ON l.LOT_ID=y.LOT_ID JOIN SPC_DATA s ON l.LOT_ID=s.LOT_ID"
+  },
+  {
+    "sql_id": 17,
+    "category": "join",
+    "sql": "SELECT e.EQP_ID, e.EQP_TYPE, s.PARAM_ID, s.MEASURE_VAL FROM EQUIPMENT_LOG e JOIN SPC_DATA s ON e.EQP_ID=s.EQP_ID JOIN RECIPE_PARAM r ON s.PARAM_ID=r.PARAM_ID"
+  },
+  {
+    "sql_id": 18,
+    "category": "join",
+    "sql": "SELECT p.STEP_NAME, p.EQP_ID, e.EQP_TYPE FROM PROCESS_FLOW p JOIN EQUIPMENT_LOG e ON p.EQP_ID=e.EQP_ID"
+  },
+  {
+    "sql_id": 19,
+    "category": "join",
+    "sql": "SELECT w.WFR_ID, w.LOT_ID, l.PRODUCT_ID FROM WAFER_RESULT w JOIN LOT_HISTORY l ON w.LOT_ID=l.LOT_ID"
+  },
+  {
+    "sql_id": 20,
+    "category": "join",
+    "sql": "SELECT d.WFR_ID, d.DEFECT_CD, w.STEP_CD FROM DEFECT_DATA d JOIN WAFER_RESULT w ON d.WFR_ID=w.WFR_ID"
+  },
+  {
+    "sql_id": 21,
+    "category": "join",
+    "sql": "SELECT s.LOT_ID, s.MEASURE_VAL, r.TARGET_VAL FROM SPC_DATA s JOIN RECIPE_PARAM r ON s.PARAM_ID=r.PARAM_ID JOIN LOT_HISTORY l ON s.LOT_ID=l.LOT_ID"
+  },
+  {
+    "sql_id": 22,
+    "category": "join",
+    "sql": "SELECT y.LOT_ID, y.YIELD_PCT, l.STATUS FROM YIELD_SUMMARY y JOIN LOT_HISTORY l ON y.LOT_ID=l.LOT_ID"
+  },
+  {
+    "sql_id": 23,
+    "category": "join",
+    "sql": "SELECT p.LOT_ID, p.STEP_NAME, p.DURATION_VAL, e.EQP_TYPE FROM PROCESS_FLOW p JOIN EQUIPMENT_LOG e ON p.EQP_ID=e.EQP_ID JOIN LOT_HISTORY l ON p.LOT_ID=l.LOT_ID"
+  },
+  {
+    "sql_id": 24,
+    "category": "aggregate",
+    "sql": "SELECT l.PRODUCT_ID, COUNT(*) AS lot_cnt FROM LOT_HISTORY l GROUP BY l.PRODUCT_ID"
+  },
+  {
+    "sql_id": 25,
+    "category": "aggregate",
+    "sql": "SELECT l.LOT_ID, AVG(w.YIELD_VAL) AS avg_yield FROM LOT_HISTORY l JOIN WAFER_RESULT w ON l.WFR_ID=w.WFR_ID GROUP BY l.LOT_ID"
+  },
+  {
+    "sql_id": 26,
+    "category": "aggregate",
+    "sql": "SELECT e.EQP_ID, MAX(s.MEASURE_VAL) AS max_val, MIN(s.MEASURE_VAL) AS min_val FROM EQUIPMENT_LOG e JOIN SPC_DATA s ON e.EQP_ID=s.EQP_ID GROUP BY e.EQP_ID"
+  },
+  {
+    "sql_id": 27,
+    "category": "aggregate",
+    "sql": "SELECT l.PRODUCT_ID, SUM(l.QTY_IN) AS tot_in, SUM(l.QTY_OUT) AS tot_out FROM LOT_HISTORY l GROUP BY l.PRODUCT_ID"
+  },
+  {
+    "sql_id": 28,
+    "category": "aggregate",
+    "sql": "SELECT d.DEFECT_CD, COUNT(*) AS cnt, AVG(d.DEFECT_CNT) AS avg_cnt FROM DEFECT_DATA d GROUP BY d.DEFECT_CD"
+  },
+  {
+    "sql_id": 29,
+    "category": "aggregate",
+    "sql": "SELECT l.LOT_ID, AVG(w.YIELD_VAL) AS avg_yield, MAX(d.DEFECT_CNT) AS max_defect FROM LOT_HISTORY l JOIN WAFER_RESULT w ON l.WFR_ID=w.WFR_ID JOIN DEFECT_DATA d ON w.WFR_ID=d.WFR_ID GROUP BY l.LOT_ID"
+  },
+  {
+    "sql_id": 30,
+    "category": "aggregate",
+    "sql": "SELECT TO_CHAR(s.MEAS_DT,'YYYY-MM') AS mon, AVG(s.MEASURE_VAL) AS avg_val FROM SPC_DATA s GROUP BY TO_CHAR(s.MEAS_DT,'YYYY-MM')"
+  },
+  {
+    "sql_id": 31,
+    "category": "aggregate",
+    "sql": "SELECT r.RECIPE_ID, COUNT(s.SPC_ID) AS spc_cnt FROM RECIPE_PARAM r LEFT JOIN SPC_DATA s ON r.PARAM_ID=s.PARAM_ID GROUP BY r.RECIPE_ID"
+  },
+  {
+    "sql_id": 32,
+    "category": "aggregate",
+    "sql": "SELECT p.STEP_NAME, AVG(p.DURATION_VAL) AS avg_dur FROM PROCESS_FLOW p GROUP BY p.STEP_NAME"
+  },
+  {
+    "sql_id": 33,
+    "category": "aggregate",
+    "sql": "SELECT l.LOT_TYPE, COUNT(*) AS cnt FROM LOT_HISTORY l WHERE l.STATUS='ACTIVE' GROUP BY l.LOT_TYPE"
+  },
+  {
+    "sql_id": 34,
+    "category": "subquery",
+    "sql": "SELECT LOT_ID, PRODUCT_ID FROM LOT_HISTORY WHERE LOT_ID IN (SELECT LOT_ID FROM YIELD_SUMMARY WHERE YIELD_PCT < 0.85)"
+  },
+  {
+    "sql_id": 35,
+    "category": "subquery",
+    "sql": "SELECT WFR_ID, YIELD_VAL FROM WAFER_RESULT WHERE YIELD_VAL < (SELECT AVG(YIELD_VAL) FROM WAFER_RESULT)"
+  },
+  {
+    "sql_id": 36,
+    "category": "subquery",
+    "sql": "SELECT l.LOT_ID FROM LOT_HISTORY l WHERE l.LOT_ID IN (SELECT LOT_ID FROM DEFECT_DATA WHERE DEFECT_CNT > 50)"
+  },
+  {
+    "sql_id": 37,
+    "category": "subquery",
+    "sql": "SELECT EQP_ID, UTIL_RATE FROM EQUIPMENT_LOG WHERE UTIL_RATE > (SELECT AVG(UTIL_RATE) FROM EQUIPMENT_LOG)"
+  },
+  {
+    "sql_id": 38,
+    "category": "subquery",
+    "sql": "SELECT PRODUCT_ID, COUNT(*) FROM LOT_HISTORY WHERE PRODUCT_ID IN (SELECT PRODUCT_ID FROM YIELD_SUMMARY WHERE YIELD_PCT > 0.95) GROUP BY PRODUCT_ID"
+  },
+  {
+    "sql_id": 39,
+    "category": "subquery",
+    "sql": "SELECT LOT_ID, QTY_OUT FROM LOT_HISTORY WHERE QTY_OUT < (SELECT AVG(QTY_OUT) FROM LOT_HISTORY WHERE LOT_TYPE='P')"
+  },
+  {
+    "sql_id": 40,
+    "category": "subquery",
+    "sql": "SELECT s.LOT_ID, s.MEASURE_VAL FROM SPC_DATA s WHERE s.MEASURE_VAL > (SELECT TARGET_VAL FROM RECIPE_PARAM WHERE PARAM_ID=s.PARAM_ID)"
+  },
+  {
+    "sql_id": 41,
+    "category": "subquery",
+    "sql": "SELECT d.WFR_ID FROM DEFECT_DATA d WHERE d.DEFECT_CNT > (SELECT AVG(DEFECT_CNT) FROM DEFECT_DATA WHERE DEFECT_CD=d.DEFECT_CD)"
+  },
+  {
+    "sql_id": 42,
+    "category": "lineage",
+    "sql": "INSERT INTO YIELD_SUMMARY (LOT_ID, PRODUCT_ID, TOTAL_IN, TOTAL_OUT, YIELD_PCT, CALC_DT) SELECT l.LOT_ID, l.PRODUCT_ID, SUM(l.QTY_IN), SUM(l.QTY_OUT), SUM(l.QTY_OUT)/SUM(l.QTY_IN), SYSDATE FROM LOT_HISTORY l WHERE l.STATUS='CLOSED' GROUP BY l.LOT_ID, l.PRODUCT_ID"
+  },
+  {
+    "sql_id": 43,
+    "category": "lineage",
+    "sql": "INSERT INTO DEFECT_DATA (DEFECT_ID, WFR_ID, LOT_ID, DEFECT_CD, DEFECT_CNT, INSPECT_DT) SELECT SEQ_DEF.NEXTVAL, w.WFR_ID, w.LOT_ID, 'SCRATCH', 0, SYSDATE FROM WAFER_RESULT w WHERE w.FAIL_CNT > 0"
+  },
+  {
+    "sql_id": 44,
+    "category": "lineage",
+    "sql": "INSERT INTO SPC_DATA (SPC_ID, LOT_ID, EQP_ID, PARAM_ID, MEASURE_VAL, MEAS_DT) SELECT SEQ_SPC.NEXTVAL, s.LOT_ID, s.EQP_ID, s.PARAM_ID, s.MEASURE_VAL, SYSDATE FROM SPC_DATA s WHERE s.MEAS_DT < SYSDATE-30"
+  },
+  {
+    "sql_id": 45,
+    "category": "lineage",
+    "sql": "INSERT INTO PROCESS_FLOW (FLOW_ID, LOT_ID, STAGE_CD, STEP_SEQ, START_DT) SELECT SEQ_FLOW.NEXTVAL, l.LOT_ID, l.STAGE_CD, 1, l.START_DT FROM LOT_HISTORY l WHERE l.STATUS='ACTIVE'"
+  },
+  {
+    "sql_id": 46,
+    "category": "lineage",
+    "sql": "INSERT INTO YIELD_SUMMARY(LOT_ID, PRODUCT_ID, TOTAL_OUT, YIELD_PCT) SELECT l.LOT_ID, l.PRODUCT_ID, l.QTY_OUT, l.QTY_OUT/l.QTY_IN FROM LOT_HISTORY l JOIN WAFER_RESULT w ON l.WFR_ID=w.WFR_ID"
+  },
+  {
+    "sql_id": 47,
+    "category": "lineage",
+    "sql": "INSERT INTO DEFECT_DATA (WFR_ID, LOT_ID, DEFECT_CNT) SELECT d.WFR_ID, d.LOT_ID, SUM(d.DEFECT_CNT) FROM DEFECT_DATA d GROUP BY d.WFR_ID, d.LOT_ID"
+  },
+  {
+    "sql_id": 48,
+    "category": "lineage",
+    "sql": "INSERT INTO SPC_DATA (LOT_ID, EQP_ID, PARAM_ID, MEASURE_VAL) SELECT s.LOT_ID, s.EQP_ID, r.PARAM_ID, s.MEASURE_VAL FROM SPC_DATA s JOIN RECIPE_PARAM r ON s.PARAM_ID=r.PARAM_ID"
+  },
+  {
+    "sql_id": 49,
+    "category": "join",
+    "sql": "SELECT l.LOT_ID, l.PRODUCT_ID, y.YIELD_PCT FROM LOT_HISTORY l LEFT JOIN YIELD_SUMMARY y ON l.LOT_ID=y.LOT_ID WHERE y.YIELD_PCT IS NULL"
+  },
+  {
+    "sql_id": 50,
+    "category": "subquery",
+    "sql": "SELECT * FROM (SELECT LOT_ID, AVG(YIELD_VAL) AS y FROM WAFER_RESULT GROUP BY LOT_ID) WHERE y > 0.95"
+  },
+  {
+    "sql_id": 51,
+    "category": "aggregate",
+    "sql": "SELECT e.EQP_TYPE, COUNT(s.SPC_ID) AS cnt FROM EQUIPMENT_LOG e LEFT JOIN SPC_DATA s ON e.EQP_ID=s.EQP_ID GROUP BY e.EQP_TYPE"
+  },
+  {
+    "sql_id": 52,
+    "category": "aggregate",
+    "sql": "SELECT LOT_ID, COUNT(*) AS step_cnt FROM PROCESS_FLOW GROUP BY LOT_ID HAVING COUNT(*) > 5"
+  },
+  {
+    "sql_id": 53,
+    "category": "lineage",
+    "sql": "MERGE INTO YIELD_SUMMARY y USING (SELECT LOT_ID, AVG(YIELD_VAL) AS v FROM WAFER_RESULT GROUP BY LOT_ID) w ON (y.LOT_ID=w.LOT_ID) WHEN MATCHED THEN UPDATE SET y.YIELD_PCT=w.v"
+  }
+]

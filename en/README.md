@@ -73,6 +73,9 @@ Part VI   Ontology
 ├── Chapter 24   Palantir and Ontology — From Killing Bin Laden to Samsung's Yield Leap
 ├── Chapter 25   Building and Applying Ontology in Semiconductor Wafer Fabs
 └── Chapter 26   Applications of Embodied AI — When AI Steps into the Physical World of the Fab
+
+Part 7  Hands-On Lab
+└── Chapter 27   Hands-On Lab — Running the Key Concepts (9 runnable experiments)
 ```
 
 ### Dual-Mainline Interwoven Structure

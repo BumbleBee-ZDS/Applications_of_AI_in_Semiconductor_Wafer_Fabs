@@ -1,0 +1,6 @@
+streamlit>=1.36
+pydantic>=2.7
+openai>=1.40
+dashscope>=1.20
+python-dotenv>=1.0
+numpy>=1.26

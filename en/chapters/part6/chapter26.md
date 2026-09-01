@@ -25,7 +25,15 @@ Embodied AI is not a single technology but a "perceive-understand-plan-act" stac
 | Action execution | VLA models, motion control, robotic arm/mobile base | Execute physical actions |
 | Learning and feedback | Imitation learning, RL, teleoperation data | Improve from experience |
 
-The most representative technology is the **VLA (Vision-Language-Action) model**: it unifies visual perception, language understanding, and action decisions in a single large model — input "move wafer carrier #3 onto the EFEM load port of the etcher," and the model directly outputs the robotic arm's action sequence. VLA moves robot operation from "writing a program for every task" toward "commanding general operations in natural language."
+The most representative technology is the **VLA (Vision-Language-Action) model**: it unifies visual perception, language understanding, and action decisions in a single large model — input "move wafer carrier #3 onto the EFEM load port of the etcher," and the model directly outputs the robotic arm's action sequence. VLA moves robot operation from "writing a program for every task" toward "commanding general operations in natural language"[99].
+
+![Embodied AI technology stack](../../images/flow_ch26_tech_stack.png)
+
+*Figure 26-1: The "perceive–understand–plan–act" technology stack of embodied AI; the learning-feedback loop continuously improves the planning and execution layers*
+
+![VLA (Vision-Language-Action) model workflow](../../images/flow_ch26_vla_pipeline.png)
+
+*Figure 26-2: VLA (Vision-Language-Action) model workflow — visual input and natural-language instruction are unified end-to-end into an action sequence*
 
 ## 26.3 Embodied AI Scenarios in the Fab
 
@@ -37,6 +45,10 @@ The fab's overhead hoist transport (AMHS) system and automated guided vehicles (
 - **Obstacle avoidance and interaction**: safe interaction with load ports and maintenance zones
 - **Exception handling**: autonomously judging and reporting when obstacles or anomalies occur
 
+![The intelligent-transport closed loop of AMHS overhead hoists and AGVs](../../images/flow_ch26_amhs_transport.png)
+
+*Figure 26-3: The intelligent-transport closed loop of AMHS overhead hoists and AGVs — dynamic path planning, autonomous anomaly handling, and feedback loop*
+
 ### Scenario 2: Cleanroom Robotic Arms and EFEM Auto Load/Unload
 
 The EFEM (Equipment Front End Module) in front of process tools is the standard robotic load/unload scenario. Embodied AI moves load/unload from "fixed motions" to "adaptive":
@@ -44,6 +56,10 @@ The EFEM (Equipment Front End Module) in front of process tools is the standard 
 - **Vision-guided gripping**: recognizing FOUP orientation and adaptively adjusting grip angle
 - **MES/APC linkage**: automatically switching process recipes per production instructions
 - **Anomaly recognition**: immediately stopping and alerting on broken wafers or position drift
+
+![Cleanroom robotic-arm EFEM auto load/unload workflow](../../images/flow_ch26_efem_workflow.png)
+
+*Figure 26-4: Cleanroom robotic-arm EFEM auto load/unload workflow — vision-guided gripping × Ontology rule verification × stop-on-anomaly*
 
 ### Scenario 3: Mobile Manipulation Robots for Inspection and Maintenance
 
@@ -59,7 +75,7 @@ Humanoid robots have the potential to operate in human-designed environments and
 
 ![Three-layer architecture of an embodied AI Agent](../../images/flow_ch26_embodied_ai_flow.png)
 
-*Figure 26-1: Three-layer architecture of an embodied AI Agent — Ontology cognitive layer × LLM/VLA decision layer × robotic action layer*
+*Figure 26-5: Three-layer architecture of an embodied AI Agent — Ontology cognitive layer × LLM/VLA decision layer × robotic action layer*
 
 ## 26.4 The Fusion of Embodied AI and Ontology
 
@@ -88,14 +104,14 @@ The combination of Ontology and embodied AI delivers two key values:
 
 ![Embodied AI application scenarios in the fab](../../images/demo_ch26_embodied_ai.png)
 
-*Figure 26-2: Embodied AI application scenarios in the fab — intelligent transport, auto load/unload, and mobile inspection*
+*Figure 26-6: Embodied AI application scenarios in the fab — intelligent transport, auto load/unload, and mobile inspection*
 
 ## 26.5 Current Practice and Cases
 
 - **Industry status**: embodied AI applications in fabs are overall at the "mature automation, nascent intelligence" stage — robotic arms/hoists/AGVs are widespread, but the complete "autonomous perceive-decide-execute" loop remains mostly at the pilot stage
 - **AMHS intelligence**: leading fabs collaborate with AMHS vendors to add intelligent path planning and predictive maintenance to transport scheduling (echoing the AMHS health management of Chapter 12's mature phase)
 - **Equipment vendor exploration**: semiconductor equipment vendors are adding vision guidance and automated operation to EFEM and metrology tools
-- **Digital twin + embodied AI**: training and validating robot operation policies in digital-twin environments before deploying to physical equipment (echoing the world models and digital twins of Chapter 21)
+- **Digital twin + embodied AI**: training and validating robot operation policies in digital-twin environments before deploying to physical equipment (echoing the world models and digital twins of Chapter 21)[100]
 
 Viewed through Chapter 21's "four-stage evolution," most fabs today sit between **AI-Assisted and AI-Augmented**; embodied AI (the physical execution form of AI autonomy) is the endpoint of the evolution direction.
 

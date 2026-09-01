@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>晶圆厂 Ontology RCA Agent</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 30px 0;
+            color: #fff;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 14px;
+            color: #8892b0;
+        }
+
+        .chat-box {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .messages {
+            height: 500px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            padding-right: 10px;
+        }
+
+        .messages::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .messages::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 3px;
+        }
+
+        .messages::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+        }
+
+        .message {
+            display: flex;
+            margin-bottom: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        .message.bot {
+            justify-content: flex-start;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .user .avatar {
+            background: linear-gradient(135deg, #00d2ff, #3a7bd5);
+            margin-left: 10px;
+        }
+
+        .bot .avatar {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            margin-right: 10px;
+        }
+
+        .bubble {
+            max-width: 70%;
+            padding: 15px 20px;
+            border-radius: 20px;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .user .bubble {
+            background: linear-gradient(135deg, #00d2ff, #3a7bd5);
+            color: #fff;
+            border-bottom-right-radius: 5px;
+        }
+
+        .bot .bubble {
+            background: rgba(255, 255, 255, 0.1);
+            color: #e6e6e6;
+            border-bottom-left-radius: 5px;
+        }
+
+        .thinking {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #8892b0;
+            font-size: 14px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: #00d2ff;
+            border-radius: 50%;
+            animation: bounce 1.4s infinite ease-in-out;
+        }
+
+        .dot:nth-child(1) { animation-delay: -0.32s; }
+        .dot:nth-child(2) { animation-delay: -0.16s; }
+
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+
+        .tool-call {
+            background: rgba(0, 210, 255, 0.1);
+            border-left: 3px solid #00d2ff;
+            padding: 10px 15px;
+            margin: 10px 0;
+            border-radius: 0 8px 8px 0;
+            font-family: 'Consolas', monospace;
+            font-size: 13px;
+            color: #8892b0;
+            word-break: break-all;
+        }
+
+        .tool-call .label {
+            color: #00d2ff;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .result-box {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .result-title {
+            color: #00d2ff;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .result-content {
+            color: #e6e6e6;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .input-area {
+            display: flex;
+            gap: 10px;
+        }
+
+        .input-area input {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 15px;
+            outline: none;
+            transition: background 0.3s;
+        }
+
+        .input-area input:focus {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .input-area input::placeholder {
+            color: #8892b0;
+        }
+
+        .input-area button {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            background: linear-gradient(135deg, #00d2ff, #3a7bd5);
+            color: #fff;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .input-area button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 210, 255, 0.3);
+        }
+
+        .input-area button:active {
+            transform: translateY(0);
+        }
+
+        .input-area button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .status-bar {
+            text-align: center;
+            padding: 10px;
+            font-size: 12px;
+            color: #8892b0;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        .status-online {
+            background: #4ade80;
+        }
+
+        .status-offline {
+            background: #f87171;
+        }
+
+        .example-queries {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+
+        .example-tag {
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            color: #8892b0;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .example-tag:hover {
+            background: rgba(0, 210, 255, 0.2);
+            color: #00d2ff;
+            border-color: rgba(0, 210, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔬 晶圆厂 Ontology RCA Agent</h1>
+            <p>基于知识图谱的根因分析专家</p>
+        </div>
+
+        <div class="status-bar">
+            <span class="status-dot status-online" id="statusDot"></span>
+            <span id="statusText">后端服务已连接</span>
+        </div>
+
+        <div class="example-queries">
+            <span class="example-tag" onclick="setQuery('为什么 Lot-W80 的良率下降了？')">为什么 Lot-W80 的良率下降了？</span>
+            <span class="example-tag" onclick="setQuery('ETCH-A03 设备有什么问题？')">ETCH-A03 设备有什么问题？</span>
+            <span class="example-tag" onclick="setQuery('Lot-W80 包含哪些晶圆？')">Lot-W80 包含哪些晶圆？</span>
+            <span class="example-tag" onclick="setQuery('暂停 Lot-W80')">暂停 Lot-W80</span>
+        </div>
+
+        <div class="chat-box">
+            <div class="messages" id="messages">
+                <div class="message bot">
+                    <div class="avatar">🤖</div>
+                    <div class="bubble">
+                        你好！我是晶圆厂 PIE 专家。请描述您的问题，我会通过 Ontology 知识图谱进行根因分析。
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-area">
+                <input type="text" id="queryInput" placeholder="输入您的问题..." onkeypress="handleKeyPress(event)">
+                <button id="sendBtn" onclick="sendQuery()">发送</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const messagesContainer = document.getElementById('messages');
+        const queryInput = document.getElementById('queryInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const statusDot = document.getElementById('statusDot');
+        const statusText = document.getElementById('statusText');
+
+        function appendMessage(role, content, toolCalls = [], finalAnswer = '') {
+            const div = document.createElement('div');
+            div.className = `message ${role}`;
+            
+            let bubbleContent = '';
+            if (role === 'user') {
+                bubbleContent = `<div class="avatar">👤</div><div class="bubble">${escapeHtml(content)}</div>`;
+            } else {
+                bubbleContent = `<div class="avatar">🤖</div><div class="bubble">${escapeHtml(content)}`;
+                
+                if (toolCalls.length > 0) {
+                    toolCalls.forEach(call => {
+                        bubbleContent += `<div class="tool-call"><span class="label">📡 ${call.action}</span>${escapeHtml(call.result)}</div>`;
+                    });
+                }
+                
+                if (finalAnswer) {
+                    bubbleContent += `<div class="result-box"><div class="result-title">💡 最终结论</div><div class="result-content">${escapeHtml(finalAnswer)}</div></div>`;
+                }
+                
+                bubbleContent += '</div>';
+            }
+            
+            div.innerHTML = bubbleContent;
+            messagesContainer.appendChild(div);
+            scrollToBottom();
+        }
+
+        function appendThinking() {
+            const div = document.createElement('div');
+            div.className = 'message bot';
+            div.innerHTML = `
+                <div class="avatar">🤖</div>
+                <div class="bubble">
+                    <div class="thinking">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span>正在分析...</span>
+                    </div>
+                </div>
+            `;
+            div.id = 'thinking';
+            messagesContainer.appendChild(div);
+            scrollToBottom();
+        }
+
+        function removeThinking() {
+            const thinking = document.getElementById('thinking');
+            if (thinking) thinking.remove();
+        }
+
+        function scrollToBottom() {
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML.replace(/\n/g, '<br>');
+        }
+
+        function setQuery(text) {
+            queryInput.value = text;
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendQuery();
+            }
+        }
+
+        async function sendQuery() {
+            const query = queryInput.value.trim();
+            if (!query) return;
+
+            appendMessage('user', query);
+            queryInput.value = '';
+            sendBtn.disabled = true;
+            appendThinking();
+
+            try {
+                const response = await fetch('/api/investigate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ query })
+                });
+
+                const data = await response.json();
+
+                removeThinking();
+
+                if (response.ok) {
+                    const thoughtChain = data.thought_chain || [];
+                    const toolCalls = data.tool_calls || [];
+                    const finalAnswer = data.final_answer || '';
+                    const holdLots = data.hold_lots || [];
+
+                    let thoughtText = '';
+                    thoughtChain.forEach(msg => {
+                        if (msg.type === 'ai') {
+                            try {
+                                const json = JSON.parse(msg.content);
+                                if (json.thought) {
+                                    thoughtText += json.thought + '<br>';
+                                }
+                            } catch (e) {
+                                thoughtText += msg.content + '<br>';
+                            }
+                        }
+                    });
+
+                    if (!thoughtText && finalAnswer) {
+                        thoughtText = finalAnswer;
+                    }
+
+                    appendMessage('bot', thoughtText, toolCalls, finalAnswer);
+
+                    if (holdLots.length > 0) {
+                        appendMessage('bot', `⚠️ 已暂停批次: ${holdLots.join(', ')}`);
+                    }
+                } else {
+                    appendMessage('bot', `❌ ${data.error || '请求失败'}`);
+                }
+
+            } catch (error) {
+                removeThinking();
+                appendMessage('bot', `❌ 网络错误: ${error.message}`);
+            } finally {
+                sendBtn.disabled = false;
+            }
+        }
+
+        async function checkBackendStatus() {
+            try {
+                const response = await fetch('/api/health');
+                const data = await response.json();
+                
+                if (data.backend === 'healthy') {
+                    statusDot.className = 'status-dot status-online';
+                    statusText.textContent = '后端服务已连接';
+                } else {
+                    statusDot.className = 'status-dot status-offline';
+                    statusText.textContent = '后端服务未连接';
+                }
+            } catch (error) {
+                statusDot.className = 'status-dot status-offline';
+                statusText.textContent = '后端服务未连接';
+            }
+        }
+
+        checkBackendStatus();
+        setInterval(checkBackendStatus, 5000);
+    </script>
+</body>
+</html>

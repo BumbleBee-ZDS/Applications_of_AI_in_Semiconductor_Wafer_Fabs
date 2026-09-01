@@ -67,6 +67,10 @@ Property examples (Wafer):
 
 The key design point of the product ontology is the hierarchical relationship — the five-layer structure from FabSite to Die covers all granularities from factory-level to chip-level. Queries can be performed at any level — viewing the entire factory's output, a product's yield, a lot's progress, a wafer's defect distribution, or a die's test results.
 
+![Wafer-fab core ontology model map](../../images/flow_ch25_ontology_map.png)
+
+*Figure 25-1: Wafer-fab core ontology model map — the five ontologies (product/process/equipment/defect/time) and their relation links*
+
 ### Process Ontology
 
 The process ontology describes the structure of process flows:
@@ -213,6 +217,10 @@ Fusing the four core systems' data into a unified ontology is the core task of O
 
 **YMS → Ontology:** YMS data is the "judge" — providing defect inspection results and test yield. YMS data maps to Defect objects (defect instances) and TestResult objects (test results). YMS's wafer map data can map to a property of the Wafer object — a two-dimensional array representing each Die's pass/fail status.
 
+![Ontology-driven data fusion architecture](../../images/flow_ch25_data_fusion.png)
+
+*Figure 25-2: Ontology-driven data fusion — mapping MES, FDC, SPC, and YMS into a unified ontology through semantic alignment*
+
 ### Cross-System Semantic Alignment
 
 When mapping data from the four systems to the ontology, semantic alignment is the most critical engineering challenge. Here are several typical alignment scenarios:
@@ -333,6 +341,10 @@ The combination of digital twin and Ontology operates at three levels:
 
 ## 25.5 Implementation Path and Challenges
 
+![Four-phase roadmap for building wafer-fab Ontology](../../images/flow_ch25_build_roadmap.png)
+
+*Figure 25-3: Four-phase roadmap for building wafer-fab Ontology — incremental construction starting from the highest-value scenario*
+
 ### Where to Start Building the Ontology
 
 Don't attempt to build a complete wafer fab ontology all at once — this is unrealistic. Start from the highest-value business scenario, build the minimal ontology needed for that scenario, then gradually expand.
@@ -402,3 +414,5 @@ Palantir's story — from helping the CIA track bin Laden, to helping the IAEA m
 Semiconductor manufacturing is the frontier of human industrial civilization. Each generation of technology node advancement challenges the limits of physics and engineering. AI is not an optional add-on for wafer fabs — when process complexity exceeds human engineers' cognitive bandwidth, AI becomes a necessity. And Ontology is the infrastructure that enables this necessity to work effectively.
 
 This book reaching this point is only the beginning. Semiconductor technology is evolving, AI technology is exploding, and the intersection of the two generates new practices and stories every day. This book will continue to be updated with industry development — on GitHub, with the participation of every reader.
+
+> **Hands-on experiments for this chapter**: Chapter 27 offers two runnable references for this chapter's methodology — the Ontology Text2SQL experiment in Section 27.3 (`demos/experiments/fab_ontology_text2sql`) shows how an ontology semantic layer constrains query generation, serving as the minimal viable starting point for incremental construction; the Wafer Fab Ontology MVP in Section 27.4 (`demos/experiments/wafer_ontology_mvp`) shows how an ontology graph supports GraphRAG reasoning.

@@ -275,3 +275,5 @@ Agent與數字孿生的結合在三個層面發揮作用：
 ![Agent系統Demo](../../images/demo_ch23_agent_system.png)
 
 *Demo說明：左上為多Agent協同架構，上方為Agent響應良率異常全流程時間線。中排分別為Agent vs 傳統流程對比、Agent記憶與學習曲線、整廠Agent四級架構。下排分別為Agent通訊網路、動態排程效果、數字孿生+Agent閉環。模擬指令碼見 `demos/demo_ch23_agent_system.py`。*
+
+> **本章配套實驗**：兩個實驗補全 Agent 系統的「驗證」環節——第27章 27.11 節的評估框架（`demos/experiments/fab_agent_test`）提供品質/成本/韌性三維評估方法；27.10 節的紅藍對抗（`demos/experiments/wafer-trust-guard`）演示上線前的對抗式信任演練。

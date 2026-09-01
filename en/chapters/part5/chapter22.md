@@ -215,3 +215,5 @@ LLM applications in wafer fabs are still in the early stages, but their developm
 ![LLM Wafer Fab Applications Demo](../../images/demo_ch22_llm_fab.png)
 
 *Demo description: Top-left is the RAG architecture flow, top-center is retrieval accuracy comparison (RAG vs keyword vs vector), top-right is the hallucination rate vs latency tradeoff. Middle row shows the yield report auto-generation speedup ratio, LLM natural language interaction example, and cross-system data access coverage, respectively. Bottom is the efficiency and accuracy comparison of eight LLM application scenarios. See simulation script at `demos/demo_ch22_llm_fab.py`.*
+
+> **Hands-on experiments for this chapter**: Two experiments cover the chapter's two major themes — the red-blue adversarial exercise in Section 27.10 of Chapter 27 (`demos/experiments/wafer-trust-guard`) verifies the trust boundary of LLMs in the fab with a four-layer defense; the RTD real-time dispatching experiment in Section 27.9 (`demos/experiments/fab_ai_rtd_mvp`) shows how LLM diagnostic recommendations earn production-line trust through tiered approval.

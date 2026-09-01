@@ -248,3 +248,5 @@ Applied Materials的AIx平台將深度學習應用於設備級即時製程分析
 *Demo說明：左上為DNN模型架構示意圖，右上為良率預測散點圖（DNN R2=0.94 vs 線性迴歸 R2=0.78），左下為虛擬量測時序對比，右下為特徵重要性排序。模擬指令碼見 `demos/demo_ch15_yield_prediction.py`。*
 
 ![深度學習模型訓練流程](../../images/flow_ch15_training_pipeline.png)
+
+> **本章配套實驗**：第27章 27.8 節的 LoRA 微調實驗（`demos/experiments/fab_llm_fine_tuning`）完整走通「資料合成 → LoRA 訓練 → 推理 → 量化評估」鏈路，用 0.5B 小模型做領域預處理輔助大模型——是本章「資料稀缺場景下的 AI 加速」在 LLM 時代的延伸。

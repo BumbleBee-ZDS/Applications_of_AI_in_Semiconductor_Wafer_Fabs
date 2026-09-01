@@ -1,0 +1,94 @@
+{
+  "version": "1.0.0",
+  "description": "晶圆厂本体字典（语义层）—— 业务概念 <-> 数据库字段 的映射。Schema 解析器只会把与问题相关的小片段注入给 LLM，避免 Token 浪费。",
+  "tables": [
+    {
+      "name": "EQUIPMENT",
+      "comment": "设备主数据",
+      "fields": [
+        {"name": "EQP_ID", "type": "TEXT", "label": "设备编号", "example": "EQP-003"},
+        {"name": "EQUIPMENT_NAME", "type": "TEXT", "label": "设备名称"},
+        {"name": "EQUIPMENT_TYPE", "type": "TEXT", "label": "设备类型"},
+        {"name": "AREA", "type": "TEXT", "label": "所在区域"},
+        {"name": "STATUS", "type": "TEXT", "label": "运行状态"},
+        {"name": "INSTALL_DATE", "type": "TEXT", "label": "安装日期"}
+      ]
+    },
+    {
+      "name": "LOT_INFO",
+      "comment": "批次信息",
+      "fields": [
+        {"name": "LOT_ID", "type": "TEXT", "label": "批次号", "example": "LOT-2026-001"},
+        {"name": "PRODUCT_ID", "type": "TEXT", "label": "产品"},
+        {"name": "CUSTOMER", "type": "TEXT", "label": "客户"},
+        {"name": "LOT_QTY", "type": "INTEGER", "label": "批次晶圆数"},
+        {"name": "STATUS", "type": "TEXT", "label": "状态"},
+        {"name": "CURRENT_STAGE", "type": "TEXT", "label": "当前工序"},
+        {"name": "START_TIME", "type": "TEXT", "label": "开始时间"},
+        {"name": "FINISH_TIME", "type": "TEXT", "label": "完成时间"}
+      ]
+    },
+    {
+      "name": "WAFER_METROLOGY",
+      "comment": "晶圆量测数据",
+      "fields": [
+        {"name": "METROLOGY_ID", "type": "INTEGER", "label": "量测ID"},
+        {"name": "LOT_ID", "type": "TEXT", "label": "批次号"},
+        {"name": "WAFER_ID", "type": "TEXT", "label": "晶圆号"},
+        {"name": "EQP_ID", "type": "TEXT", "label": "设备编号"},
+        {"name": "MEASURE_TIME", "type": "TEXT", "label": "量测时间"},
+        {"name": "FILM_THICKNESS", "type": "REAL", "label": "膜厚(A)", "spec": "[4500, 5000]"},
+        {"name": "DEFECT_COUNT", "type": "INTEGER", "label": "缺陷数(个)"},
+        {"name": "YIELD_RATE", "type": "REAL", "label": "良率(0~1)"}
+      ]
+    },
+    {
+      "name": "PROCESS_LOG",
+      "comment": "工艺日志",
+      "fields": [
+        {"name": "LOG_ID", "type": "INTEGER", "label": "日志ID"},
+        {"name": "LOT_ID", "type": "TEXT", "label": "批次号"},
+        {"name": "EQP_ID", "type": "TEXT", "label": "设备编号"},
+        {"name": "PROCESS_STEP", "type": "TEXT", "label": "工序"},
+        {"name": "RECIPE_ID", "type": "TEXT", "label": "配方号"},
+        {"name": "STATUS", "type": "TEXT", "label": "状态"},
+        {"name": "START_TIME", "type": "TEXT", "label": "开始时间"},
+        {"name": "END_TIME", "type": "TEXT", "label": "结束时间"},
+        {"name": "PARAMETER", "type": "TEXT", "label": "工艺参数"}
+      ]
+    }
+  ],
+  "objects": [
+    {"id": "equipment", "label": "设备", "keywords": ["设备", "机台", "机器", "号机", "equipment", "eqp"], "table": "EQUIPMENT", "default_field": "EQP_ID"},
+    {"id": "lot", "label": "批次", "keywords": ["批次", "lot"], "table": "LOT_INFO", "default_field": "LOT_ID"},
+    {"id": "wafer", "label": "晶圆", "keywords": ["晶圆", "wafer", "片"], "table": "WAFER_METROLOGY", "default_field": "WAFER_ID"},
+    {"id": "process", "label": "工艺", "keywords": ["工艺", "制程", "工序", "日志", "process"], "table": "PROCESS_LOG", "default_field": "PROCESS_STEP"}
+  ],
+  "metrics": [
+    {"id": "yield", "label": "良率", "keywords": ["良率", "yield", "合格率", "产出率"], "table": "WAFER_METROLOGY", "field": "YIELD_RATE", "aggregation": "AVG", "unit": "%", "explain": "合格晶圆数 / 总晶圆数，表中以 0~1 小数存储，展示时乘以 100"},
+    {"id": "film_thickness", "label": "膜厚", "keywords": ["膜厚", "厚度", "thickness"], "table": "WAFER_METROLOGY", "field": "FILM_THICKNESS", "aggregation": "AVG", "unit": "A", "explain": "晶圆薄膜厚度，规格窗口 [4500, 5000] A"},
+    {"id": "defect_count", "label": "缺陷数", "keywords": ["缺陷", "defect", "颗粒"], "table": "WAFER_METROLOGY", "field": "DEFECT_COUNT", "aggregation": "AVG", "unit": "个", "explain": "单晶圆上的缺陷数量"}
+  ],
+  "conditions": [
+    {"id": "film_abnormal", "label": "膜厚异常", "keywords": ["膜厚异常", "厚度异常", "异常"], "table": "WAFER_METROLOGY", "sql_condition": "WAFER_METROLOGY.FILM_THICKNESS > 5000 OR WAFER_METROLOGY.FILM_THICKNESS < 4500", "explain": "膜厚超出规格窗口 [4500, 5000] A 即视为异常"},
+    {"id": "defect_high", "label": "缺陷偏高", "keywords": ["缺陷偏高", "缺陷多", "缺陷超限", "瑕疵多"], "table": "WAFER_METROLOGY", "sql_condition": "WAFER_METROLOGY.DEFECT_COUNT > 50", "explain": "单晶圆缺陷数 > 50 个视为偏高"}
+  ],
+  "equipment_aliases": [
+    {"id": "alias-1", "keyword": "1号机", "value": "EQP-001", "explain": "业务黑话 1号机 -> 设备编号 EQP-001"},
+    {"id": "alias-2", "keyword": "2号机", "value": "EQP-002", "explain": "业务黑话 2号机 -> 设备编号 EQP-002"},
+    {"id": "alias-3", "keyword": "3号机", "value": "EQP-003", "explain": "业务黑话 3号机 -> 设备编号 EQP-003"},
+    {"id": "alias-4", "keyword": "4号机", "value": "EQP-004", "explain": "业务黑话 4号机 -> 设备编号 EQP-004"},
+    {"id": "alias-5", "keyword": "5号机", "value": "EQP-005", "explain": "业务黑话 5号机 -> 设备编号 EQP-005"},
+    {"id": "alias-6", "keyword": "6号机", "value": "EQP-006", "explain": "业务黑话 6号机 -> 设备编号 EQP-006"},
+    {"id": "alias-7", "keyword": "7号机", "value": "EQP-007", "explain": "业务黑话 7号机 -> 设备编号 EQP-007"},
+    {"id": "alias-8", "keyword": "8号机", "value": "EQP-008", "explain": "业务黑话 8号机 -> 设备编号 EQP-008"},
+    {"id": "alias-9", "keyword": "9号机", "value": "EQP-009", "explain": "业务黑话 9号机 -> 设备编号 EQP-009"},
+    {"id": "alias-10", "keyword": "10号机", "value": "EQP-010", "explain": "业务黑话 10号机 -> 设备编号 EQP-010"}
+  ],
+  "time_expressions": [
+    {"id": "last_week", "label": "上周", "keywords": ["上周", "上个星期", "上星期", "最近一周"], "days_offset": 7, "explain": "上周 = 最近 7 天"},
+    {"id": "last_month", "label": "本月/上月", "keywords": ["本月", "上月", "上个月", "这个月", "最近30天"], "days_offset": 30, "explain": "最近 30 天"},
+    {"id": "yesterday", "label": "昨天", "keywords": ["昨天", "昨日"], "days_offset": 1, "explain": "昨天"},
+    {"id": "today", "label": "今天", "keywords": ["今天", "今日"], "days_offset": 0, "explain": "今天"}
+  ]
+}

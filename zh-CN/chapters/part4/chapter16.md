@@ -161,7 +161,7 @@ AlphaChip将芯片布局（floorplanning）建模为MDP——RL代理在网格�
 - DeepMind称其生成的布局达到"超人类"水平
 - TPU v6（Trillium）比前代节能33%
 
-AlphaChip的两位核心作者（Anna Goldie和Azalia Mirhoseini）随后创立了Ricursive Intelligence，融资3亿美元（估值40亿），将RL芯片设计平台商业化——这表明RL在半导体领域的价值已被资本市场认可。
+AlphaChip的两位核心作者（Anna Goldie和Azalia Mirhoseini）随后创立了Ricursive Intelligence[85]，融资3亿美元（估值40亿），将RL芯片设计平台商业化——这表明RL在半导体领域的价值已被资本市场认可[86]。
 
 虽然AlphaChip解决的是设计问题而非制造问题，但其技术路径——RL在复杂离散优化问题上的序贯决策——与晶圆厂调度和R2R控制的技术路径完全一致。AlphaChip的成功验证了RL在半导体复杂优化问题上的可行性。
 
@@ -215,7 +215,7 @@ Synopsys的DSO.ai使用强化学习进行芯片布局优化——与AlphaChip类
 - **意法半导体（STMicroelectronics）**：PPA（功耗-性能-面积）优化效率提升3倍以上
 - **SK海力士**：先进制程芯片裸片面积缩小5%，降低制造成本
 - **三星**：使用Synopsys AI工具完成3nm手机SoC的tape-out
-- 超过100次商业tape-out使用了DSO.ai
+- 超过100次商业tape-out使用了DSO.ai[83][84]
 
 ### 行业实践汇总：行为主义在半导体中的部署阶段
 

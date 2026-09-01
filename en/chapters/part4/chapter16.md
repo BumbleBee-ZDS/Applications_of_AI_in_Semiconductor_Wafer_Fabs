@@ -161,7 +161,7 @@ AlphaChip models chip floorplanning as an MDP—the RL agent places macro compon
 - DeepMind states its generated floorplans achieve "superhuman" levels
 - TPU v6 (Trillium) is 33% more energy-efficient than the previous generation
 
-The two core authors of AlphaChip (Anna Goldie and Azalia Mirhoseini) subsequently founded Ricursive Intelligence, raising $300 million (valuation of $4 billion), commercializing the RL chip design platform—this demonstrates that the value of RL in the semiconductor field has been recognized by capital markets.
+The two core authors of AlphaChip (Anna Goldie and Azalia Mirhoseini) subsequently founded Ricursive Intelligence[85], raising $300 million (valuation of $4 billion), commercializing the RL chip design platform—this demonstrates that the value of RL in the semiconductor field has been recognized by capital markets[86].
 
 Although AlphaChip solves a design problem rather than a manufacturing problem, its technical path—sequential decision-making by RL on complex discrete optimization problems—is entirely consistent with the technical paths for wafer fab scheduling and R2R control. AlphaChip's success validates the feasibility of RL on complex semiconductor optimization problems.
 
@@ -215,7 +215,7 @@ Synopsys's DSO.ai uses reinforcement learning for chip layout optimization—sim
 - **STMicroelectronics:** PPA (Power-Performance-Area) optimization efficiency improved by over 3x
 - **SK hynix:** Advanced process chip die area reduced by 5%, lowering manufacturing cost
 - **Samsung:** Used Synopsys AI tools to complete the tape-out of a 3nm mobile SoC
-- Over 100 commercial tape-outs have used DSO.ai
+- Over 100 commercial tape-outs have used DSO.ai[83][84]
 
 ### Industry Practice Summary: Deployment Stages of Behaviorism in Semiconductors
 

@@ -245,3 +245,5 @@ Smart RCA代表了符号主义方法在晶圆厂的工程化——它不是纯�
 ![知识图谱根因分析Demo](../../images/demo_ch14_kg_rca.png)
 
 *Demo说明：左上为良率根因分析知识图谱可视化，右上为规则引擎推理链，左下为推理时间线，右下为传统方法与KG方法的对比。模拟脚本见 `demos/demo_ch14_kg_rca.py`。*
+
+> **本章配套实验**：两个实验与本章呼应——第27章 27.4 节的晶圆厂 Ontology MVP（`demos/experiments/wafer_ontology_mvp`）演示知识图谱辅助根因分析的完整工程形态；27.5 节的 FabGraph（`demos/experiments/FabGraph_MVP`）则展示符号化元数据治理如何支撑语义检索与 NL2SQL。

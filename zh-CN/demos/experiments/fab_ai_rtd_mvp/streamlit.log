@@ -1,0 +1,170 @@
+2026-08-20 20:24:41.068 Uvicorn server started on :::8501
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8501
+  Network URL: http://192.168.1.33:8501
+  External URL: http://223.65.139.222:8501
+
+2026-08-20 20:28:36.795 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-08-20 20:28:36.852 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-08-20 20:28:36.929 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-08-20 20:28:37.615 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-08-20 20:33:49.183 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-08-20 20:33:49.282 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-08-20 20:33:49.293 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\Bee\AppData\Roaming\Python\Python313\site-packages\uvicorn\protocols\websockets\websockets_sansio_impl.py", line 350, in run_asgi
+    result = await self.app(self.scope, self.receive, self.send)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bee\AppData\Roaming\Python\Python313\site-packages\uvicorn\middleware\proxy_headers.py", line 63, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bee\AppData\Roaming\Python\Python313\site-packages\starlette\applications.py", line 90, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Bee\AppData\Roaming\Python\Python313\site-packages\starlette\middleware\errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\Bee\AppData\Roaming\Python\Python313\site-packages\streamlit\web\server\starlette\starlette_path_security_middleware.py", line 145, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\Bee\AppData\Roaming\Python\Python313\site-packages\starlette\middleware\sessions.py", line 88, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "C:\Users\Bee\AppData\Roaming\Python\Python313\site-packages\streamlit\web\server\starlette\starlette_gzip_middleware.py", line 144, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\Bee\AppData\Roaming\Python\Python313\site-packages\streamlit\web\server\starlette\starlette_gzip_middleware.py", line 119, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\Bee\AppData\Roaming\Python\Python313\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\Bee\AppData\Roaming\Python\Python313\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Bee\AppData\Roaming\Python\Python313\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Bee\AppData\Roaming\Python\Python313\site-packages\starlette\routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Bee\AppData\Roaming\Python\Python313\site-packages\starlette\routing.py", line 680, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\Bee\AppData\Roaming\Python\Python313\site-packages\starlette\routing.py", line 350, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\Bee\AppData\Roaming\Python\Python313\site-packages\starlette\routing.py", line 83, in app
+    await wrap_app_handling_exceptions(app, session)(scope, receive, send)
+  File "C:\Users\Bee\AppData\Roaming\Python\Python313\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Bee\AppData\Roaming\Python\Python313\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Bee\AppData\Roaming\Python\Python313\site-packages\starlette\routing.py", line 81, in app
+    await func(session)
+  File "C:\Users\Bee\AppData\Roaming\Python\Python313\site-packages\streamlit\web\server\starlette\starlette_websocket.py", line 460, in _websocket_endpoint
+    session_id = runtime.connect_session(
+        client=client,
+        user_info=user_info,
+        existing_session_id=existing_session_id,
+    )
+  File "C:\Users\Bee\AppData\Roaming\Python\Python313\site-packages\streamlit\runtime\runtime.py", line 427, in connect_session
+    session_id = self._session_mgr.connect_session(
+        client=client,
+    ...<3 lines>...
+        session_id_override=session_id_override,
+    )
+  File "C:\Users\Bee\AppData\Roaming\Python\Python313\site-packages\streamlit\runtime\websocket_session_manager.py", line 164, in connect_session
+    self._session_storage.delete(existing_session.id)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Bee\AppData\Roaming\Python\Python313\site-packages\streamlit\runtime\memory_session_storage.py", line 73, in delete
+    del self._cache[session_id]
+        ~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\Bee\AppData\Roaming\Python\Python313\site-packages\streamlit\runtime\caching\ttl_cache.py", line 152, in __delitem__
+    raise KeyError(key)
+KeyError: '36fb71f1-0f32-429d-927c-e85908acb0b6'
+2026-08-20 21:49:17.025 Session with id 36fb71f1-0f32-429d-927c-e85908acb0b6 is already connected! Connecting to a new session.
+2026-08-20 22:06:07.082 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-08-20 22:06:07.197 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-08-20 22:07:35.900 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-08-20 22:07:35.944 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-08-20 22:07:35.980 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-08-20 22:07:36.056 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-08-20 22:09:59.377 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-08-20 22:10:01.045 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-08-20 22:12:39.576 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-08-20 22:12:39.701 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-08-20 22:12:39.710 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-08-20 22:28:06.305 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-08-20 22:29:03.071 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.

@@ -128,6 +128,10 @@ Foundry's architecture can be summarized in five layers:
 
 **Data source layer:** Foundry connects to enterprise data sources through ETL pipelines and streaming data interfaces. In the wafer fab scenario, this includes MES, FDC, SPC, YMS, equipment IoT data, etc. Data is "ingested" into Foundry from source systems but not "copied" — Foundry supports federated queries, directly querying data in source systems without physical copying.
 
+![The five-layer architecture of Palantir Foundry](../../images/flow_ch24_foundry_arch.png)
+
+*Figure 24-1: The five-layer architecture of Palantir Foundry — the Ontology layer as the core*
+
 **Ontology layer (core):** This is Foundry's most fundamental difference from ordinary data platforms. Most data platforms take the approach of "build a data lake, dump all data in, then query with SQL." Foundry's approach is to first build an ontology — defining the enterprise's core entity types (e.g., Wafer, Tool, Recipe, Defect), their relationships (e.g., Wafer usesTool Tool), and the actions (Action, e.g., schedulePM) and functions (Function, e.g., calculateYield) that can be executed on entities.
 
 Once the ontology is defined, data from all sources is mapped to object instances in the ontology. Batch data in MES becomes `Lot` objects, sensor data in FDC becomes `Tool` object properties, measurement results in SPC become `Measurement` objects. Data from different systems is semantically unified — no more confusion about "whether the step in MES and the operation in SPC are the same thing."
@@ -144,7 +148,7 @@ Palantir's Ontology has a key difference from academic ontology: it contains not
 
 **Functions:** Define computational logic on objects. For example, a `Lot` object can have a `calculateYield` function — calculating yield based on all wafers' CP test results for that Lot. Function definitions are declarative — users don't need to know which system the data is in or how to query it with SQL; they just call `lot.calculateYield()`.
 
-This "object + action + function" ontology model makes Foundry not just a data analysis platform, but an "executable enterprise digital twin" — the ontology is not only a semantic mapping of data but a formal expression of enterprise operational logic. When an AI Agent runs on Foundry, it can perceive states and execute operations by calling actions and functions on the ontology — this is exactly the ideal operating environment for the Agent architecture described in Chapter 23.
+This "object + action + function" ontology model makes Foundry not just a data analysis platform, but an "executable enterprise digital twin"[93] — the ontology is not only a semantic mapping of data but a formal expression of enterprise operational logic. When an AI Agent runs on Foundry, it can perceive states and execute operations by calling actions and functions on the ontology — this is exactly the ideal operating environment for the Agent architecture described in Chapter 23.
 
 ## 24.4 Palantir Enters Semiconductors
 
@@ -196,6 +200,10 @@ On Foundry, this process became:
 5. The system generates a list of root cause hypotheses — each with reasoning paths and confidence levels
 
 This process was reduced to 30-60 minutes, and was not limited by the engineer's experience level — the knowledge in the ontology is factory-wide shared, and any engineer can leverage the ontology's reasoning capability for analysis.
+
+![Traditional vs. Ontology-driven root cause analysis](../../images/flow_ch24_rca_comparison.png)
+
+*Figure 24-2: Wafer-yield root cause analysis (RCA) — traditional cross-system manual querying vs. Ontology-driven automated reasoning*
 
 According to public reports, Samsung's 2nm yield improved from approximately 30% at end of 2024 to approximately 55%-60% by mid-2026. Samsung also deployed large-scale AI compute in its AI Megafactory, applying AI optimization throughout the process — defect detection improved 30%, wafer yield increased 15%. While the yield improvement cannot be entirely attributed to Palantir (Samsung simultaneously invested substantial internal engineering resources and other AI technologies), Foundry's data fusion infrastructure is considered a key factor in accelerating yield ramp-up.
 
@@ -560,7 +568,7 @@ This marks Ontology technology evolving from "data operating system within the w
 
 ### From "Data Sovereignty" to "AI Sovereignty"
 
-On March 12, 2026, at the AIPCon 9 conference, Palantir and NVIDIA jointly released the **Sovereign AI Operating System Reference Architecture** (AIOS-RA). This was a milestone event — upgrading the "data sovereignty" promise Palantir provided in the Samsung case to a complete "AI sovereignty" architecture.
+On March 12, 2026, at the AIPCon 9 conference, Palantir and NVIDIA jointly released the **Sovereign AI Operating System Reference Architecture** (AIOS-RA)[94]. This was a milestone event — upgrading the "data sovereignty" promise Palantir provided in the Samsung case to a complete "AI sovereignty" architecture.
 
 Samsung chose Palantir over Microsoft/Google for the core reason of data sovereignty — process data cannot leave the intranet. But data sovereignty alone is insufficient — if the AI model (LLM) still runs in the cloud, the interaction process between engineers and AI can still leak process information. AI sovereignty requires: data stays in the intranet, models stay in the intranet, and the inference process is completed entirely locally.
 
@@ -680,4 +688,10 @@ Palantir's story in the semiconductor industry is still in its early stages — 
 
 The next chapter will unfold from an engineering practice perspective — how to build and apply Ontology in wafer fabs from scratch, without relying on Palantir's proprietary platform.
 
+![Three-phase evolution of Palantir in the semiconductor industry](../../images/flow_ch24_evolution.png)
+
+*Figure 24-3: From individual cases to paradigm — the three-phase evolution of Palantir in the semiconductor industry and its three value levels*
+
 ![Palantir Ontology Technical Architecture in Semiconductors](../../images/flow_ch24_ontology.png)
+
+> **Hands-on experiments for this chapter**: Two experiments turn this chapter's ontology thinking into runnable code — the Ontology Text2SQL experiment in Section 27.3 of Chapter 27 (`demos/experiments/fab_ontology_text2sql`) demonstrates "ontology as a controlled semantic layer" with a three-stage architecture; the Wafer Fab Ontology MVP in Section 27.4 (`demos/experiments/wafer_ontology_mvp`) fully implements an RCA Agent driven by the object-link-action three-layer mapping.

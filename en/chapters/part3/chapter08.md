@@ -208,7 +208,7 @@ Applied Materials' AIx (Actionable Insight Accelerator) platform is a representa
 
 ASML advanced multiple AI applications in 2025–2026:
 
-**OPC (Optical Proximity Correction) AI acceleration:** ASML has used AI to accelerate OPC computation for over a decade. In 2025, it partnered with Mistral AI to use generative AI to improve OPC Recipe quality and solving speed. In January 2026, the first generative AI validation was completed at a customer site.
+**OPC (Optical Proximity Correction) AI acceleration:** ASML has used AI to accelerate OPC computation for over a decade. In 2025, it partnered with Mistral AI to use generative AI to improve OPC Recipe quality and solving speed[95][96]. In January 2026, the first generative AI validation was completed at a customer site.
 
 **EUV light source optimization:** AI optimizes and calibrates EUV light source settings, reducing manual trial and error. Early testing achieved wafer-level power enhancement on customer EUV scanners.
 
@@ -279,3 +279,5 @@ As of this chapter, we have completed the business overview and practice cases f
 ![Predictive Maintenance Demo](../../images/demo_ch8_predictive_maintenance.png)
 
 *Demo description: The figure above shows the equipment degradation curve with LSTM RUL prediction, FDC signal anomaly detection, prediction error comparison, maintenance decision matrix, and PM effectiveness comparison. Simulation script: `demos/demo_ch8_predictive_maintenance.py`.*
+
+> **Hands-on experiment for this chapter**: The RTD real-time dispatching experiment in Section 27.9 of Chapter 27 (`demos/experiments/fab_ai_rtd_mvp`) demonstrates the full closed loop of this chapter's real-time anomaly response — perception, RAG diagnosis, dispatch recommendation, simulation validation, and then L1–L4 tiered human approval with audit trails: the engineering form of "AI proposes, humans gatekeep" in PE/EE scenarios.

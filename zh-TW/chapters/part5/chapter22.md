@@ -215,3 +215,5 @@ LLM在晶圓廠的應用仍處於早期階段，但它的發展速度遠超此�
 ![LLM在晶圓廠應用Demo](../../images/demo_ch22_llm_fab.png)
 
 *Demo說明：左上為RAG架構流程，中上為檢索準確率對比（RAG vs 關鍵詞 vs 向量），右上為幻覺率與延遲權衡。中排分別為良率報告自動生成加速比、LLM自然語言互動示例、跨系統資料訪問覆蓋率。底部為LLM八大應用場景效率與準確率對比。模擬指令碼見 `demos/demo_ch22_llm_fab.py`。*
+
+> **本章配套實驗**：兩個實驗涵蓋本章兩大主題——第27章 27.10 節的紅藍對抗（`demos/experiments/wafer-trust-guard`）用四層防線驗證 LLM 進廠後的可信邊界；27.9 節的 RTD 即時派工（`demos/experiments/fab_ai_rtd_mvp`）演示 LLM 診斷建議如何透過分級審批贏得產線信任。

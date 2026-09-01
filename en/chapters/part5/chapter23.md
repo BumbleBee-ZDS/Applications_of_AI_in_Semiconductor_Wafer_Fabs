@@ -278,3 +278,5 @@ Part 6 will delve into Ontology — this is not just a technical solution for da
 ![Agent System Demo](../../images/demo_ch23_agent_system.png)
 
 *Demo description: Top-left is the multi-agent collaboration architecture, top is the full timeline of Agent response to yield anomalies. Middle row shows Agent vs traditional process comparison, Agent memory and learning curve, and fab-wide Agent four-level architecture, respectively. Bottom row shows Agent communication network, dynamic scheduling effects, and digital twin + Agent closed loop. See simulation script at `demos/demo_ch23_agent_system.py`.*
+
+> **Hands-on experiments for this chapter**: Two experiments complete the "verification" side of Agent systems — the evaluation framework in Section 27.11 of Chapter 27 (`demos/experiments/fab_agent_test`) provides a quality/cost/resilience three-dimensional evaluation method; the red-blue adversarial exercise in Section 27.10 (`demos/experiments/wafer-trust-guard`) demonstrates pre-launch adversarial trust drills.

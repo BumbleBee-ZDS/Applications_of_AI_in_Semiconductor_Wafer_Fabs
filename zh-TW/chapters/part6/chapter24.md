@@ -128,6 +128,10 @@ Foundry的架構可以概括為五層：
 
 **資料源層：** Foundry透過ETL管道和流式資料介面連接企業的各種資料源。在晶圓廠場景中，這包括MES、FDC、SPC、YMS、設備IoT資料等。資料從源系統被"接入"Foundry，但不被"複製"——Foundry支援聯邦查詢，可以直接查詢源系統中的資料而不需要物理複製。
 
+![Palantir Foundry 五層架構](../../images/flow_ch24_foundry_arch.png)
+
+*圖24-1：Palantir Foundry 五層架構——以本體層為核心*
+
 **本體層（核心）：** 這是Foundry與普通資料平台最根本的區別。大多數資料平台的做法是"建一個資料湖，把所有資料倒進去，然後用SQL查詢"。Foundry的做法是先構建一個本體——定義企業中的核心實體型別（如Wafer、Tool、Recipe、Defect）、它們之間的關係（如Wafer usesTool Tool）、以及可以在實體上執行的動作（Action，如schedulePM）和函式（Function，如calculateYield）。
 
 一旦本體定義完成，所有資料源的資料都被對映到本體中的物件例項。MES中的批次資料變成`Lot`物件，FDC中的感測器資料變成`Tool`物件的屬性，SPC中的量測結果變成`Measurement`物件。不同系統中的資料在語義上被統一——不再有"MES中的step和SPC中的operation是不是同一個東西"的困惑。
@@ -144,7 +148,7 @@ Palantir的Ontology與學術界的本體論有一個關鍵區別：它不僅包�
 
 **函式：** 定義在物件上的計算邏輯。例如，`Lot`物件可以有一個`calculateYield`函式——根據該Lot所有晶圓的CP測試結果計算良率。函式的定義是宣告式的——使用者不需要知道資料在哪個系統中、用SQL怎麼查，只需要呼叫`lot.calculateYield()`。
 
-這種"物件+動作+函式"的本體模型使得Foundry不僅僅是一個資料分析平台，而是一個"可執行的企業數字孿生"——本體不僅是資料的語義對映，還是企業營運邏輯的形式化表達。當AI Agent在Foundry上運行時，它可以透過呼叫本體上的動作和函式來感知狀態和執行操作——這正是第23章描述的Agent架構的理想運行環境。
+這種"物件+動作+函式"的本體模型使得Foundry不僅僅是一個資料分析平台，而是一個"可執行的企業數字孿生"[93]——本體不僅是資料的語義對映，還是企業營運邏輯的形式化表達。當AI Agent在Foundry上運行時，它可以透過呼叫本體上的動作和函式來感知狀態和執行操作——這正是第23章描述的Agent架構的理想運行環境。
 
 ## 24.4 Palantir 進入半導體
 
@@ -196,6 +200,10 @@ Foundry的工程團隊與三星的PID和YED工程師合作，定義了晶圓廠�
 5. 系統生成根因假設列表——每個假設附帶推理路徑和置信度
 
 這個過程縮短到30-60分鐘，且不受工程師經驗水平的限制——本體中的知識是全廠共享的，任何工程師都可以藉助本體的推理能力進行分析。
+
+![傳統與本體驅動的根因分析對比](../../images/flow_ch24_rca_comparison.png)
+
+*圖24-2：晶圓良率根因分析（RCA）——傳統跨系統人工查詢與本體驅動自動推理對比*
 
 根據公開報道，三星2nm良率從2024年底的約30%提升到2026年中期的約55%-60%。三星同時在其AI Megafactory中部署了大規模AI算力，將AI最佳化貫穿全流程——缺陷檢測改善30%、晶圓良率提升15%。雖然良率提升不能完全歸功於Palantir（三星同時投入了大量內部工程力量和其他AI技術），但Foundry提供的資料融合基礎設施被認為是加速良率爬坡的關鍵因素。
 
@@ -560,7 +568,7 @@ Athinia-SEMI合作對單個晶圓廠的意義在於：即使你的工廠內部�
 
 ### 從"資料主權"到"AI主權"
 
-2026年3月12日，Palantir與NVIDIA在AIPCon 9大會上聯合釋出了**主權AI操作系統參考架構**（Sovereign AI Operating System Reference Architecture, AIOS-RA）。這是一個里程碑式的事件——它將三星案例中Palantir提供的"資料主權"承諾，升級為完整的"AI主權"架構。
+2026年3月12日，Palantir與NVIDIA在AIPCon 9大會上聯合釋出了**主權AI操作系統參考架構**（Sovereign AI Operating System Reference Architecture, AIOS-RA）[94]。這是一個里程碑式的事件——它將三星案例中Palantir提供的"資料主權"承諾，升級為完整的"AI主權"架構。
 
 三星選擇Palantir而非微軟/谷歌的核心原因是資料主權——製程資料不能離開內網。但僅有資料主權是不夠的——如果AI模型（LLM）仍然運行在雲端，那麼工程師與AI的互動過程仍然可能洩露製程資訊。AI主權要求的是：資料不出內網，模型也不出內網，推理過程完全在本地完成。
 
@@ -680,4 +688,10 @@ Palantir在半導體產業的故事還在早期——但它的軍工遺產（從
 
 下一章將從工程實踐角度展開——不依賴Palantir的專有平台，如何在晶圓廠中從零構建和應用Ontology。
 
+![Palantir 在半導體行業的三階段演進](../../images/flow_ch24_evolution.png)
+
+*圖24-3：從個案到範式——Palantir 在半導體行業的三階段演進與三層價值*
+
 ![Palantir Ontology在半導體的技術架構](../../images/flow_ch24_ontology.png)
+
+> **本章配套實驗**：兩個實驗把本章的本體思想變成可執行的程式碼——第27章 27.3 節的 Ontology Text2SQL（`demos/experiments/fab_ontology_text2sql`）用三段式架構演示「本體作為受控語義層」；27.4 節的晶圓廠 Ontology MVP（`demos/experiments/wafer_ontology_mvp`）則完整實現「物件-連結-動作」三層映射驅動的根因分析 Agent。

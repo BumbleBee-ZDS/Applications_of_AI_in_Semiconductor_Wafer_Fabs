@@ -712,6 +712,32 @@
   - Technical, cost, and organizational challenges and the evolution path
 - 26.7 Chapter Summary
 
+## Part 7: Hands-On Lab
+
+### Chapter 27 Hands-On Lab — Running the Key Concepts
+
+- 27.1 Why Hands-On Experiments Matter
+- 27.2 Lab Environment Setup
+- 27.3 Experiment 1: Ontology-Driven Text2SQL (fab_ontology_text2sql)
+  - Three-stage ontology architecture: semantic / motive / dynamic layers, controlled SQL generation
+- 27.4 Experiment 2: Wafer Fab Ontology MVP — RCA Agent (wafer_ontology_mvp)
+  - NetworkX ontology graph + LangGraph ReAct, object-link-action three-layer mapping
+- 27.5 Experiment 3: FabGraph Dual-Graph Knowledge Platform (FabGraph_MVP)
+  - Schema/Lineage graphs + NL2SQL + graph algorithms
+- 27.6 Experiment 4: K8s-Style Declarative Scheduling (C9S_agent)
+  - Control-theoretic reconciliation loop, four-Agent collaboration, compared with imperative pipelines
+- 27.7 Experiment 5: Capacity Planning PTA Agent (FabCapacityAgent)
+  - OEE monitoring, bottleneck detection, Monte-Carlo What-If simulation
+- 27.8 Experiment 6: LoRA Fine-Tuning Two-Stage Query Enhancement (fab_llm_fine_tuning)
+  - Full pipeline: data synthesis → training → inference → quantitative evaluation
+- 27.9 Experiment 7: RTD Real-Time Dispatching & Human-AI Collaboration (fab_ai_rtd_mvp)
+  - Perception → RAG diagnosis → dispatch → simulation → L1-L4 tiered approval → audit
+- 27.10 Experiment 8: CIM Trusted System Red-Blue Adversarial Exercise (wafer-trust-guard)
+  - Four-layer verification: rules + embeddings + LLM Judge + memory closed loop
+- 27.11 Experiment 9: Multi-Agent Evaluation Framework (fab_agent_test)
+  - Real-time three-dimensional evaluation of quality / cost / resilience
+- 27.12 From Experiments to Production: A Retrofitting Guide
+
 ## References
 
 See [references.md](computer://references.md), comprising 77 academic references organized into the following seven categories:

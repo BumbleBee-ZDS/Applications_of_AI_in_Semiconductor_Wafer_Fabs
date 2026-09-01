@@ -205,9 +205,9 @@ AI Megafactory的核心应用包括：
 
 ### 强化学习在调度量产中的验证
 
-虽然RL在晶圆厂调度中的研究由来已久，但真正在产线上验证的案例正在积累：
+虽然RL在晶圆厂调度中的研究由来已久，但真正在产线上验证的案例正在积累[88]：
 
-**AISSI项目（2021-2024）**：由Bosch、Nexperia、Bosch Sensortec、D-SIMLAB、SYSTEMA和KIT联合开展，使用深度RL代理进行工厂调度。三个用例：外延工作中心调度（Nexperia）、全厂调度（Bosch）、全球Cycle Time预测（Bosch Sensortec）。结果：产出比文献基准高9%，Cycle Time预测准确率80-90%。成果正在向Bosch和Nexperia的产线转移。
+**AISSI项目（2021-2024）**：由Bosch、Nexperia、Bosch Sensortec、D-SIMLAB、SYSTEMA和KIT联合开展，使用深度RL代理进行工厂调度[87]。三个用例：外延工作中心调度（Nexperia）、全厂调度（Bosch）、全球Cycle Time预测（Bosch Sensortec）。结果：产出比文献基准高9%，Cycle Time预测准确率80-90%。成果正在向Bosch和Nexperia的产线转移。
 
 **ICTC 2025论文**：在实际工业数据集上验证RL调度——吞吐量提升5.3%，Cycle Time降低7.3%，延迟指标相对改善19.2%，设备利用率达87.9%。
 
@@ -234,3 +234,5 @@ MFG的挑战——NP-Hard调度、重入式流程、动态事件响应、多目�
 ![智能调度Demo](../../images/demo_ch7_smart_scheduling.png)
 
 *Demo说明：上图对比了传统FIFO派工与RL智能派工的甘特图。下排展示了设备利用率对比、关键KPI对比和RL训练的奖励收敛曲线。模拟脚本见 `demos/demo_ch7_smart_scheduling.py`。*
+
+> **本章配套实验**：第27章 27.6 节的 K8s 式声明式调度实验（`demos/experiments/C9S_agent`）把本章讨论的智能排程思想做成了可交互的系统——用"期望态-实际态"调谐循环替代人工调度脚本，并可在界面注入设备故障观察系统自愈，零外部依赖、秒级启动。

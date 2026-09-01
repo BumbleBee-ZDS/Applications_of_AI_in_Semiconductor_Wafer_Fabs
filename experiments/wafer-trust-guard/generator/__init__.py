@@ -1,0 +1,1 @@
+"""generator —— Generator（Agent）模块：负责『写代码』（生成 Recipe）。"""

@@ -117,13 +117,13 @@ where D₀ is defect density (defects per unit area)
 
 The Poisson model's implication is straightforward and unforgiving: doubling the chip area halves-equivalently drops the yield exponentially at the same defect density — the mathematical root of "big chips are hard."
 
-**Murphy model** accounts for non-uniformity of defect density across wafers, correcting the Poisson model for wafer-to-wafer variation.
+**Murphy model** accounts for non-uniformity of defect density across wafers, correcting the Poisson model for wafer-to-wafer variation[78][79][80].
 
 **Negative binomial model:** actual defect distributions are often clustered — defects appear in groups in specific wafer regions (edge, center, or positions corresponding to a particular chamber). The negative binomial model captures clustered-defect scenarios more accurately through a clustering parameter, making it a common choice for advanced-node yield modeling.
 
 ### Critical Area and Electrical Data Correction
 
-For complex products, chip yield is also affected by circuit density and critical area — not all regions of the chip are equally defect-sensitive; only defects landing in critical regions (e.g., the minimum metal-line spacing) cause failures. The smaller the critical area, the more tolerant the chip is to defects.
+For complex products, chip yield is also affected by circuit density and critical area — not all regions of the chip are equally defect-sensitive; only defects landing in critical regions (e.g., the minimum metal-line spacing) cause failures[81][82]. The smaller the critical area, the more tolerant the chip is to defects.
 
 Modern yield analysis corrects models using VSB (voltage contrast testing) and MCM (memory cell testing) data: VSB uses e-beam inspection to find defects with abnormal voltage contrast (e.g., opens and shorts), while MCM uses the regular structure of memory arrays to statistically measure the impact of defects on cells. Both provide a more precise defect-to-failure mapping for yield models.
 

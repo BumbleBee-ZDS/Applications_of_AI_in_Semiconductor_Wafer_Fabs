@@ -205,9 +205,9 @@ Micron has also deployed acoustic AI (listening to equipment operation sounds to
 
 ### Validation of Reinforcement Learning in Production Scheduling
 
-Although RL research in fab scheduling has a long history, cases validated on actual production lines are accumulating:
+Although RL research in fab scheduling has a long history, cases validated on actual production lines are accumulating[88]:
 
-**AISSI Project (2021–2024):** A joint project by Bosch, Nexperia, Bosch Sensortec, D-SIMLAB, SYSTEMA, and KIT, using deep RL agents for factory scheduling. Three use cases: epitaxy work center scheduling (Nexperia), fab-wide scheduling (Bosch), global Cycle Time prediction (Bosch Sensortec). Results: output 9% higher than literature benchmarks, Cycle Time prediction accuracy 80-90%. Results are being transferred to Bosch and Nexperia production lines.
+**AISSI Project (2021–2024):** A joint project by Bosch, Nexperia, Bosch Sensortec, D-SIMLAB, SYSTEMA, and KIT, using deep RL agents for factory scheduling[87]. Three use cases: epitaxy work center scheduling (Nexperia), fab-wide scheduling (Bosch), global Cycle Time prediction (Bosch Sensortec). Results: output 9% higher than literature benchmarks, Cycle Time prediction accuracy 80-90%. Results are being transferred to Bosch and Nexperia production lines.
 
 **ICTC 2025 Paper:** Validated RL scheduling on a real industrial dataset — throughput improved by 5.3%, Cycle Time reduced by 7.3%, tardiness metrics relatively improved by 19.2%, equipment utilization reaching 87.9%.
 
@@ -234,3 +234,5 @@ MFG's challenges — NP-Hard scheduling, reentrant flow, dynamic event response,
 ![Smart Scheduling Demo](../../images/demo_ch7_smart_scheduling.png)
 
 *Demo description: The figure above compares Gantt charts of traditional FIFO dispatching versus RL intelligent dispatching. The bottom row shows equipment utilization comparison, key KPI comparison, and the RL training reward convergence curve. See `demos/demo_ch7_smart_scheduling.py` for the simulation script.*
+
+> **Hands-on experiment for this chapter**: The K8s-style declarative scheduling experiment in Section 27.6 of Chapter 27 (`demos/experiments/C9S_agent`) turns the smart scheduling ideas of this chapter into an interactive system — replacing hand-written dispatch scripts with an expected-vs-actual reconciliation loop, with injectable equipment faults to observe self-healing. Zero external dependencies, starts in seconds.

@@ -178,3 +178,5 @@ Part II of this book will unfold the technical details of each of the three scho
 > | 1987–2012 | Statistical learning + Connectionist revival | SVM, backpropagation | Statistical model applications in SPC, FDC |
 > | 2012–2020 | Connectionism | AlexNet, AlphaGo | CNN for defect detection, LSTM for predictive maintenance |
 > | 2020–Present | Connectionism + Integration | GPT, Agents, Ontology | LLM Q&A, Agent systems, fab-wide digitalization |
+
+> **Hands-on experiment for this chapter**: The multi-Agent evaluation framework in Section 27.11 of Chapter 27 (`demos/experiments/fab_agent_test`) demonstrates in a white-box manner how the Agent concept from Section 2.6 becomes an evaluable system — four collaborating modules (planner, toolset, reflector, orchestrator) with real-time assessment of process quality, resource cost, and resilience.

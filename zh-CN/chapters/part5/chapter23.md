@@ -275,3 +275,5 @@ Agent与数字孪生的结合在三个层面发挥作用：
 ![Agent系统Demo](../../images/demo_ch23_agent_system.png)
 
 *Demo说明：左上为多Agent协同架构，上方为Agent响应良率异常全流程时间线。中排分别为Agent vs 传统流程对比、Agent记忆与学习曲线、整厂Agent四级架构。下排分别为Agent通信网络、动态调度效果、数字孪生+Agent闭环。模拟脚本见 `demos/demo_ch23_agent_system.py`。*
+
+> **本章配套实验**：两个实验补全 Agent 系统的"验证"环节——第27章 27.11 节的评估框架（`demos/experiments/fab_agent_test`）提供质量/成本/韧性三维评估方法；27.10 节的红蓝对抗（`demos/experiments/wafer-trust-guard`）演示上线前的对抗式信任演练。

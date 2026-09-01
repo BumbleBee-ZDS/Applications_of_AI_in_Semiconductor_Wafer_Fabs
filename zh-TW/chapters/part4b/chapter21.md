@@ -323,7 +323,7 @@ NSA全融合將設備調優從"定期人工調整"升級為"持續自主最佳�
 
 ### Palantir + NVIDIA：AIOS-RA的NSA架構
 
-Palantir與NVIDIA聯合釋出的AIOS-RA（AI Operating System Reference Architecture）定義了NSA全融合的工業級架構：
+Palantir與NVIDIA聯合釋出的AIOS-RA（AI Operating System Reference Architecture）定義了NSA全融合的工業級架構[94]：
 
 - **感知層（Neural）**：NVIDIA的GPU加速深度學習處理多模態感測資料（影象、訊號、時序）
 - **認知層（Symbolic）**：Palantir的Ontology提供統一的資料語義模型和推理引擎
@@ -418,3 +418,5 @@ NSA全融合在晶圓廠中不會以"大爆炸"的方式實現——它將以"�
 *Demo說明：左上為NSA閉環架構圖，上方為四階段演進路徑。中排分別為數字孿生精度、自主決策準確率、多模態融合增益。下排分別為自愈設備系統、全棧良率智慧、閉環延遲分析。底部為NB/NA/SA/NSA全維度對比矩陣。模擬指令碼見 `demos/demo_ch21_nsa_fusion.py`。*
 
 ![NSA四階段演進路徑](../../images/flow_ch21_evolution.png)
+
+> **本章配套實驗**：第27章 27.11 節的多 Agent 評估框架（`demos/experiments/fab_agent_test`）回答了 NSA 全融合系統「如何評估」的問題——從過程品質、資源成本到故障注入下的系統韌性，為端到端智慧體提供了可複用的三維評估方法。

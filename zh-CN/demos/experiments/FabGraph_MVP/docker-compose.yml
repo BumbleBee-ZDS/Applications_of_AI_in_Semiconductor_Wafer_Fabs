@@ -1,0 +1,38 @@
+version: "3.9"
+
+# FabGraph MVP 编排：API + Streamlit UI
+# 用法：docker-compose up --build
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fabgraph-api
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+      - ./configs:/app/configs:ro
+    restart: unless-stopped
+
+  ui:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fabgraph-ui
+    command: >
+      streamlit run ui/streamlit_app/app.py
+      --server.port=8501
+      --server.address=0.0.0.0
+    ports:
+      - "8501:8501"
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+      - ./configs:/app/configs:ro
+    depends_on:
+      - api
+    restart: unless-stopped

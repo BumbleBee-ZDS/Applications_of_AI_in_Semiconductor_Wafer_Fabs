@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "wafer-ontology-mvp"
+version = "0.1.0"
+description = "Semiconductor Wafer Fab Ontology MVP - GraphRAG-based RCA Agent"
+authors = ["Trae AI Engineer"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.115.0"
+uvicorn = "^0.30.0"
+sqlmodel = "^0.0.16"
+networkx = "^3.3"
+langchain = "^0.3.0"
+langchain-openai = "^0.2.0"
+langgraph = "^0.2.0"
+python-dotenv = "^1.0.1"
+pydantic = "^2.9.0"
+pydantic-settings = "^2.5.0"
+tenacity = "^8.5.0"
+flask = "^3.0.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.0"
+httpx = "^0.27.0"
+
+[build-system]
+requires = ["poetry-core==1.0.0"]
+build-backend = "poetry.core.masonry.api"

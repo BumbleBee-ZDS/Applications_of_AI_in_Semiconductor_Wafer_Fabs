@@ -64,7 +64,7 @@ The essence of CoT is using natural language to simulate the process of symbolic
 
 ### Path 3: Neural-Symbolic Constrained Learning
 
-A deeper NB fusion embeds symbolic constraints into the neural network at the model architecture level—using symbolic rules during training to constrain the output space of the neural network.
+A deeper NB fusion embeds symbolic constraints into the neural network at the model architecture level—using symbolic rules during training to constrain the output space of the neural network[97][98].
 
 For example, in wafer map defect classification, symbolic constraints can be defined:
 

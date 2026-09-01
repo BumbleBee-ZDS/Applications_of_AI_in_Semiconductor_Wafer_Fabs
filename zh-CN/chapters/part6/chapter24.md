@@ -128,6 +128,10 @@ Foundry的架构可以概括为五层：
 
 **数据源层：** Foundry通过ETL管道和流式数据接口连接企业的各种数据源。在晶圆厂场景中，这包括MES、FDC、SPC、YMS、设备IoT数据等。数据从源系统被"接入"Foundry，但不被"复制"——Foundry支持联邦查询，可以直接查询源系统中的数据而不需要物理拷贝。
 
+![Palantir Foundry 五层架构](../../images/flow_ch24_foundry_arch.png)
+
+*图24-1：Palantir Foundry 五层架构——以本体层为核心*
+
 **本体层（核心）：** 这是Foundry与普通数据平台最根本的区别。大多数数据平台的做法是"建一个数据湖，把所有数据倒进去，然后用SQL查询"。Foundry的做法是先构建一个本体——定义企业中的核心实体类型（如Wafer、Tool、Recipe、Defect）、它们之间的关系（如Wafer usesTool Tool）、以及可以在实体上执行的动作（Action，如schedulePM）和函数（Function，如calculateYield）。
 
 一旦本体定义完成，所有数据源的数据都被映射到本体中的对象实例。MES中的批次数据变成`Lot`对象，FDC中的传感器数据变成`Tool`对象的属性，SPC中的量测结果变成`Measurement`对象。不同系统中的数据在语义上被统一——不再有"MES中的step和SPC中的operation是不是同一个东西"的困惑。
@@ -144,7 +148,7 @@ Palantir的Ontology与学术界的本体论有一个关键区别：它不仅包�
 
 **函数：** 定义在对象上的计算逻辑。例如，`Lot`对象可以有一个`calculateYield`函数——根据该Lot所有晶圆的CP测试结果计算良率。函数的定义是声明式的——用户不需要知道数据在哪个系统中、用SQL怎么查，只需要调用`lot.calculateYield()`。
 
-这种"对象+动作+函数"的本体模型使得Foundry不仅仅是一个数据分析平台，而是一个"可执行的企业数字孪生"——本体不仅是数据的语义映射，还是企业运营逻辑的形式化表达。当AI Agent在Foundry上运行时，它可以通过调用本体上的动作和函数来感知状态和执行操作——这正是第23章描述的Agent架构的理想运行环境。
+这种"对象+动作+函数"的本体模型使得Foundry不仅仅是一个数据分析平台，而是一个"可执行的企业数字孪生"[93]——本体不仅是数据的语义映射，还是企业运营逻辑的形式化表达。当AI Agent在Foundry上运行时，它可以通过调用本体上的动作和函数来感知状态和执行操作——这正是第23章描述的Agent架构的理想运行环境。
 
 ## 24.4 Palantir 进入半导体
 
@@ -196,6 +200,10 @@ Foundry的工程团队与三星的PID和YED工程师合作，定义了晶圆厂�
 5. 系统生成根因假设列表——每个假设附带推理路径和置信度
 
 这个过程缩短到30-60分钟，且不受工程师经验水平的限制——本体中的知识是全厂共享的，任何工程师都可以借助本体的推理能力进行分析。
+
+![传统与本体的根因分析对比](../../images/flow_ch24_rca_comparison.png)
+
+*图24-2：晶圆良率根因分析（RCA）——传统跨系统人工查询与 Ontology 驱动自动推理对比*
 
 根据公开报道，三星2nm良率从2024年底的约30%提升到2026年中期的约55%-60%。三星同时在其AI Megafactory中部署了大规模AI算力，将AI优化贯穿全流程——缺陷检测改善30%、晶圆良率提升15%。虽然良率提升不能完全归功于Palantir（三星同时投入了大量内部工程力量和其他AI技术），但Foundry提供的数据融合基础设施被认为是加速良率爬坡的关键因素。
 
@@ -560,7 +568,7 @@ Athinia-SEMI合作对单个晶圆厂的意义在于：即使你的工厂内部�
 
 ### 从"数据主权"到"AI主权"
 
-2026年3月12日，Palantir与NVIDIA在AIPCon 9大会上联合发布了**主权AI操作系统参考架构**（Sovereign AI Operating System Reference Architecture, AIOS-RA）。这是一个里程碑式的事件——它将三星案例中Palantir提供的"数据主权"承诺，升级为完整的"AI主权"架构。
+2026年3月12日，Palantir与NVIDIA在AIPCon 9大会上联合发布了**主权AI操作系统参考架构**（Sovereign AI Operating System Reference Architecture, AIOS-RA）[94]。这是一个里程碑式的事件——它将三星案例中Palantir提供的"数据主权"承诺，升级为完整的"AI主权"架构。
 
 三星选择Palantir而非微软/谷歌的核心原因是数据主权——工艺数据不能离开内网。但仅有数据主权是不够的——如果AI模型（LLM）仍然运行在云端，那么工程师与AI的交互过程仍然可能泄露工艺信息。AI主权要求的是：数据不出内网，模型也不出内网，推理过程完全在本地完成。
 
@@ -680,4 +688,10 @@ Palantir在半导体行业的故事还在早期——但它的军工遗产（从
 
 下一章将从工程实践角度展开——不依赖Palantir的专有平台，如何在晶圆厂中从零构建和应用Ontology。
 
+![Palantir 在半导体行业的三阶段演进](../../images/flow_ch24_evolution.png)
+
+*图24-3：从个案到范式——Palantir 在半导体行业的三阶段演进与三层价值*
+
 ![Palantir Ontology在半导体的技术架构](../../images/flow_ch24_ontology.png)
+
+> **本章配套实验**：两个实验把本章的本体思想变成可运行的代码——第27章 27.3 节的 Ontology Text2SQL（`demos/experiments/fab_ontology_text2sql`）用三段式架构演示"本体作为受控语义层"；27.4 节的晶圆厂 Ontology MVP（`demos/experiments/wafer_ontology_mvp`）则完整实现"对象-链接-动作"三层映射驱动的根因分析 Agent。

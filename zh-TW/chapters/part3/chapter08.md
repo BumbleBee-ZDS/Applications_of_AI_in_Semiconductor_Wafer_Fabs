@@ -208,7 +208,7 @@ Applied Materials的AIx（Actionable Insight Accelerator）平台是設備級AI�
 
 ASML在2025-2026年推進了多項AI應用：
 
-**OPC（光學鄰近校正）AI加速：** ASML使用AI加速OPC計算已超過十年。2025年與Mistral AI合作，用生成式AI提升OPC Recipe品質和求解速度。2026年1月在客戶處完成首次生成式AI驗證。
+**OPC（光學鄰近校正）AI加速：** ASML使用AI加速OPC計算已超過十年。2025年與Mistral AI合作，用生成式AI提升OPC Recipe品質和求解速度[95][96]。2026年1月在客戶處完成首次生成式AI驗證。
 
 **EUV光源最佳化：** AI最佳化和校準EUV光源設定，減少人工試錯。早期測試在客戶EUV掃描器上實現了晶圓級功率提升。
 
@@ -279,3 +279,5 @@ KLA的Gen5產品線針對檢測複雜度的成長——先進製程的關鍵檢�
 ![預測性維護Demo](../../images/demo_ch8_predictive_maintenance.png)
 
 *Demo說明：上圖展示了設備退化曲線與LSTM的RUL預測、FDC訊號異常偵測、預測誤差對比、維護決策矩陣和PM效果對比。模擬指令碼見 `demos/demo_ch8_predictive_maintenance.py`。*
+
+> **本章配套實驗**：第27章 27.9 節的 RTD 即時派工實驗（`demos/experiments/fab_ai_rtd_mvp`）完整演示了本章的即時異常回應如何走向閉環——感知、RAG 診斷、排程建議、模擬驗證，再到 L1–L4 分級人工審批與稽核留痕，正是製程/設備工程場景中「AI 建議、人來把關」的工程形態。
