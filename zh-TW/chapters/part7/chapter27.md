@@ -226,7 +226,38 @@ streamlit run app.py
 
 **看什麼**：執行一次完整評估，重點看韌性測試段——當工具呼叫逾時時，Orchestrator 的重試與降級策略如何生效，評估指標如何即時反映系統狀態。
 
-## 27.12 從實驗到生產：改造指引
+## 27.12 實驗十：良率模型與爬坡模擬（yield_modeling_ramp）
+
+對應**第9章（良率爬坡）**與**第11章（建設期/爬坡期）**。純 Python 實作三大概念：Poisson / 負二項式 / Murphy 良率模型對比、S 形爬坡曲線與學習率、基於 FDC 訊號的虛擬量測入門預測。執行後生成三張圖並輸出模型對比結論，直觀理解 `Y = exp(-D₀A)` 的數學含義與「死亡之谷」的成因。程式與說明均為中英雙語。
+
+```bash
+cd experiments/yield_modeling_ramp
+pip install numpy matplotlib scikit-learn
+python yield_modeling_ramp.py
+```
+
+## 27.13 實驗十一：預測性維護 RUL 預測（predictive_maintenance_rul）
+
+對應**第12章（成熟量產期·預測性維護）**。用合成設備退化數據實作剩餘壽命（RUL）預測，並對比「定期 PM」與「預測性維護」兩種策略的維護成本——回答「維護時機到底怎麼定」這一成熟期核心問題。程式與說明均為中英雙語。
+
+```bash
+cd experiments/predictive_maintenance_rul
+pip install numpy matplotlib scikit-learn
+python predictive_maintenance_rul.py
+```
+
+## 27.14 實驗十二：LLM RAG 製程文件問答（llm_rag_spec_qa）
+
+對應**第22章（LLM在晶圓廠的應用）**。實作一個精簡 RAG 系統：從製程規範（SPEC）文件庫檢索相關內容，再呼叫 LLM 生成帶來源引用的回答。預設呼叫 DeepSeek API；未設定 API Key 時自動降級為 Mock LLM，可離線執行。程式與說明均為中英雙語。
+
+```bash
+cd experiments/llm_rag_spec_qa
+pip install requests
+echo "DEEPSEEK_API_KEY=你的key" > .env   # 可選，不設定則用 Mock LLM
+python llm_rag_spec_qa.py
+```
+
+## 27.15 從實驗到生產：改造指引
 
 本章實驗均為 MVP 形態，走向生產環境通常還需要以下改造（各實驗的完整設計文件見其目錄內 README）：
 

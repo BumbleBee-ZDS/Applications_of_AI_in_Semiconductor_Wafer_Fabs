@@ -210,6 +210,8 @@ LLM在晶圆厂的应用仍处于早期阶段，但它的发展速度远超此�
 
 ![RAG架构流程图](../../images/flow_ch22_rag.png)
 
+> **本章配套实验**：第27章 27.14 节的 LLM RAG 工艺文档问答实验（`demos/experiments/llm_rag_spec_qa`）实现了 SPEC 文档检索 + LLM 生成带引用的回答，对应本章工艺文档管理场景；支持 DeepSeek API 与离线 Mock 两种模式。
+
 ## 22.6 Demo可视化：LLM在晶圆厂的应用
 
 ![LLM在晶圆厂应用Demo](../../images/demo_ch22_llm_fab.png)

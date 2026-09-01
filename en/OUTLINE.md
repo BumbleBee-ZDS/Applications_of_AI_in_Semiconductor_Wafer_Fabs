@@ -736,7 +736,10 @@
   - Four-layer verification: rules + embeddings + LLM Judge + memory closed loop
 - 27.11 Experiment 9: Multi-Agent Evaluation Framework (fab_agent_test)
   - Real-time three-dimensional evaluation of quality / cost / resilience
-- 27.12 From Experiments to Production: A Retrofitting Guide
+- 27.12 Experiment 10: Yield Modeling & Ramp Simulation (yield_modeling_ramp)
+- 27.13 Experiment 11: Predictive Maintenance RUL (predictive_maintenance_rul)
+- 27.14 Experiment 12: LLM RAG for Process-Spec QA (llm_rag_spec_qa)
+- 27.15 From Experiments to Production: A Retrofitting Guide
 
 ## References
 

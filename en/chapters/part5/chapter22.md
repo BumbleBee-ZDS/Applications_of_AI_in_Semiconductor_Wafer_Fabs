@@ -210,6 +210,8 @@ LLM applications in wafer fabs are still in the early stages, but their developm
 
 ![RAG Architecture Flowchart](../../images/flow_ch22_rag.png)
 
+> **Chapter experiment**: Experiment 12 in Chapter 27 (`demos/experiments/llm_rag_spec_qa`) implements SPEC-doc retrieval plus LLM generation with cited answers, mapping to this chapter's document-management scenario; it supports both the DeepSeek API and an offline Mock mode.
+
 ## 22.6 Demo Visualization: LLM Applications in the Wafer Fab
 
 ![LLM Wafer Fab Applications Demo](../../images/demo_ch22_llm_fab.png)

@@ -21,3 +21,6 @@ Thumbs.db
 .env
 .env.*
 !.env.example
+
+# 嵌套 git 仓库(独立项目, 不作为本仓库内容)
+experiments/ontology_demo/

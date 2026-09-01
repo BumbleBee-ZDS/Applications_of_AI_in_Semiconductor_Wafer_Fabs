@@ -98,6 +98,8 @@ The core of mature-phase AI deployment is **ROI orientation** — every project 
 
 *Figure 12-2: Smart scheduling, predictive maintenance, and energy management*
 
+> **Chapter experiment**: Experiment 11 in Chapter 27 (`demos/experiments/predictive_maintenance_rul`) predicts RUL from synthetic degradation data and compares the cost of periodic PM vs predictive maintenance — run it to see why "when to maintain" matters.
+
 ## 12.6 Chapter Summary
 
 Mature mass production is the "harvest" phase of a fab; the core contradiction shifts from "getting it made" to "making it cheap, fast, and stable." Smart scheduling solves "how resources are allocated," predictive maintenance solves "keep equipment from failing," and energy management solves "every kilowatt-hour spent wisely." Their common feature: AI outputs convert directly into quantifiable cost and efficiency gains. For mature fabs, AI is not a bonus but a necessity for cost competitiveness — when competitors produce 9% more through smart scheduling and cut unscheduled downtime by 20% through predictive maintenance, fabs that do not adopt AI face a structural disadvantage.

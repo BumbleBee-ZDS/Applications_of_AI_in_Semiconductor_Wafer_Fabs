@@ -736,7 +736,10 @@
   - 规则+嵌入+LLM Judge+记忆闭环的四层验证
 - 27.11 实验九：多 Agent 评估框架（fab_agent_test）
   - 过程质量/资源成本/系统韧性三维实时评估
-- 27.12 从实验到生产：改造指引
+- 27.12 实验十：良率模型与爬坡模拟（yield_modeling_ramp）
+- 27.13 实验十一：预测性维护 RUL 预测（predictive_maintenance_rul）
+- 27.14 实验十二：LLM RAG 工艺文档问答（llm_rag_spec_qa）
+- 27.15 从实验到生产：改造指引
 
 ## 参考文献
 

@@ -226,7 +226,38 @@ streamlit run app.py
 
 **What to observe**: run a full evaluation and focus on the resilience test segment — when tool calls time out, watch how the Orchestrator's retry and degradation strategies kick in, and how the evaluation metrics reflect system state in real time.
 
-## 27.12 From Experiments to Production: Adaptation Guide
+## 27.12 Experiment 10: Yield Modeling & Ramp Simulation (yield_modeling_ramp)
+
+Corresponds to **Chapter 9 (Yield Ramp)** and **Chapter 11 (Construction/Ramp Phase)**. A pure-Python implementation of three concepts: Poisson / Negative Binomial / Murphy yield model comparison, S-curve ramp with learning rates, and a starter virtual metrology predictor from FDC signals. It produces three figures and a console comparison, making `Y = exp(-D₀A)` and the "Valley of Death" tangible. Code and docs are bilingual (EN/ZH).
+
+```bash
+cd experiments/yield_modeling_ramp
+pip install numpy matplotlib scikit-learn
+python yield_modeling_ramp.py
+```
+
+## 27.13 Experiment 11: Predictive Maintenance RUL (predictive_maintenance_rul)
+
+Corresponds to **Chapter 12 (Mature Mass Production · Predictive Maintenance)**. Uses synthetic equipment-degradation data to predict Remaining Useful Life (RUL) and compares the maintenance cost of "periodic PM" vs "predictive maintenance" — answering the core mature-phase question: when exactly should maintenance happen? Code and docs are bilingual (EN/ZH).
+
+```bash
+cd experiments/predictive_maintenance_rul
+pip install numpy matplotlib scikit-learn
+python predictive_maintenance_rul.py
+```
+
+## 27.14 Experiment 12: LLM RAG for Process-Spec QA (llm_rag_spec_qa)
+
+Corresponds to **Chapter 22 (LLMs in Wafer Fabs)**. Implements a minimal RAG system: retrieve relevant snippets from a process-spec (SPEC) document library, then let an LLM generate a cited answer. Uses the DeepSeek API by default; falls back to a Mock LLM when no API key is configured, so it runs offline. Code and docs are bilingual (EN/ZH).
+
+```bash
+cd experiments/llm_rag_spec_qa
+pip install requests
+echo "DEEPSEEK_API_KEY=your_key" > .env   # optional; Mock LLM otherwise
+python llm_rag_spec_qa.py
+```
+
+## 27.15 From Experiments to Production: Adaptation Guide
 
 All experiments in this chapter are MVPs. Moving to a production environment typically requires the following adaptations (see each experiment's README for complete design documentation):
 

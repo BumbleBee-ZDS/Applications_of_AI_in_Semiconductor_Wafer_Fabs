@@ -99,6 +99,8 @@ The construction phase is where AI deployment is hardest and most worthwhile. Th
 
 *Figure 11-2: The three construction-phase tasks — yield analysis, virtual metrology, and defect inspection*
 
+> **Chapter experiment**: Experiment 10 in Chapter 27 (`demos/experiments/yield_modeling_ramp`) includes a starter FDC-signal virtual metrology predictor that maps directly to this section's VM task — run it to observe the skip/sample decision.
+
 ## 11.6 Chapter Summary
 
 The construction and ramp phase is the most uncertain period in a fab's lifecycle, with core tasks of yield analysis, virtual metrology, and defect inspection. Yield analysis answers "why is yield low," virtual metrology answers "how to get the most information with the least measurement," and defect inspection answers "where are the new defects." Together they form the construction-phase data loop: defect inspection finds problems, yield analysis locates root causes, and virtual metrology amplifies learning samples at low cost. AI's unique value in this phase is not replacing experts, but accelerating the learning loop under data-scarce conditions — the frontier of combining the yield ramp methodology of Chapter 9 with AI.
