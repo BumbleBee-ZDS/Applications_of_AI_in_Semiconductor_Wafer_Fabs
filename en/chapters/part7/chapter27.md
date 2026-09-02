@@ -18,7 +18,7 @@ This chapter presents 21 hands-on experiments, all drawn from MVP projects the a
 | 27.10 CIM Trusted System Red-Blue Adversarial Exercise | Rule + embedding + LLM hybrid verification | Ch. 22/23 | ★★☆ |
 | 27.11 Multi-Agent Evaluation Framework | Evaluating quality / cost / resilience | Ch. 2/21 | ★☆☆ |
 
-> All experiment code lives in the repository under `zh-CN/demos/experiments/` (each project includes its own README). Except where noted as requiring an API key, all experiments run offline; those that use an LLM provide a mock/fallback mode so you can experience the core workflow without a key.
+> All experiment code lives in the repository under `experiments/` (each project includes its own README). Except where noted as requiring an API key, all experiments run offline; those that use an LLM provide a mock/fallback mode so you can experience the core workflow without a key.
 
 ## 27.2 Lab Environment Setup
 
@@ -44,7 +44,7 @@ This architecture ensures **controllable, auditable, and explainable results** �
 **How to run**:
 
 ```bash
-cd zh-CN/demos/experiments/fab_ontology_text2sql
+cd experiments/fab_ontology_text2sql
 pip install -r requirements.txt
 streamlit run app.py
 ```
@@ -66,7 +66,7 @@ Dependencies are minimal (about 5 packages) and the experiment runs fully offlin
 **How to run**:
 
 ```bash
-cd zh-CN/demos/experiments/wafer_ontology_mvp
+cd experiments/wafer_ontology_mvp
 pip install fastapi uvicorn sqlmodel networkx langchain langchain-openai langgraph python-dotenv
 python src/main.py      # Start the API service (auto-seeds simulated data)
 python web/app.py       # Start the web UI
@@ -87,7 +87,7 @@ python web/app.py       # Start the web UI
 **How to run**:
 
 ```bash
-cd zh-CN/demos/experiments/FabGraph_MVP
+cd experiments/FabGraph_MVP
 pip install -e ".[dev]"
 python scripts/init_mock_data.py
 uvicorn fabgraph.main:app --host 0.0.0.0 --port 8000 --reload   # API
@@ -107,7 +107,7 @@ When no API key is configured, the system automatically falls back to mock mode.
 **How to run**:
 
 ```bash
-cd zh-CN/demos/experiments/C9S_agent
+cd experiments/C9S_agent
 pip install -r requirements.txt   # Only 2 dependencies
 python app.py
 ```
@@ -130,7 +130,7 @@ Pure in-memory simulation with no external dependencies; starts in seconds.
 **How to run**:
 
 ```bash
-cd zh-CN/demos/experiments/FabCapacityAgent/fab_capacity_agent
+cd experiments/FabCapacityAgent/fab_capacity_agent
 pip install -r requirements.txt
 streamlit run app.py
 ```
@@ -148,7 +148,7 @@ First startup takes 30–60 seconds to generate simulated data. Without an API k
 **How to run**:
 
 ```bash
-cd zh-CN/demos/experiments/fab_llm_fine_tuning
+cd experiments/fab_llm_fine_tuning
 pip install -r requirements.txt
 python -m fab_mvp.data_generation              # Generate / inspect training data
 python -m fab_mvp.train_lora --smoke --epochs 1   # Smoke test (quick pipeline validation)
@@ -172,7 +172,7 @@ Tiered approval is the key to production deployment: low-risk actions are auto-a
 **How to run**:
 
 ```bash
-cd zh-CN/demos/experiments/fab_ai_rtd_mvp
+cd experiments/fab_ai_rtd_mvp
 pip install -r requirements.txt
 streamlit run app.py
 ```
@@ -195,7 +195,7 @@ The four defense layers map directly to the "rules + vectors + large model" hybr
 **How to run**:
 
 ```bash
-cd zh-CN/demos/experiments/wafer-trust-guard
+cd experiments/wafer-trust-guard
 pip install -r requirements.txt
 streamlit run app.py
 ```
@@ -219,7 +219,7 @@ Zero external AI dependencies (pure mock), white-box implementation — the best
 **How to run**:
 
 ```bash
-cd zh-CN/demos/experiments/fab_agent_test
+cd experiments/fab_agent_test
 pip install streamlit
 streamlit run app.py
 ```

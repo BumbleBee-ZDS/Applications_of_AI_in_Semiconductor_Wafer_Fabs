@@ -18,7 +18,7 @@
 | 27.10 CIM 可信系統紅藍對抗 | 規則+嵌入+LLM 混合驗證 | 第22/23章 | ★★☆ |
 | 27.11 多 Agent 評估框架 | 評估品質/成本/韌性 | 第2/21章 | ★☆☆ |
 
-> 所有實驗程式碼位於倉庫 `zh-CN/demos/experiments/` 目錄（各專案自帶 README）。除標註「需 API Key」的實驗外，其餘均可離線執行；需要 LLM 的實驗均提供 Mock/降級模式，無 Key 也能體驗核心流程。
+> 所有實驗程式碼位於倉庫 `experiments/` 目錄（各專案自帶 README）。除標註「需 API Key」的實驗外，其餘均可離線執行；需要 LLM 的實驗均提供 Mock/降級模式，無 Key 也能體驗核心流程。
 
 ## 27.2 實驗環境準備
 
@@ -44,7 +44,7 @@
 **怎麼跑**：
 
 ```bash
-cd zh-CN/demos/experiments/fab_ontology_text2sql
+cd experiments/fab_ontology_text2sql
 pip install -r requirements.txt
 streamlit run app.py
 ```
@@ -66,7 +66,7 @@ streamlit run app.py
 **怎麼跑**：
 
 ```bash
-cd zh-CN/demos/experiments/wafer_ontology_mvp
+cd experiments/wafer_ontology_mvp
 pip install fastapi uvicorn sqlmodel networkx langchain langchain-openai langgraph python-dotenv
 python src/main.py      # 啟動 API 服務（自動播種模擬資料）
 python web/app.py       # 啟動 Web 介面
@@ -87,7 +87,7 @@ python web/app.py       # 啟動 Web 介面
 **怎麼跑**：
 
 ```bash
-cd zh-CN/demos/experiments/FabGraph_MVP
+cd experiments/FabGraph_MVP
 pip install -e ".[dev]"
 python scripts/init_mock_data.py
 uvicorn fabgraph.main:app --host 0.0.0.0 --port 8000 --reload   # API
@@ -107,7 +107,7 @@ streamlit run ui/streamlit_app/app.py                             # 介面
 **怎麼跑**：
 
 ```bash
-cd zh-CN/demos/experiments/C9S_agent
+cd experiments/C9S_agent
 pip install -r requirements.txt   # 僅 2 個依賴
 python app.py
 ```
@@ -130,7 +130,7 @@ python app.py
 **怎麼跑**：
 
 ```bash
-cd zh-CN/demos/experiments/FabCapacityAgent/fab_capacity_agent
+cd experiments/FabCapacityAgent/fab_capacity_agent
 pip install -r requirements.txt
 streamlit run app.py
 ```
@@ -148,7 +148,7 @@ streamlit run app.py
 **怎麼跑**：
 
 ```bash
-cd zh-CN/demos/experiments/fab_llm_fine_tuning
+cd experiments/fab_llm_fine_tuning
 pip install -r requirements.txt
 python -m fab_mvp.data_generation              # 生成/檢視訓練資料
 python -m fab_mvp.train_lora --smoke --epochs 1   # 冒煙測試（快速驗證流程）
@@ -172,7 +172,7 @@ python -m fab_mvp.train_lora --epochs 3        # 完整訓練
 **怎麼跑**：
 
 ```bash
-cd zh-CN/demos/experiments/fab_ai_rtd_mvp
+cd experiments/fab_ai_rtd_mvp
 pip install -r requirements.txt
 streamlit run app.py
 ```
@@ -195,7 +195,7 @@ streamlit run app.py
 **怎麼跑**：
 
 ```bash
-cd zh-CN/demos/experiments/wafer-trust-guard
+cd experiments/wafer-trust-guard
 pip install -r requirements.txt
 streamlit run app.py
 ```
@@ -219,7 +219,7 @@ streamlit run app.py
 **怎麼跑**：
 
 ```bash
-cd zh-CN/demos/experiments/fab_agent_test
+cd experiments/fab_agent_test
 pip install streamlit
 streamlit run app.py
 ```

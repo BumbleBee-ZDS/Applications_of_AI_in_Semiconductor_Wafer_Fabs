@@ -227,22 +227,14 @@ python demo_ch9_yield_ramp.py        # 良率爬坡 S 曲线
 python demo_ch15_cnn_detection.py    # CNN 晶圆缺陷检测
 python demo_ch23_agent_system.py     # 多智能体协同框架
 ```
-### 运行动手实验（第27章）
+### 运行全部实验
 
-21 个可运行的完整实验项目位于 `zh-CN/demos/experiments/`，详见第27章。以依赖最轻的 Ontology Text2SQL 为例：
+21 个可运行的完整实验项目位于根目录 `experiments/`（三语共用），详见第27章。以依赖最轻的 Ontology Text2SQL 为例：
 
 ```bash
-cd zh-CN/demos/experiments/fab_ontology_text2sql
+cd experiments/fab_ontology_text2sql
 pip install -r requirements.txt
 streamlit run app.py
-```
-
-### 生成 PDF
-
-```bash
-pip install markdown fpdf2
-python generate_pdf.py               # 生成简体版 PDF（输出到 zh-CN/）
-python generate_en_pdf.py            # 生成英文版 PDF（输出到 en/）
 ```
 
 ## 📂 项目结构
@@ -252,13 +244,12 @@ python generate_en_pdf.py            # 生成英文版 PDF（输出到 en/）
 ```
 ├── zh-CN/   # 简体中文版（默认）
 │   ├── chapters/   # 27章正文（Markdown）
-│   ├── demos/      # 20+ Demo可视化脚本 + 21个动手实验（experiments/）
+│   ├── demos/      # 20+ Demo可视化脚本
 │   ├── images/     # 配图（Demo图 + 流程图）
 │   └── OUTLINE.md  # 详细目录大纲
 ├── en/      # 英文版（结构同上）
 ├── zh-TW/   # 繁体中文版（结构同上）
-├── generate_pdf.py      # 简体版 PDF 生成脚本
-├── generate_en_pdf.py   # 英文版 PDF 生成脚本
+├── experiments/    # 21个动手实验项目（三语共用，各项目自带中英README）
 └── README.md            # 本文件
 ```
 
