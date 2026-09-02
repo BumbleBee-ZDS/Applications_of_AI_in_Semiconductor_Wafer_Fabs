@@ -4,7 +4,7 @@
 
 The first 26 chapters follow a thread of concepts, architectures, and industry case studies, complemented by demo scripts (`matplotlib` visualizations under `zh-CN/demos/`) designed for quick visual understanding. But turning knowledge into engineering capability requires a second layer: **complete systems you can run locally** — with real code structure, interactive interfaces, and tunable parameters.
 
-This chapter presents 9 hands-on experiments, all drawn from MVP projects the author has built and validated in real development work, organized by topic and mapped to the corresponding main-text chapters:
+This chapter presents 21 hands-on experiments, all drawn from MVP projects the author has built and validated in real development work, organized by topic and mapped to the corresponding main-text chapters:
 
 | Experiment | Topic | Related Chapters / Difficulty | Difficulty |
 | --- | --- | --- | --- |
@@ -78,7 +78,7 @@ python web/app.py       # Start the web UI
 
 **Related Chapters**: Ch. 14 (Symbolic AI Applications), Ch. 13 (Foundry Service Transformation), Ch. 17 (Fusion Overview)
 
-**What you'll learn**: the most engineering-intensive of the nine experiments, demonstrating "metadata governance + semantic retrieval" for fab data assets:
+**What you'll learn**: the most engineering-intensive of the 21 experiments, demonstrating "metadata governance + semantic retrieval" for fab data assets:
 
 - **Schema Graph**: a structural graph of tables/columns/types, supporting semantic search and JOIN-path recommendation
 - **Lineage Graph**: a data lineage graph that answers "where does this table come from and who uses it"
@@ -120,7 +120,7 @@ Pure in-memory simulation with no external dependencies; starts in seconds.
 
 **Related Chapters**: Ch. 10 (Capacity Ramp-Up & Capacity Planning)
 
-**What you'll learn**: the most thoroughly documented, tested, and degradation-strategy-equipped project among the nine experiments, demonstrating capacity analysis orchestrated by four Agents following the "Perception–Thinking–Action" pattern:
+**What you'll learn**: the most thoroughly documented, tested, and degradation-strategy-equipped project among the 21 experiments, demonstrating capacity analysis orchestrated by four Agents following the "Perception–Thinking–Action" pattern:
 
 - **Real-time monitoring**: dashboards for OEE, UPH, and other metrics (simulated MES data for 90 days across 120 equipment units is auto-generated on first run)
 - **Bottleneck detection**: bottleneck localization based on queuing theory and utilization rates

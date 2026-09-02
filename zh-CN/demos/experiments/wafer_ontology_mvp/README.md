@@ -1,327 +1,331 @@
-# 🔬 半导体晶圆厂 Ontology MVP
+# 🔬 Wafer Fab Ontology MVP
 
-基于 **GraphRAG** 和 **LangGraph** 构建的半导体晶圆厂虚拟工厂（Virtual Fab）根因分析（RCA）Agent 系统。核心理念借鉴自 **Palantir Ontology**：将分散的数据抽象为业务对象（Object）、链接（Link）和动作（Action），让 LLM Agent 在语义层上进行推理，而非直接操作底层数据。
+A semiconductor wafer fab Virtual Fab Root Cause Analysis (RCA) Agent system built on **GraphRAG** and **LangGraph**. The core concept is inspired by **Palantir Ontology**: abstracting scattered data into business Objects, Links, and Actions, enabling the LLM Agent to reason at the semantic layer rather than operating directly on raw data.
 
-## 🎯 核心目标
+## 🎯 Core Objectives
 
-- **语义抽象**：将晶圆厂数据建模为业务实体（Lot、Wafer、Equipment 等）
-- **图推理**：通过知识图谱进行多跳推理和关系发现
-- **智能分析**：LLM Agent 自主规划调查路径，定位质量问题根因
-- **可操作**：支持直接执行业务动作（如 Hold 批次）
+- **Semantic Abstraction**: Model wafer fab data as business entities (Lot, Wafer, Equipment, etc.)
+- **Graph Reasoning**: Perform multi-hop reasoning and relationship discovery via knowledge graphs
+- **Intelligent Analysis**: LLM Agent autonomously plans investigation paths to locate the root cause of quality issues
+- **Actionable**: Support direct execution of business actions (e.g., holding lots)
 
-## 🧠 理论基础
+## 🧠 Theoretical Foundation
 
-### 1. Palantir Ontology 概念
+### 1. Palantir Ontology Concepts
 
-| 概念 | 定义 | 本项目实现 |
-|------|------|-----------|
-| **Object** | 业务实体，如批次、晶圆、设备 | `Lot`, `Wafer`, `Equipment`, `ProcessStep`, `Defect` |
-| **Link** | 实体间的语义关系 | `CONTAINS`, `PROCESSED_ON`, `HAS_DEFECT` 等 |
-| **Action** | 可执行的业务操作 | `hold_lot_action` |
-| **Ontology Layer** | 统一的语义抽象层 | NetworkX + SQLite 组合存储 |
+| Concept | Definition | Implementation in This Project |
+|---------|------------|-------------------------------|
+| **Object** | Business entity, e.g., lot, wafer, equipment | `Lot`, `Wafer`, `Equipment`, `ProcessStep`, `Defect` |
+| **Link** | Semantic relationship between entities | `CONTAINS`, `PROCESSED_ON`, `HAS_DEFECT`, etc. |
+| **Action** | Executable business operation | `hold_lot_action` |
+| **Ontology Layer** | Unified semantic abstraction layer | Combined NetworkX + SQLite storage |
 
-### 2. GraphRAG（图增强检索增强生成）
-
-```
-用户查询 → LLM 分析 → 图检索（知识关联）→ 属性查询（详细数据）→ 综合推理 → 最终结论
-```
-
-### 3. ReAct 循环（Reasoning + Acting）
-
-本项目使用 **LangGraph** 实现 ReAct 循环：
+### 2. GraphRAG (Graph-enhanced Retrieval-Augmented Generation)
 
 ```
-[Agent Node] → 思考下一步行动 → [Router] → 判断是否调用工具
-    ↑                                      ↓
-    └───────────────────────────────── [Tool Node] → 执行工具并返回结果
+User Query → LLM Analysis → Graph Retrieval (Knowledge Associations) → Attribute Query (Detailed Data) → Comprehensive Reasoning → Final Conclusion
 ```
 
-## 🏗️ 技术架构
+### 3. ReAct Loop (Reasoning + Acting)
 
-### 整体架构图
+This project uses **LangGraph** to implement the ReAct loop:
+
+```
+[Agent Node] → Think about next action → [Router] → Decide whether to call a tool
+    ↑                                            ↓
+    └────────────────────────────────────── [Tool Node] → Execute tool and return results
+```
+
+## 🏗️ Technical Architecture
+
+### Architecture Overview
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│                          用户界面 (Flask)                           │
+│                        User Interface (Flask)                       │
 │                   http://localhost:5000/                            │
 │  ┌─────────────────────────────────────────────────────────────┐    │
-│  │                     聊天界面 / 可视化                         │    │
+│  │                  Chat Interface / Visualization              │    │
 │  └──────────────────────────────────────┬──────────────────────┘    │
 └─────────────────────────────────────────┼───────────────────────────┘
-                                          │ HTTP 请求
+                                          │ HTTP Request
                                           ↓
 ┌─────────────────────────────────────────────────────────────────────┐
-│                       API 层 (FastAPI)                             │
+│                        API Layer (FastAPI)                          │
 │                   http://localhost:8000/                            │
 │  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────────┐ │
 │  │  /health        │  │  /investigate   │  │  /graph             │ │
-│  │  健康检查       │  │  启动 RCA 调查  │  │  导出图结构         │ │
+│  │  Health Check   │  │  Start RCA      │  │  Export Graph       │ │
+│  │                 │  │  Investigation  │  │  Structure          │ │
 │  └─────────────────┘  └─────────────────┘  └─────────────────────┘ │
 └─────────────────────────────────────────────────────────────────────┘
                                           │
                                           ↓
 ┌─────────────────────────────────────────────────────────────────────┐
-│                        Agent 层 (LangGraph)                        │
+│                      Agent Layer (LangGraph)                        │
 │  ┌─────────────────────────────────────────────────────────────┐    │
 │  │  ┌──────────┐    ┌──────────┐    ┌──────────────────────┐  │    │
 │  │  │ Agent    │───▶│ Router   │───▶│ Tool Execution       │  │    │
 │  │  │ Node     │◀───│          │◀───│ Node                 │  │    │
-│  │  │ (LLM     │    │ (判断    │    │ (执行 query_ontology │  │    │
-│  │  │ 推理)    │    │ 下一步)  │    │    _graph 等工具)     │  │    │
+│  │  │ (LLM     │    │ (Decide  │    │ (Execute             │  │    │
+│  │  │ Reason-  │    │  Next    │    │  query_ontology_     │  │    │
+│  │  │ ing)     │    │  Step)   │    │  graph, etc.)        │  │    │
 │  │  └──────────┘    └──────────┘    └──────────────────────┘  │    │
 │  └─────────────────────────────────────────────────────────────┘    │
 └─────────────────────────────────────────────────────────────────────┘
                                           │
                                           ↓
 ┌─────────────────────────────────────────────────────────────────────┐
-│                     Ontology 层 (NetworkX + SQLite)                │
+│                  Ontology Layer (NetworkX + SQLite)                 │
 │                                                                     │
 │  ┌─────────────────────────────┐  ┌─────────────────────────────┐  │
 │  │     NetworkX DiGraph        │  │        SQLite Database      │  │
-│  │  - 存储 Object 间的 Link   │  │  - 存储 Object 的属性        │  │
-│  │  - 支持多跳图遍历查询       │  │  - Lot, Wafer, Equipment... │  │
-│  │  - 58 个节点 / 111 条边    │  │  - 通过 SQLModel ORM 访问   │  │
+│  │  - Store Links between     │  │  - Store Object attributes  │  │
+│  │    Objects                  │  │  - Lot, Wafer, Equipment... │  │
+│  │  - Support multi-hop graph │  │  - Access via SQLModel ORM  │  │
+│  │    traversal queries        │  │                             │  │
+│  │  - 58 nodes / 111 edges    │  │                             │  │
 │  └─────────────────────────────┘  └─────────────────────────────┘  │
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
-### 技术栈
+### Tech Stack
 
-| 组件 | 技术 | 版本 | 说明 |
-|------|------|------|------|
-| 语言 | Python | 3.11+ | 核心开发语言 |
-| 后端框架 | FastAPI | ^0.115.0 | RESTful API 服务 |
-| 前端框架 | Flask | ^3.0.0 | Web 界面 |
-| 图存储 | NetworkX | ^3.3 | 内存图数据库（替代 Neo4j） |
-| 关系存储 | SQLite + SQLModel | ^0.0.16 | 对象属性存储 |
-| Agent 框架 | LangGraph | ^0.2.0 | ReAct 循环编排 |
-| LLM 集成 | LangChain | ^0.3.0 | LLM 工具调用 |
-| LLM 模型 | DeepSeek | - | 通过 OpenAI 兼容 API 访问 |
-| 配置管理 | Pydantic Settings | ^2.5.0 | 环境变量加载 |
+| Component | Technology | Version | Description |
+|-----------|-----------|---------|-------------|
+| Language | Python | 3.11+ | Core development language |
+| Backend Framework | FastAPI | ^0.115.0 | RESTful API service |
+| Frontend Framework | Flask | ^3.0.0 | Web interface |
+| Graph Storage | NetworkX | ^3.3 | In-memory graph database (Neo4j alternative) |
+| Relational Storage | SQLite + SQLModel | ^0.0.16 | Object attribute storage |
+| Agent Framework | LangGraph | ^0.2.0 | ReAct loop orchestration |
+| LLM Integration | LangChain | ^0.3.0 | LLM tool calling |
+| LLM Model | DeepSeek | - | Accessed via OpenAI-compatible API |
+| Configuration | Pydantic Settings | ^2.5.0 | Environment variable loading |
 
-## 📦 安装与启动
+## 📦 Installation & Startup
 
-### 环境要求
+### Prerequisites
 
 - Python 3.11+
-- 已安装 `pip` 或 `poetry`
+- `pip` or `poetry` installed
 
-### 安装依赖
+### Install Dependencies
 
 ```bash
-# 进入项目目录
+# Navigate to the project directory
 cd wafer_ontology_mvp
 
-# 方式一：使用 pip
+# Option 1: Using pip
 pip install fastapi uvicorn sqlmodel networkx langchain langchain-openai langgraph python-dotenv pydantic pydantic-settings tenacity flask requests
 
-# 方式二：使用 poetry
+# Option 2: Using poetry
 poetry install
 ```
 
-### 配置环境变量
+### Configure Environment Variables
 
-编辑 `.env` 文件，配置 LLM API：
+Edit the `.env` file to configure the LLM API:
 
 ```env
-# DeepSeek API 配置
+# DeepSeek API configuration
 DEEPSEEK_API_KEY=your_api_key_here
 DEEPSEEK_BASE_URL=https://api.deepseek.com/v1
 
-# FastAPI 配置（可选）
+# FastAPI configuration (optional)
 HOST=0.0.0.0
 PORT=8000
 ```
 
-### 启动服务
+### Start Services
 
-**方式一：分别启动（开发调试）**
+**Option 1: Start separately (development/debugging)**
 
 ```bash
-# 终端 1：启动 FastAPI 后端
+# Terminal 1: Start FastAPI backend
 python src/main.py
 
-# 终端 2：启动 Flask 前端
+# Terminal 2: Start Flask frontend
 python web/app.py
 ```
 
-**方式二：使用 Poetry（推荐）**
+**Option 2: Using Poetry (recommended)**
 
 ```bash
-# 启动后端
+# Start backend
 poetry run python src/main.py
 
-# 启动前端（新终端）
+# Start frontend (new terminal)
 poetry run python web/app.py
 ```
 
-### 服务地址
+### Service Endpoints
 
-| 服务 | 地址 | 说明 |
-|------|------|------|
-| FastAPI 后端 | http://localhost:8000 | API 接口 |
-| Flask 前端 | http://localhost:5000 | Web 界面 |
-| API 文档 | http://localhost:8000/docs | Swagger UI |
+| Service | URL | Description |
+|---------|-----|-------------|
+| FastAPI Backend | http://localhost:8000 | API endpoints |
+| Flask Frontend | http://localhost:5000 | Web interface |
+| API Docs | http://localhost:8000/docs | Swagger UI |
 
-## 📊 Ontology Schema 定义
+## 📊 Ontology Schema Definition
 
-### Object Types（对象类型）
+### Object Types
 
-#### Lot（批次）
+#### Lot
 
-| 字段 | 类型 | 说明 |
-|------|------|------|
-| `lot_id` | str | 批次唯一标识，如 "Lot-W80" |
-| `product_name` | str | 产品名称，如 "14nm-FinFET" |
-| `current_yield` | float | 当前良率，0-1 之间 |
-| `status` | str | 状态：RUNNING / HOLD / COMPLETED |
-| `create_time` | datetime | 创建时间 |
+| Field | Type | Description |
+|-------|------|-------------|
+| `lot_id` | str | Unique lot identifier, e.g., "Lot-W80" |
+| `product_name` | str | Product name, e.g., "14nm-FinFET" |
+| `current_yield` | float | Current yield, between 0 and 1 |
+| `status` | str | Status: RUNNING / HOLD / COMPLETED |
+| `create_time` | datetime | Creation timestamp |
 
-#### Wafer（晶圆）
+#### Wafer
 
-| 字段 | 类型 | 说明 |
-|------|------|------|
-| `wafer_id` | str | 晶圆唯一标识 |
-| `slot` | int | 在批次中的槽位 |
-| `parent_lot_id` | str | 所属批次 ID |
-| `defect_count` | int | 缺陷数量 |
-| `status` | str | 状态 |
+| Field | Type | Description |
+|-------|------|-------------|
+| `wafer_id` | str | Unique wafer identifier |
+| `slot` | int | Slot position within the lot |
+| `parent_lot_id` | str | Parent lot ID |
+| `defect_count` | int | Number of defects |
+| `status` | str | Status |
 
-#### Equipment（设备）
+#### Equipment
 
-| 字段 | 类型 | 说明 |
-|------|------|------|
-| `eq_id` | str | 设备唯一标识，如 "ETCH-A03" |
-| `type` | str | 设备类型：Etch / CVD / Lithography / CMP |
-| `status` | str | 状态：RUNNING / WARNING / DOWN |
-| `alarm_count` | int | 报警计数 |
+| Field | Type | Description |
+|-------|------|-------------|
+| `eq_id` | str | Unique equipment identifier, e.g., "ETCH-A03" |
+| `type` | str | Equipment type: Etch / CVD / Lithography / CMP |
+| `status` | str | Status: RUNNING / WARNING / DOWN |
+| `alarm_count` | int | Alarm count |
 
-#### ProcessStep（工艺步骤）
+#### ProcessStep
 
-| 字段 | 类型 | 说明 |
-|------|------|------|
-| `step_id` | str | 步骤唯一标识 |
-| `lot_id` | str | 关联批次 |
-| `eq_id` | str | 关联设备 |
-| `recipe_name` | str | 配方名称 |
-| `timestamp` | datetime | 执行时间 |
+| Field | Type | Description |
+|-------|------|-------------|
+| `step_id` | str | Unique step identifier |
+| `lot_id` | str | Associated lot |
+| `eq_id` | str | Associated equipment |
+| `recipe_name` | str | Recipe name |
+| `timestamp` | datetime | Execution timestamp |
 
-#### Defect（缺陷）
+#### Defect
 
-| 字段 | 类型 | 说明 |
-|------|------|------|
-| `defect_id` | str | 缺陷唯一标识 |
-| `wafer_id` | str | 关联晶圆 |
-| `type` | str | 缺陷类型：Particle / Scratch |
-| `severity` | str | 严重程度：HIGH / MEDIUM / LOW |
-| `location_x` | float | X 坐标位置 |
-| `location_y` | float | Y 坐标位置 |
+| Field | Type | Description |
+|-------|------|-------------|
+| `defect_id` | str | Unique defect identifier |
+| `wafer_id` | str | Associated wafer |
+| `type` | str | Defect type: Particle / Scratch |
+| `severity` | str | Severity level: HIGH / MEDIUM / LOW |
+| `location_x` | float | X coordinate |
+| `location_y` | float | Y coordinate |
 
-### Link Types（关系类型）
+### Link Types
 
 ```
-(:Lot)-[:CONTAINS]->(:Wafer)          -- 批次包含晶圆
-(:Wafer)-[:PROCESSED_ON]->(:Equipment) -- 晶圆在设备上加工
-(:Lot)-[:HAS_STEP]->(:ProcessStep)     -- 批次包含工艺步骤
-(:ProcessStep)-[:ASSIGNED_TO]->(:Equipment) -- 步骤分配到设备
-(:Wafer)-[:HAS_DEFECT]->(:Defect)     -- 晶圆存在缺陷
+(:Lot)-[:CONTAINS]->(:Wafer)          -- Lot contains wafers
+(:Wafer)-[:PROCESSED_ON]->(:Equipment) -- Wafer processed on equipment
+(:Lot)-[:HAS_STEP]->(:ProcessStep)     -- Lot has process steps
+(:ProcessStep)-[:ASSIGNED_TO]->(:Equipment) -- Step assigned to equipment
+(:Wafer)-[:HAS_DEFECT]->(:Defect)     -- Wafer has defects
 ```
 
-## 🔧 Agent Tools（工具集）
+## 🔧 Agent Tools
 
-Agent 拥有以下工具，使用 `@tool` 装饰器定义：
+The Agent has the following tools, defined using the `@tool` decorator:
 
 ### 1. query_ontology_graph
 
-在 Ontology 知识图谱中查询节点的关联关系。
+Query node relationships in the Ontology knowledge graph.
 
 ```python
 @tool("query_ontology_graph")
 def query_ontology_graph(node_id: str, relation: str = "", direction: str = "out") -> str
 ```
 
-**参数**：
-- `node_id`: 起始节点 ID，如 "Lot-W80", "ETCH-A03"
-- `relation`: 关系类型过滤，可选值: CONTAINS, PROCESSED_ON, HAS_STEP, ASSIGNED_TO, HAS_DEFECT
-- `direction`: 查询方向，可选值: out(出边), in(入边), both(双向)
+**Parameters**:
+- `node_id`: Starting node ID, e.g., "Lot-W80", "ETCH-A03"
+- `relation`: Relationship type filter. Options: CONTAINS, PROCESSED_ON, HAS_STEP, ASSIGNED_TO, HAS_DEFECT
+- `direction`: Query direction. Options: out (outgoing edges), in (incoming edges), both (bidirectional)
 
-**示例**：
+**Examples**:
 ```python
-# 查询 Lot-W80 包含的晶圆
+# Query wafers contained in Lot-W80
 query_ontology_graph(node_id="Lot-W80", relation="CONTAINS", direction="out")
 
-# 查询在 ETCH-A03 上加工过的晶圆
+# Query wafers processed on ETCH-A03
 query_ontology_graph(node_id="ETCH-A03", relation="PROCESSED_ON", direction="in")
 ```
 
 ### 2. find_nodes_by_type
 
-按类型查找所有节点。
+Find all nodes by type.
 
 ```python
 @tool("find_nodes_by_type")
 def find_nodes_by_type(node_type: str) -> str
 ```
 
-**参数**：
-- `node_type`: 节点类型，可选值: Lot, Wafer, Equipment, ProcessStep, Defect
+**Parameters**:
+- `node_type`: Node type. Options: Lot, Wafer, Equipment, ProcessStep, Defect
 
 ### 3. get_object_details
 
-从 SQLite 中获取对象的详细属性。
+Retrieve detailed object attributes from SQLite.
 
 ```python
 @tool("get_object_details")
 def get_object_details(object_type: str, object_id: str) -> str
 ```
 
-**参数**：
-- `object_type`: 对象类型
-- `object_id`: 对象 ID
+**Parameters**:
+- `object_type`: Object type
+- `object_id`: Object ID
 
 ### 4. hold_lot_action
 
-Hold 住批次，防止继续加工。
+Hold a lot to prevent further processing.
 
 ```python
 @tool("hold_lot_action")
 def hold_lot_action(lot_id: str) -> str
 ```
 
-**返回**：
+**Returns**:
 ```
-🚨 ACTION: Holding Lot Lot-W80 - 批次已成功暂停
+🚨 ACTION: Holding Lot Lot-W80 - Lot successfully placed on hold
 ```
 
 ### 5. list_equipment_status
 
-获取所有设备的状态概览。
+Get an overview of all equipment statuses.
 
 ```python
 @tool("list_equipment_status")
 def list_equipment_status() -> str
 ```
 
-## 🚀 API 接口
+## 🚀 API Endpoints
 
 ### POST /investigate
 
-启动根因分析调查。
+Start a root cause analysis investigation.
 
-**请求体**：
+**Request Body**:
 ```json
 {
-    "query": "为什么 Lot-W80 的良率下降了？"
+    "query": "Why has the yield of Lot-W80 dropped?"
 }
 ```
 
-**响应**：
+**Response**:
 ```json
 {
-    "final_answer": "根因分析报告...",
+    "final_answer": "Root cause analysis report...",
     "thought_chain": [
-        {"type": "human", "content": "为什么 Lot-W80 的良率下降了？"},
-        {"type": "ai", "content": "{\"thought\": \"我需要先查询 Lot-W80 的详细信息...\", \"action\": \"get_object_details\", ...}"},
+        {"type": "human", "content": "Why has the yield of Lot-W80 dropped?"},
+        {"type": "ai", "content": "{\"thought\": \"I need to first query the details of Lot-W80...\", \"action\": \"get_object_details\", ...}"},
         {"type": "tool", "content": "{\"product_name\": \"14nm-FinFET\", \"current_yield\": 0.82, ...}"},
         ...
     ],
@@ -335,18 +339,18 @@ def list_equipment_status() -> str
 
 ### GET /health
 
-健康检查。
+Health check endpoint.
 
-**响应**：
+**Response**:
 ```json
 {"status": "healthy"}
 ```
 
 ### GET /graph
 
-获取 Ontology 图结构（用于可视化）。
+Get the Ontology graph structure (for visualization).
 
-**响应**：
+**Response**:
 ```json
 {
     "nodes": [
@@ -361,148 +365,148 @@ def list_equipment_status() -> str
 }
 ```
 
-## 🧪 使用示例
+## 🧪 Usage Examples
 
-### 示例 1：良率下降根因分析
+### Example 1: Yield Drop Root Cause Analysis
 
-**用户查询**：
+**User Query**:
 ```
-为什么 Lot-W80 的良率下降了？
-```
-
-**Agent 思考链**：
-1. 查询 Lot-W80 属性 → 良率 82%（偏低，目标 >90%）
-2. 查询包含晶圆 → WAFER-W80-00/-01 各有 3 个缺陷
-3. 查询加工设备 → ETCH-A03（报警计数 5）、CVD-B02（报警计数 2）
-4. 分析缺陷类型 → Particle（颗粒）和 Scratch（划痕）
-5. 定位根因 → ETCH-A03 报警偏高，可能导致缺陷
-
-**最终结论**：
-```
-根因定位：ETCH-A03 腔体报警计数为 5，明显偏高。Lot-W80 的前两片晶圆（WAFER-W80-00、WAFER-W80-01）各检测到 3 个缺陷，主要为 Particle（颗粒）类型。
-
-建议措施：
-1. 暂停 Lot-W80 继续加工
-2. 检查 ETCH-A03 的腔体状态和 RF 功率稳定性
-3. 排查是否存在腔体污染问题
+Why has the yield of Lot-W80 dropped?
 ```
 
-### 示例 2：设备问题调查
+**Agent Thought Chain**:
+1. Query Lot-W80 attributes → Yield 82% (low, target >90%)
+2. Query contained wafers → WAFER-W80-00/-01 each have 3 defects
+3. Query processing equipment → ETCH-A03 (alarm count 5), CVD-B02 (alarm count 2)
+4. Analyze defect types → Particle and Scratch
+5. Identify root cause → ETCH-A03 has elevated alarms, likely causing defects
 
-**用户查询**：
+**Final Conclusion**:
 ```
-ETCH-A03 设备有什么问题？
-```
+Root Cause Identified: ETCH-A03 chamber alarm count is 5, significantly above normal. The first two wafers of Lot-W80 (WAFER-W80-00, WAFER-W80-01) each have 3 detected defects, predominantly of the Particle type.
 
-**Agent 行动**：
-1. 获取设备详情 → alarm_count=5（偏高）
-2. 查询关联晶圆 → 找到所有在该设备上加工的晶圆
-3. 检查关联批次良率 → Lot-W80 良率异常
-4. 建议 Hold 相关批次
-
-### 示例 3：执行 Hold 操作
-
-**用户查询**：
-```
-暂停 Lot-W80
+Recommended Actions:
+1. Place Lot-W80 on hold to stop further processing
+2. Inspect ETCH-A03 chamber condition and RF power stability
+3. Investigate potential chamber contamination
 ```
 
-**Agent 行动**：
-1. 调用 hold_lot_action(lot_id="Lot-W80")
-2. 返回执行结果
+### Example 2: Equipment Issue Investigation
 
-## 📁 项目结构
+**User Query**:
+```
+What issues does equipment ETCH-A03 have?
+```
+
+**Agent Actions**:
+1. Get equipment details → alarm_count=5 (elevated)
+2. Query associated wafers → Find all wafers processed on this equipment
+3. Check associated lot yields → Lot-W80 yield anomaly detected
+4. Recommend holding affected lots
+
+### Example 3: Execute Hold Action
+
+**User Query**:
+```
+Hold Lot-W80
+```
+
+**Agent Actions**:
+1. Call hold_lot_action(lot_id="Lot-W80")
+2. Return execution result
+
+## 📁 Project Structure
 
 ```
 wafer_ontology_mvp/
-├── .env                    # 环境变量配置
-├── pyproject.toml          # Poetry 依赖管理
-├── fab_ontology.db         # SQLite 数据库文件（自动生成）
-├── README.md               # 项目文档（本文件）
-├── src/                    # 后端核心代码
-│   ├── main.py             # FastAPI 入口
-│   ├── config.py           # 配置加载（Pydantic Settings）
-│   ├── ontology/           # Ontology 核心定义
+├── .env                    # Environment variable configuration
+├── pyproject.toml          # Poetry dependency management
+├── fab_ontology.db         # SQLite database file (auto-generated)
+├── README.md               # Project documentation (this file)
+├── src/                    # Backend core code
+│   ├── main.py             # FastAPI entry point
+│   ├── config.py           # Configuration loading (Pydantic Settings)
+│   ├── ontology/           # Ontology core definitions
 │   │   ├── __init__.py
-│   │   ├── schema.py       # Object 和 Link 的 SQLModel 定义
-│   │   └── graph_builder.py # OntologyBuilder（NetworkX + SQLite）
-│   ├── agent/              # Agent 逻辑
+│   │   ├── schema.py       # SQLModel definitions for Objects and Links
+│   │   └── graph_builder.py # OntologyBuilder (NetworkX + SQLite)
+│   ├── agent/              # Agent logic
 │   │   ├── __init__.py
-│   │   ├── state.py        # LangGraph 的 State 定义
-│   │   ├── nodes.py        # Agent/Tool 节点函数
-│   │   ├── tools.py        # Agent 可用工具集（@tool 装饰器）
-│   │   └── graph.py        # LangGraph ReAct 循环编译
-│   └── api/                # API 路由
+│   │   ├── state.py        # LangGraph State definition
+│   │   ├── nodes.py        # Agent/Tool node functions
+│   │   ├── tools.py        # Agent toolset (@tool decorator)
+│   │   └── graph.py        # LangGraph ReAct loop compilation
+│   └── api/                # API routes
 │       ├── __init__.py
 │       └── endpoints.py    # /investigate, /health, /graph
-└── web/                    # Flask 前端
-    ├── app.py              # Flask 后端（代理 FastAPI）
+└── web/                    # Flask frontend
+    ├── app.py              # Flask backend (proxies to FastAPI)
     └── templates/
-        └── index.html      # 聊天界面（HTML + CSS + JS）
+        └── index.html      # Chat interface (HTML + CSS + JS)
 ```
 
-## 🔄 数据流
+## 🔄 Data Flow
 
-### 启动流程
-
-```
-[FastAPI 启动] → [lifespan 事件] → [initialize_agent()]
-                                          │
-                    ┌─────────────────────┼─────────────────────┐
-                    ↓                     ↓                     ↓
-            创建 OntologyBuilder    播种模拟数据 (seed_data)   创建 Agent 图
-                    │                     │                     │
-                    ↓                     ↓                     ↓
-           NetworkX DiGraph      SQLite 数据库           LangGraph 编译
-           (58 nodes, 111 edges)  (5 张表)              (ReAct 循环)
-```
-
-### ReAct 循环流程
+### Startup Flow
 
 ```
-用户查询 → GraphState.messages[] → Agent Node (LLM) → 判断 action
-                                                        │
-                         ┌──────────────────────────────┼──────────────────────────────┐
-                         ↓ (action == "FINISH")         ↓ (action 是工具名)            ↓ (未知 action)
-                 返回 final_answer              Tool Node 执行工具              返回错误信息
-                 流程结束                        ↓
-                                       工具结果 → GraphState.messages[]
-                                       ↓
-                                   回到 Agent Node
-                                   继续推理循环
+[FastAPI Startup] → [lifespan event] → [initialize_agent()]
+                                              │
+                    ┌─────────────────────────┼─────────────────────────┐
+                    ↓                         ↓                         ↓
+          Create OntologyBuilder      Seed mock data (seed_data)   Create Agent graph
+                    │                         │                         │
+                    ↓                         ↓                         ↓
+           NetworkX DiGraph          SQLite Database            LangGraph Compilation
+           (58 nodes, 111 edges)     (5 tables)                 (ReAct loop)
 ```
 
-## 🧪 测试数据
+### ReAct Loop Flow
 
-系统启动时自动生成模拟数据：
+```
+User Query → GraphState.messages[] → Agent Node (LLM) → Determine action
+                                                          │
+                         ┌────────────────────────────────┼────────────────────────────────┐
+                         ↓ (action == "FINISH")           ↓ (action is a tool name)        ↓ (unknown action)
+                 Return final_answer              Tool Node executes tool          Return error message
+                 End flow                                  ↓
+                                               Tool result → GraphState.messages[]
+                                               ↓
+                                           Return to Agent Node
+                                           Continue reasoning loop
+```
 
-| 类型 | 数量 | 说明 |
-|------|------|------|
-| Lot | 3 个 | Lot-W80, Lot-W81, Lot-W82 |
-| Wafer | 15 片 | 每批 5 片 |
-| Equipment | 4 台 | ETCH-A03, CVD-B02, LITH-C01, CMP-D01 |
-| ProcessStep | 30 个 | 每片晶圆 2 个步骤 |
-| Defect | 6 个 | Lot-W80 前两片各 3 个缺陷 |
+## 🧪 Test Data
 
-**测试场景**：
-- Lot-W80 良率 82%（偏低），用于 RCA 演示
-- ETCH-A03 报警计数 5（偏高），作为根因候选
-- LITH-C01 状态 WARNING，报警计数 8
+Mock data is automatically generated on system startup:
 
-## 📝 开发注意事项
+| Type | Count | Description |
+|------|-------|-------------|
+| Lot | 3 | Lot-W80, Lot-W81, Lot-W82 |
+| Wafer | 15 | 5 per lot |
+| Equipment | 4 | ETCH-A03, CVD-B02, LITH-C01, CMP-D01 |
+| ProcessStep | 30 | 2 steps per wafer |
+| Defect | 6 | 3 defects each on the first two wafers of Lot-W80 |
 
-### 环境变量加载
+**Test Scenarios**:
+- Lot-W80 yield at 82% (low), used for RCA demonstration
+- ETCH-A03 alarm count at 5 (elevated), serving as a root cause candidate
+- LITH-C01 status WARNING, alarm count 8
 
-`.env` 文件路径使用绝对路径加载，避免工作目录影响：
+## 📝 Development Notes
+
+### Environment Variable Loading
+
+The `.env` file path is loaded using an absolute path to avoid working directory issues:
 
 ```python
 # src/config.py
 ENV_FILE = Path(__file__).resolve().parent.parent / ".env"
 ```
 
-### JSON 解析兼容性
+### JSON Parsing Compatibility
 
-LLM 可能返回单引号格式的 JSON，使用 `parse_llm_json()` 函数处理：
+The LLM may return JSON with single quotes. Use the `parse_llm_json()` function to handle this:
 
 ```python
 # src/agent/nodes.py
@@ -513,34 +517,34 @@ def parse_llm_json(response_text: str):
         return ast.literal_eval(response_text)
 ```
 
-### Windows 编码处理
+### Windows Encoding Handling
 
-在 `src/main.py` 中设置 UTF-8 编码，确保 emoji 和中文正常输出：
+Set UTF-8 encoding in `src/main.py` to ensure proper output of emoji and non-ASCII characters:
 
 ```python
 if sys.stdout.encoding != "utf-8":
     sys.stdout.reconfigure(encoding="utf-8")
 ```
 
-## 🚧 扩展方向
+## 🚧 Future Extensions
 
-1. **图可视化**：集成 D3.js 或 vis.js 展示知识图谱
-2. **更多 Object 类型**：添加 Recipe、Alarm、RecipeParameter 等
-3. **实时数据流**：接入真实 MES 系统数据
-4. **向量检索**：集成 Embedding，支持语义相似度查询
-5. **多 Agent 协作**：引入 Planner、Executor、Summarizer 等角色
-6. **持久化改进**：使用 Redis 缓存图数据，加速查询
+1. **Graph Visualization**: Integrate D3.js or vis.js to display the knowledge graph
+2. **More Object Types**: Add Recipe, Alarm, RecipeParameter, etc.
+3. **Real-time Data Streaming**: Connect to actual MES system data
+4. **Vector Search**: Integrate embeddings for semantic similarity queries
+5. **Multi-Agent Collaboration**: Introduce Planner, Executor, Summarizer roles
+6. **Persistence Improvements**: Use Redis to cache graph data for faster queries
 
-## 📜 许可证
+## 📜 License
 
 MIT License
 
-## 🤝 贡献
+## 🤝 Contributing
 
-欢迎提交 Issue 和 Pull Request！
+Issues and Pull Requests are welcome!
 
 ---
 
-**项目状态**：✅ MVP 完成，可正常运行
+**Project Status**: ✅ MVP complete, fully functional
 
-**最后更新**：2026-07-19
+**Last Updated**: 2026-07-19

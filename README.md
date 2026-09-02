@@ -49,7 +49,7 @@
 | 落地任务 | 良率分析、虚拟量测、缺陷检测、智能排程、预测性维护、能源管理、NPI协同、数据安全、供应链透明化 |
 | 产业案例 | 台积电、三星、Intel、SK海力士、美光、格罗方德、Palantir、NVIDIA、KLA、ASML |
 
-> **本书数据**：27 章 · 3 种语言 · 20+ Demo 脚本 · 9 个动手实验 · 47 张配图 · 100+ 产业案例引用
+> **本书数据**：27 章 · 3 种语言 · 20+ Demo 脚本 · 21 个动手实验 · 47 张配图 · 100+ 产业案例引用
 
 ## 🖥️ Demo 可视化
 
@@ -120,7 +120,7 @@
 └── 第 26 章 具身智能的应用——当AI走进晶圆厂的物理世界
 
 第七部分  动手实验实验室
-└── 第 27 章 动手实验实验室——把关键概念跑起来（9 个可运行实验）
+└── 第 27 章 动手实验实验室——把关键概念跑起来（21 个可运行实验）
 ```
 
 ### 双线交织结构
@@ -229,7 +229,7 @@ python demo_ch23_agent_system.py     # 多智能体协同框架
 ```
 ### 运行动手实验（第27章）
 
-9 个可运行的完整实验项目位于 `zh-CN/demos/experiments/`，详见第27章。以依赖最轻的 Ontology Text2SQL 为例：
+21 个可运行的完整实验项目位于 `zh-CN/demos/experiments/`，详见第27章。以依赖最轻的 Ontology Text2SQL 为例：
 
 ```bash
 cd zh-CN/demos/experiments/fab_ontology_text2sql
@@ -252,7 +252,7 @@ python generate_en_pdf.py            # 生成英文版 PDF（输出到 en/）
 ```
 ├── zh-CN/   # 简体中文版（默认）
 │   ├── chapters/   # 27章正文（Markdown）
-│   ├── demos/      # 20+ Demo可视化脚本 + 9个动手实验（experiments/）
+│   ├── demos/      # 20+ Demo可视化脚本 + 21个动手实验（experiments/）
 │   ├── images/     # 配图（Demo图 + 流程图）
 │   └── OUTLINE.md  # 详细目录大纲
 ├── en/      # 英文版（结构同上）
