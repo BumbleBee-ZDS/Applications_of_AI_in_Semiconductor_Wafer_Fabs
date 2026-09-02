@@ -1,9 +1,0 @@
-{
-  "name": "fab-ontology-text2sql",
-  "private": true,
-  "description": "Fab Ontology Text2SQL MVP（Streamlit）—— package.json 仅用于让内置 dev_server 找到启动脚本",
-  "scripts": {
-    "dev": "python -m streamlit run app.py --server.port 8501 --server.headless true",
-    "start": "python -m streamlit run app.py --server.port 8501 --server.headless true"
-  }
-}

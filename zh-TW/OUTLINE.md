@@ -752,7 +752,7 @@
 
 ## 參考文獻
 
-詳見 [references.md](computer://references.md)，共收錄77篇學術文獻，按以下七大類別組織：
+詳見 [references.md](../references.md)，共收錄102篇學術文獻，按以下七大類別組織：
 
 1. **AI基礎與三大學派** — 符號主義、連接主義、行為主義的經典文獻與教科書（Russell & Norvig, McCarthy, Newell & Simon, Hinton, LeCun, Sutton & Barto, Silver等）
 2. **AI融合方向** — NB神經符號融合（RAG, CoT, Toolformer, ReAct）、NA神經行為融合（Deep RL, SAC）、SA符號行為融合（HTN規劃）、NSA全融合（World Models, RT-2, Free Energy Principle）

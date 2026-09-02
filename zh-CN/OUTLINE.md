@@ -752,7 +752,7 @@
 
 ## 参考文献
 
-详见 [references.md](computer://references.md)，共收录77篇学术文献，按以下七大类别组织：
+详见 [references.md](../references.md)，共收录102篇学术文献，按以下七大类别组织：
 
 1. **AI基础与三大学派** — 符号主义、连接主义、行为主义的经典文献与教科书（Russell & Norvig, McCarthy, Newell & Simon, Hinton, LeCun, Sutton & Barto, Silver等）
 2. **AI融合方向** — NB神经符号融合（RAG, CoT, Toolformer, ReAct）、NA神经行为融合（Deep RL, SAC）、SA符号行为融合（HTN规划）、NSA全融合（World Models, RT-2, Free Energy Principle）

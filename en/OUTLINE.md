@@ -752,7 +752,7 @@
 
 ## References
 
-See [references.md](computer://references.md), comprising 77 academic references organized into the following seven categories:
+See [references.md](../references.md), comprising 102 academic references organized into the following seven categories:
 
 1. **AI Foundations and Three Major Schools** — Classic literature and textbooks on Symbolism, Connectionism, and Behaviorism (Russell & Norvig, McCarthy, Newell & Simon, Hinton, LeCun, Sutton & Barto, Silver, etc.)
 2. **AI Integration Directions** — NB neuro-symbolic integration (RAG, CoT, Toolformer, ReAct), NA neuro-behavioral integration (Deep RL, SAC), SA symbolic-behavioral integration (HTN planning), NSA full integration (World Models, RT-2, Free Energy Principle)

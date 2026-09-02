@@ -75,7 +75,7 @@ Part VI   Ontology
 └── Chapter 26   Applications of Embodied AI — When AI Steps into the Physical World of the Fab
 
 Part 7  Hands-On Lab
-└── Chapter 27   Hands-On Lab — Running the Key Concepts (9 runnable experiments)
+└── Chapter 27   Hands-On Lab — Running the Key Concepts (21 runnable experiments)
 ```
 
 ### Dual-Mainline Interwoven Structure
@@ -132,8 +132,9 @@ The book is under continuous writing, adopting an open-source collaborative appr
 | Part IV | Complete |
 | Part V | Complete |
 | Part VI | Complete |
+| Part VII | Complete |
 
-The first drafts of all 25 chapters are complete; continuous revision is ongoing.
+The first drafts of all 27 chapters are complete; continuous revision is ongoing.
 
 ---
 

@@ -1,7 +1,0 @@
-__pycache__/
-*.pyc
-.venv/
-venv/
-.env
-.streamlit/
-failure_log.json
