@@ -36,6 +36,10 @@ The data sources of a fab can be summarized as seven core systems. They sit at d
 
 Using one lot of wafers as a thread, the chain can be traced: after a wafer enters the line, **MES** assigns it a lot ID and plans the route; at a certain etch step, the equipment reports the process-start and process-end events via **SECS/GEM**, and **FDC/EDA** records chamber temperature, pressure, RF power, and other process parameters at millisecond frequency; after processing, metrology equipment produces **CD-SEM/optical metrology** data, and **SPC** determines whether the step is in control; finally, after electrical test, **YMS** generates the wafer map and yield statistics. A complete data chain is thus formed.
 
+![Figure 28-1 Fab data-source landscape](../../images/flow_ch28_data_sources.png)
+
+*Figure 28-1: Fab data-source landscape — the four-layer IT/OT architecture and data flow*
+
 ### 28.1.2 Comparing Data Characteristics: Time Granularity, Volume, and Update Frequency
 
 Different types of data differ enormously in time granularity, data volume, and update frequency. Understanding these differences is a prerequisite for choosing storage solutions and AI modeling approaches.
@@ -55,6 +59,10 @@ The following table compares the characteristics of the seven core data sources:
 | ERP | material number, work order, cost, inventory | minute~day | thousands | batch |
 | SECS/GEM logs | event ID, recipe name, status code, timestamp | second~minute | tens of thousands~hundreds of thousands of events | real-time push |
 | Inspection/metrology | defect coordinates, defect type, CD value, images | wafer/lot-level | thousands of records + many images | batch + real-time linkage |
+
+![Figure 28-2 Data time-granularity and volume comparison](../../images/demo_ch28_time_granularity.png)
+
+*Figure 28-2: Time granularity vs daily volume across data sources (log scale)*
 
 > **Practical tip:** A common mistake in fab data storage is "one size fits all." High-frequency time-series data such as FDC is best managed with columnar or time-series databases (e.g., InfluxDB, TimescaleDB); business data such as MES/YMS is suited to relational databases; inspection images and other unstructured data need object storage. Classify by the data-characteristics table first, then choose storage — this avoids the embarrassment of "a query over FDC history taking minutes."
 
@@ -107,6 +115,10 @@ Source table (YMS.WAFER_TEST_RESULT) → Oracle stored procedure (PKG_YIELD.CALC
 → PL/SQL business logic (filter rework lots, convert per-wafer) → ETL job (daily incremental load to warehouse)
 → Warehouse view (V_YIELD_WEEKLY) → BI report (weekly yield KPI)
 ```
+
+In this chain, the loss of semantics at any link distorts the final number![Figure 28-3 The seven-layer processing chain of a yield field](../../images/flow_ch28_lineage_chain.png)
+
+*Figure 28-3: The seven-layer processing chain of a yield field — every link risks semantic loss*
 
 In this chain, the loss of semantics at any link distorts the final number. For example, the stored procedure contains `WHERE lot_status != 'R'` — meaning it excludes rework lots. If an analyst does not know this filter and directly runs statistics on the report data, he will mistake "yield excluding rework" for "total yield."
 
@@ -312,6 +324,10 @@ The three values of the industrial semantic layer:
 
 **Architecture diagram of the semantic layer (text description)**: a three-layer structure. The bottom layer is the **physical data layer**, containing MES databases, YMS databases, FDC time-series stores, and inspection-image storage; the middle layer is the **industrial semantic layer**, composed of the ontology model and semantic services — the ontology defines business objects and relationships, and semantic services provide three capabilities: object queries, relationship traversal, and definition computation; the top layer is the **AI application layer**, including yield analysis, virtual metrology, root-cause analysis, and LLM/Agent applications. Data flows upward: applications query through semantic APIs, the semantic layer translates into physical queries and performs permission filtering, returning business-object-level results. The permission-control point sits between the semantic layer and the physical layer — all physical access passes through the semantic layer's authentication and filtering.
 
+![Figure 28-4 Positioning of the industrial semantic layer](../../images/flow_ch28_semantic_layer.png)
+
+*Figure 28-4: Three-layer structure of the industrial semantic layer — physical data layer → semantic layer (ontology + services) → AI application layer; the permission-control point sits between the semantic layer and the physical layer*
+
 ### 28.4.3 Designing a Semiconductor Domain Ontology
 
 The core of the semantic layer is the **ontology** — an explicit, formalized description of business entities, relationships, and rules. A fab semantic layer can start from a minimal core ontology: six entities and a few relationship groups.
@@ -326,6 +342,10 @@ The core of the semantic layer is the **ontology** — an explicit, formalized d
 | ProcessStep | process step (recipe execution) | StepID, recipe name, parameter version |
 | Defect | defect | DefectID, type, coordinates, size |
 | Parameter | process parameter (metrology or FDC) | parameter name, value, timestamp |
+
+![Figure 28-5 Semiconductor domain ontology](../../images/flow_ch28_ontology_model.png)
+
+*Figure 28-5: Six core entities and relationships — Lot/Wafer/Equipment/ProcessStep/Defect/Parameter*
 
 **Core relationships between entities**:
 
@@ -361,6 +381,10 @@ The ontology answers "what business objects look like," while a complete fab kno
 **Relationships among the three layers**: L1 is the foundation (L3 depends on L2, L2 depends on L1); L2 grows on top of L1, "translating" technical lineage into business semantics; L3 adds operability on top of L2. Architecturally, LLM/Agent interact only with L3, which references L2 knowledge and L1 lineage downward — ensuring AI does not touch raw data directly, with all access passing through the semantic layer's controlled interface (echoing the security design in Section 28.5.3).
 
 **Architecture diagram of the layered knowledge graph (text description)**: three layers from bottom to top. The L1 layer has tables, fields, and stored procedures as nodes, with read/write/derived edges — the lineage graph collected automatically and manually; the L2 layer has business entities (Lot, Wafer, Equipment, Defect, Rule, SOP, Case) as nodes, with business edges (BELONGS_TO, PROCESSED_ON, RULE_OF, CITED_BY), jointly built by business experts and knowledge engineering; the L3 layer sits on top, with core ontology objects as nodes and added Action edges (hold_lot, create_workorder, release_lot); agents consume knowledge and execute actions through L3's API. Data flows: Agent request → L3 action/query → L2 business semantics → L1 physical data.
+
+![Figure 28-6 Three-layer knowledge-graph architecture](../../images/flow_ch28_knowledge_layers.png)
+
+*Figure 28-6: Three-layer knowledge-graph architecture — L1 lineage → L2 business knowledge → L3 operational ontology; agents interact only with L3*
 
 ### 28.4.5 Comparison with Industry Approaches
 
@@ -441,6 +465,10 @@ Perception Agent triggered (SPC alarm: yield below control limit)
   → Execution Agent gives recommendations (candidate root causes + suggested actions)
   → Human approval (engineer confirms or rejects)
   → Execute action (hold lot / generate work order) and record audit log
+
+![Figure 28-7 Multi-agent collaboration architecture](../../images/flow_ch28_agent_flow.png)
+
+*Figure 28-7: Multi-agent collaboration flow — perception → diagnosis → knowledge QA → execution → human approval (human-in-the-loop)*
 ```
 
 **Human-in-the-Loop design** is an important difference between industrial and internet scenarios: agents are only "advisers"; critical actions (hold lots, change recipes, release lots) require human approval. The reason: the cost of actions in fabs is extremely high — wrongly holding a lot can lose hundreds of thousands of dollars; wrongly releasing may cause batch scrap. Agents can accelerate analysis and provide recommendations, but final decision authority must remain with engineers. This is both a technical constraint and a compliance/accountability requirement.
