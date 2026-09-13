@@ -1,0 +1,68 @@
+{
+  "table": "QCS_DEFECT",
+  "row_count": 114,
+  "primary_key": [
+    "DEFECT_ID"
+  ],
+  "foreign_keys": [
+    {
+      "column": "LOT_ID",
+      "references": "WIP_LOT.LOT_ID"
+    },
+    {
+      "column": "STEP_ID",
+      "references": "ENG_STEP.STEP_ID"
+    }
+  ],
+  "columns": [
+    {
+      "name": "DEFECT_ID",
+      "type": "INTEGER",
+      "notnull": false,
+      "default": null,
+      "pk": true
+    },
+    {
+      "name": "LOT_ID",
+      "type": "TEXT",
+      "notnull": true,
+      "default": null,
+      "pk": false
+    },
+    {
+      "name": "STEP_ID",
+      "type": "TEXT",
+      "notnull": true,
+      "default": null,
+      "pk": false
+    },
+    {
+      "name": "DEFECT_CD",
+      "type": "TEXT",
+      "notnull": false,
+      "default": null,
+      "pk": false
+    },
+    {
+      "name": "DEFECT_CNT",
+      "type": "INTEGER",
+      "notnull": false,
+      "default": null,
+      "pk": false
+    },
+    {
+      "name": "INSPECT_DT",
+      "type": "TEXT",
+      "notnull": false,
+      "default": null,
+      "pk": false
+    },
+    {
+      "name": "DISPOSITION",
+      "type": "TEXT",
+      "notnull": false,
+      "default": null,
+      "pk": false
+    }
+  ]
+}

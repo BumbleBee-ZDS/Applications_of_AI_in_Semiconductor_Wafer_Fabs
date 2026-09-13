@@ -750,6 +750,38 @@
 - 27.23 Experiment 21: Reflexion Agent (reflexion_agent)
 - 27.24 From Experiments to Production: A Retrofitting Guide
 
+## Part VIII: Wafer-Fab Data Architecture
+
+### Chapter 28: Wafer-Fab Data Architecture — The Data Foundation for AI Applications
+
+- 28.1 The Wafer-Fab Data Landscape: From MES to Equipment Logs
+  - 28.1.1 A Map of Core Data Sources: MES / FDC-EDA / SPC / YMS / ERP / SECS-GEM / Inspection-Metrology
+  - 28.1.2 Comparing Data Characteristics: time granularity, volume, update frequency (FDC ms-level vs MES minute-level vs YMS lot-level)
+  - 28.1.3 Business Relationships Between Data: why cross-system linkage is needed; key/clock-alignment/multi-version challenges
+- 28.2 Data Lineage and Tacit Knowledge: Where Data Comes From, Goes, and Who Understands It
+  - 28.2.1 Sources of Complexity in Fab Data Lineage (seven-layer pipeline: stored procedures / PL-SQL / ETL)
+  - 28.2.2 Three Forms of Tacit Knowledge: in code / in documents / in people's heads
+  - 28.2.3 Business Risks of Tacit-Knowledge Loss
+- 28.3 Data Governance: Making Data Trustworthy, Traceable, and Reusable
+  - 28.3.1 Data-Quality Challenges: missing values / outliers / inconsistent definitions / time-series alignment
+  - 28.3.2 Standardization and Metadata Management (technical / business / operational metadata)
+  - 28.3.3 Technical Paths for Automated Lineage Collection (static parsing / runtime auditing / manual annotation)
+  - 28.3.4 Graph Storage for Lineage (relational vs graph databases)
+- 28.4 Industrial Semantic Layer and Knowledge Graph: Teaching AI the Language of the Fab
+  - 28.4.1 Why the Internet Data-Middle-Platform Model Cannot Be Copied Directly
+  - 28.4.2 Concept and Positioning of the Industrial Semantic Layer
+  - 28.4.3 Designing a Semiconductor Domain Ontology: six core entities and relationships
+  - 28.4.4 Layered Knowledge-Graph Architecture: L1 lineage → L2 business knowledge → L3 operational ontology
+  - 28.4.5 Comparison with Industry Approaches (Google OKF / Palantir Ontology)
+- 28.5 LLM and Agent Data-Consumption Patterns: From "Querying Data" to "Deciding with Data"
+  - 28.5.1 GraphRAG vs Traditional Vector RAG
+  - 28.5.2 Multi-Agent Collaboration Architecture (perception / diagnosis / knowledge-QA / execution)
+  - 28.5.3 Data Permissions and Security Control
+- 28.6 Implementation Path and Phased Rollout: From Data to Value
+  - 28.6.1 Overview of the Four-Phase Roadmap
+  - 28.6.2 Milestones and Acceptance Criteria per Phase
+  - 28.6.3 Common Pitfalls and How to Avoid Them
+
 ## References
 
 See [references.md](../references.md), comprising 102 academic references organized into the following seven categories:

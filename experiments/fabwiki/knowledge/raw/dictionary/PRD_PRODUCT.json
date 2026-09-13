@@ -1,0 +1,45 @@
+{
+  "table": "PRD_PRODUCT",
+  "row_count": 5,
+  "primary_key": [
+    "PRODUCT_ID"
+  ],
+  "foreign_keys": [],
+  "columns": [
+    {
+      "name": "PRODUCT_ID",
+      "type": "TEXT",
+      "notnull": false,
+      "default": null,
+      "pk": true
+    },
+    {
+      "name": "PRODUCT_NM",
+      "type": "TEXT",
+      "notnull": false,
+      "default": null,
+      "pk": false
+    },
+    {
+      "name": "TECH_NODE",
+      "type": "TEXT",
+      "notnull": false,
+      "default": null,
+      "pk": false
+    },
+    {
+      "name": "DIE_SIZE",
+      "type": "REAL",
+      "notnull": false,
+      "default": null,
+      "pk": false
+    },
+    {
+      "name": "LAYER_CNT",
+      "type": "INTEGER",
+      "notnull": false,
+      "default": null,
+      "pk": false
+    }
+  ]
+}

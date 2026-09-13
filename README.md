@@ -25,7 +25,7 @@
 
 <div align="center">
 
-![License](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey) ![Chapters](https://img.shields.io/badge/27%20Chapters-1a237e) ![Languages](https://img.shields.io/badge/3%20Languages-green) ![Demos](https://img.shields.io/badge/20%2B%20Demos-FF9800)
+![License](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey) ![Chapters](https://img.shields.io/badge/28%20Chapters-1a237e) ![Languages](https://img.shields.io/badge/3%20Languages-green) ![Demos](https://img.shields.io/badge/20%2B%20Demos-FF9800)
 
 </div>
 
@@ -34,7 +34,7 @@
 ## ✨ 为什么值得读
 
 - **双线交织的独特结构**：以晶圆厂三大核心部门（PID/YED、MFG、PE/EE）为业务主线、AI三大流派（符号/连接/行为）为技术主线，两条线逐章交叉推进，避免"技术讲义"与"行业报告"两张皮
-- **27章体系化覆盖**：从AI简史到三大流派，从三大部门到关键业务场景，从三大主义融合（NB/NA/SA/NSA）到 LLM / Agent / Ontology，一路讲到晶圆厂AI的前沿
+- **28章体系化覆盖**：从AI简史到三大流派，从三大部门到关键业务场景，从三大主义融合（NB/NA/SA/NSA）到 LLM / Agent / Ontology，一路讲到晶圆厂AI的前沿
 - **20+ 可运行 Demo**：每个核心概念都配有基于真实数据形态的可视化脚本（Python + Matplotlib），跑一跑就能直观看到"缺陷检测长什么样""RL调度如何工作"
 - **大量真实产业案例**：台积电、三星、Intel、SK海力士/Gauss Labs、美光、格罗方德、Palantir、NVIDIA、KLA、ASML……书中引用的都是公开报道与论文中的真实落地实践
 - **三语同步出版**：简体中文、繁体中文、英文三版同步维护，适合不同语言背景的读者
@@ -49,7 +49,7 @@
 | 落地任务 | 良率分析、虚拟量测、缺陷检测、智能排程、预测性维护、能源管理、NPI协同、数据安全、供应链透明化 |
 | 产业案例 | 台积电、三星、Intel、SK海力士、美光、格罗方德、Palantir、NVIDIA、KLA、ASML |
 
-> **本书数据**：27 章 · 3 种语言 · 20+ Demo 脚本 · 21 个动手实验 · 47 张配图 · 100+ 产业案例引用
+> **本书数据**：28 章 · 3 种语言 · 20+ Demo 脚本 · 21 个动手实验 · 47 张配图 · 100+ 产业案例引用
 
 ## 🖥️ Demo 可视化
 
@@ -121,6 +121,9 @@
 
 第七部分  动手实验实验室
 └── 第 27 章 动手实验实验室——把关键概念跑起来（21 个可运行实验）
+
+第八部分  晶圆厂数据体系
+└── 第 28 章 晶圆厂数据体系——AI应用的数据地基
 ```
 
 ### 双线交织结构
@@ -243,7 +246,7 @@ streamlit run app.py
 
 ```
 ├── zh-CN/   # 简体中文版（默认）
-│   ├── chapters/   # 27章正文（Markdown）
+│   ├── chapters/   # 28章正文（Markdown）
 │   ├── demos/      # 20+ Demo可视化脚本
 │   ├── images/     # 配图（Demo图 + 流程图）
 │   └── OUTLINE.md  # 详细目录大纲
@@ -272,8 +275,9 @@ streamlit run app.py
 | 第五部分   | 已完成         |
 | 第六部分   | 已完成         |
 | 第七部分   | 已完成         |
+| 第八部分   | 已完成         |
 
-全书27章初稿已完成，持续修订中。
+全书28章初稿已完成，持续修订中。
 
 ---
 
@@ -282,7 +286,8 @@ streamlit run app.py
 - **15章框架**——基石篇、三大流派、三大部门、交叉应用、LLM与Agent、Ontology 专章
 - **扩展至20章**——新增三大主义融合篇（NB / NA / SA / NSA 全融合，第12-16章）
 - **扩展至26章**——新增第26章具身智能的应用（当AI走进晶圆厂的物理世界）
-- **扩展至27章（当前）**——新增第27章动手实验实验室，配套 21 个可运行实验项目（LLM/Agent/良率/调度/专家系统等）
+- **扩展至27章**——新增第27章动手实验实验室，配套 21 个可运行实验项目（LLM/Agent/良率/调度/专家系统等）
+- **扩展至28章（当前）**——新增第28章晶圆厂数据体系，系统讲解数据源全景、血缘与隐性知识、数据治理、语义层与知识图谱、LLM/Agent数据消费模式及落地路径
 
 全书处于持续修订中，欢迎通过 Issues 提出建议。
 

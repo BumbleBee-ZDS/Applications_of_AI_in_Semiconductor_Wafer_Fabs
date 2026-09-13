@@ -1,0 +1,45 @@
+{
+  "table": "EQP_EQUIPMENT",
+  "row_count": 10,
+  "primary_key": [
+    "EQP_ID"
+  ],
+  "foreign_keys": [],
+  "columns": [
+    {
+      "name": "EQP_ID",
+      "type": "TEXT",
+      "notnull": false,
+      "default": null,
+      "pk": true
+    },
+    {
+      "name": "EQP_NM",
+      "type": "TEXT",
+      "notnull": false,
+      "default": null,
+      "pk": false
+    },
+    {
+      "name": "EQP_TYPE",
+      "type": "TEXT",
+      "notnull": false,
+      "default": null,
+      "pk": false
+    },
+    {
+      "name": "TOOL_GRP",
+      "type": "TEXT",
+      "notnull": false,
+      "default": null,
+      "pk": false
+    },
+    {
+      "name": "STATUS_CD",
+      "type": "TEXT",
+      "notnull": false,
+      "default": null,
+      "pk": false
+    }
+  ]
+}

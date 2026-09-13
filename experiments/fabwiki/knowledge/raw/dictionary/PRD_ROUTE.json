@@ -1,0 +1,47 @@
+{
+  "table": "PRD_ROUTE",
+  "row_count": 15,
+  "primary_key": [
+    "ROUTE_ID"
+  ],
+  "foreign_keys": [
+    {
+      "column": "PRODUCT_ID",
+      "references": "PRD_PRODUCT.PRODUCT_ID"
+    },
+    {
+      "column": "STEP_ID",
+      "references": "ENG_STEP.STEP_ID"
+    }
+  ],
+  "columns": [
+    {
+      "name": "ROUTE_ID",
+      "type": "INTEGER",
+      "notnull": false,
+      "default": null,
+      "pk": true
+    },
+    {
+      "name": "PRODUCT_ID",
+      "type": "TEXT",
+      "notnull": true,
+      "default": null,
+      "pk": false
+    },
+    {
+      "name": "STEP_SEQ",
+      "type": "INTEGER",
+      "notnull": false,
+      "default": null,
+      "pk": false
+    },
+    {
+      "name": "STEP_ID",
+      "type": "TEXT",
+      "notnull": true,
+      "default": null,
+      "pk": false
+    }
+  ]
+}

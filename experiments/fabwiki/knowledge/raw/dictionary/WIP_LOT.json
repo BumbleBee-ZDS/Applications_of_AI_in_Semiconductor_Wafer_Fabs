@@ -1,0 +1,71 @@
+{
+  "table": "WIP_LOT",
+  "row_count": 225,
+  "primary_key": [
+    "LOT_ID"
+  ],
+  "foreign_keys": [
+    {
+      "column": "PRODUCT_ID",
+      "references": "PRD_PRODUCT.PRODUCT_ID"
+    }
+  ],
+  "columns": [
+    {
+      "name": "LOT_ID",
+      "type": "TEXT",
+      "notnull": false,
+      "default": null,
+      "pk": true
+    },
+    {
+      "name": "PRODUCT_ID",
+      "type": "TEXT",
+      "notnull": true,
+      "default": null,
+      "pk": false
+    },
+    {
+      "name": "STAGE_CD",
+      "type": "TEXT",
+      "notnull": true,
+      "default": null,
+      "pk": false
+    },
+    {
+      "name": "LOT_STS",
+      "type": "TEXT",
+      "notnull": true,
+      "default": null,
+      "pk": false
+    },
+    {
+      "name": "QTY_IN",
+      "type": "INTEGER",
+      "notnull": false,
+      "default": null,
+      "pk": false
+    },
+    {
+      "name": "WAFER_CNT",
+      "type": "INTEGER",
+      "notnull": false,
+      "default": null,
+      "pk": false
+    },
+    {
+      "name": "CREATE_DT",
+      "type": "TEXT",
+      "notnull": false,
+      "default": null,
+      "pk": false
+    },
+    {
+      "name": "LAST_MOD_DT",
+      "type": "TEXT",
+      "notnull": false,
+      "default": null,
+      "pk": false
+    }
+  ]
+}

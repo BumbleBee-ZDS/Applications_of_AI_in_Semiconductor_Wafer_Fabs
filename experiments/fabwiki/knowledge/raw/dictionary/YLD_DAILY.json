@@ -1,0 +1,59 @@
+{
+  "table": "YLD_DAILY",
+  "row_count": 450,
+  "primary_key": [
+    "STAT_DT",
+    "PRODUCT_ID",
+    "STEP_GRP"
+  ],
+  "foreign_keys": [
+    {
+      "column": "PRODUCT_ID",
+      "references": "PRD_PRODUCT.PRODUCT_ID"
+    }
+  ],
+  "columns": [
+    {
+      "name": "STAT_DT",
+      "type": "TEXT",
+      "notnull": false,
+      "default": null,
+      "pk": true
+    },
+    {
+      "name": "PRODUCT_ID",
+      "type": "TEXT",
+      "notnull": true,
+      "default": null,
+      "pk": true
+    },
+    {
+      "name": "STEP_GRP",
+      "type": "TEXT",
+      "notnull": false,
+      "default": null,
+      "pk": true
+    },
+    {
+      "name": "INPUT_WAFER",
+      "type": "INTEGER",
+      "notnull": false,
+      "default": null,
+      "pk": false
+    },
+    {
+      "name": "OUTPUT_WAFER",
+      "type": "INTEGER",
+      "notnull": false,
+      "default": null,
+      "pk": false
+    },
+    {
+      "name": "YLD_RATE",
+      "type": "REAL",
+      "notnull": false,
+      "default": null,
+      "pk": false
+    }
+  ]
+}

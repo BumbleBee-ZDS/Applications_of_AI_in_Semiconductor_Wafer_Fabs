@@ -1,0 +1,38 @@
+{
+  "table": "ENG_STEP",
+  "row_count": 9,
+  "primary_key": [
+    "STEP_ID"
+  ],
+  "foreign_keys": [],
+  "columns": [
+    {
+      "name": "STEP_ID",
+      "type": "TEXT",
+      "notnull": false,
+      "default": null,
+      "pk": true
+    },
+    {
+      "name": "STEP_NM",
+      "type": "TEXT",
+      "notnull": false,
+      "default": null,
+      "pk": false
+    },
+    {
+      "name": "STEP_GRP",
+      "type": "TEXT",
+      "notnull": false,
+      "default": null,
+      "pk": false
+    },
+    {
+      "name": "CRITICAL_FLAG",
+      "type": "TEXT",
+      "notnull": false,
+      "default": null,
+      "pk": false
+    }
+  ]
+}
