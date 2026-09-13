@@ -4,7 +4,7 @@
 
 The first 26 chapters follow a thread of concepts, architectures, and industry case studies, complemented by demo scripts (`matplotlib` visualizations under `zh-CN/demos/`) designed for quick visual understanding. But turning knowledge into engineering capability requires a second layer: **complete systems you can run locally** — with real code structure, interactive interfaces, and tunable parameters.
 
-This chapter presents 21 hands-on experiments, all drawn from MVP projects the author has built and validated in real development work, organized by topic and mapped to the corresponding main-text chapters:
+This chapter presents 22 hands-on experiments, all drawn from MVP projects the author has built and validated in real development work, organized by topic and mapped to the corresponding main-text chapters:
 
 | Experiment | Topic | Related Chapters / Difficulty | Difficulty |
 | --- | --- | --- | --- |
@@ -17,6 +17,7 @@ This chapter presents 21 hands-on experiments, all drawn from MVP projects the a
 | 27.9 RTD Real-Time Dispatching & Human-AI Collaboration | Tiered approval + audit trail | Ch. 8/11/22 | ★★☆ |
 | 27.10 CIM Trusted System Red-Blue Adversarial Exercise | Rule + embedding + LLM hybrid verification | Ch. 22/23 | ★★☆ |
 | 27.11 Multi-Agent Evaluation Framework | Evaluating quality / cost / resilience | Ch. 2/21 | ★☆☆ |
+| 27.24 FabWiki Data Dictionary & Lineage Wiki | Knowledge graph + Text2SQL + explicit tacit knowledge | Ch. 28 | ★★☆ |
 
 > All experiment code lives in the repository under `experiments/` (each project includes its own README). Except where noted as requiring an API key, all experiments run offline; those that use an LLM provide a mock/fallback mode so you can experience the core workflow without a key.
 
@@ -362,7 +363,23 @@ python reflexion_agent.py          # CLI
 python web_app.py                  # Web UI http://127.0.0.1:5011
 ```
 
-## 27.24 From Experiments to Production: Adaptation Guide
+## 27.24 Experiment 22: FabWiki — Fab Data Dictionary & Lineage Wiki (fabwiki)
+
+Corresponds to **Chapter 28 (Wafer-Fab Data Architecture)**. This is the companion experiment best matched to the data-governance theme: it explicitly deposits the **tacit knowledge** scattered in Oracle warehouse stored procedures and senior engineers' heads (magic codes, prefix codes, field-type traps, definition/timing traps) into Markdown knowledge packages (OKF format), compiles them into a navigable knowledge graph, and lets the LLM **deterministically read** the knowledge before generating Text2SQL — demonstrating "what a data dictionary cannot do, a knowledge graph can."
+
+```bash
+cd experiments/fabwiki
+pip install -r requirements.txt
+streamlit run app.py        # 4 pages: Home / Knowledge Browser / Lineage Graph / Text2SQL
+```
+
+**What you learn**: how to model 8 fab-style tables and 5 types of tacit-knowledge traps; the knowledge-navigation Text2SQL flow "locate → read the full doc deterministically → generate → execute → retry on failure"; fully demonstrable offline (no API key).
+
+**How to run**: open the Text2SQL page and ask e.g. "query lots with yield below 80% yesterday"; compare SQL quality with and without knowledge navigation; then visit the Lineage Graph page to see derived relationships between fields.
+
+**What to observe**: for the same natural-language question, naive Text2SQL writes wrong SQL (e.g., missing the `LOT_STS<>'99'` test-lot filter), while the knowledge-navigation version correctly references tacit knowledge — a direct demonstration of Chapter 28's "make tacit knowledge explicit" idea.
+
+## 27.25 From Experiments to Production: Adaptation Guide
 
 All experiments in this chapter are MVPs. Moving to a production environment typically requires the following adaptations (see each experiment's README for complete design documentation):
 

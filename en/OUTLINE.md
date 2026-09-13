@@ -748,7 +748,8 @@
 - 27.21 Experiment 19: Multi-Agent Collaboration (multi_agent_collaboration)
 - 27.22 Experiment 20: Agent Task Decomposition & Execution (agent_task_decomposition)
 - 27.23 Experiment 21: Reflexion Agent (reflexion_agent)
-- 27.24 From Experiments to Production: A Retrofitting Guide
+- 27.24 Experiment 22: FabWiki Data Dictionary & Lineage Wiki (fabwiki)
+- 27.25 From Experiments to Production: A Retrofitting Guide
 
 ## Part VIII: Wafer-Fab Data Architecture
 
@@ -781,6 +782,7 @@
   - 28.6.1 Overview of the Four-Phase Roadmap
   - 28.6.2 Milestones and Acceptance Criteria per Phase
   - 28.6.3 Common Pitfalls and How to Avoid Them
+- 28.7 Companion Experiment: FabWiki Data Dictionary & Lineage Wiki (fabwiki, Section 27.24)
 
 ## References
 

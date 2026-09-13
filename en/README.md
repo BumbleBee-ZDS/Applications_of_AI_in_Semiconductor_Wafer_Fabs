@@ -75,7 +75,7 @@ Part VI   Ontology
 └── Chapter 26   Applications of Embodied AI — When AI Steps into the Physical World of the Fab
 
 Part 7  Hands-On Lab
-└── Chapter 27   Hands-On Lab — Running the Key Concepts (21 runnable experiments)
+└── Chapter 27   Hands-On Lab — Running the Key Concepts (22 runnable experiments)
 
 Part 8  Wafer-Fab Data Architecture
 └── Chapter 28   Wafer-Fab Data Architecture — The Data Foundation for AI Applications

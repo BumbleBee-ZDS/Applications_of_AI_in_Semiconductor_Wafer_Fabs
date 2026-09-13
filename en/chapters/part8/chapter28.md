@@ -542,6 +542,8 @@ Each phase requires "measurable business value" as the acceptance criterion, not
 
 ---
 
+> **Chapter experiment**: Experiment 22 in Chapter 27 (`experiments/fabwiki`) compiles warehouse tacit knowledge (magic codes / prefix codes / field-type traps / definition-timing traps) into OKF knowledge packages and a navigable knowledge graph that drives deterministic Text2SQL — a runnable implementation of this chapter's "data governance and semantic layer" ideas, fully demonstrable offline without a key.
+
 ## Chapter Summary
 
 The wafer-fab data architecture is the foundation of all AI applications in this book. This chapter follows the logic of "what data is → is the data trustworthy → is the data understandable → how AI uses it → how to implement it" and gives a complete answer:
