@@ -79,6 +79,11 @@ Part 7  Hands-On Lab
 
 Part 8  Wafer-Fab Data Architecture
 └── Chapter 28   Wafer-Fab Data Architecture — The Data Foundation for AI Applications
+
+Part 9  AI Infra Engineering Practice
+├── Chapter 29   GPU Clusters and Distributed Training Infrastructure
+├── Chapter 30   MLOps Platforms and Model Serving
+└── Chapter 31   Production-Grade AI Operations and Security Compliance
 ```
 
 ### Dual-Mainline Interwoven Structure
@@ -137,8 +142,9 @@ The book is under continuous writing, adopting an open-source collaborative appr
 | Part VI | Complete |
 | Part VII | Complete |
 | Part VIII | Complete |
+| Part IX | Complete |
 
-The first drafts of all 28 chapters are complete; continuous revision is ongoing.
+The first drafts of all 31 chapters are complete; continuous revision is ongoing.
 
 ---
 

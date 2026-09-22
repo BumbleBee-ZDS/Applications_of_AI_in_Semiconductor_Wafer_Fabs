@@ -784,6 +784,159 @@
   - 28.6.3 Common Pitfalls and How to Avoid Them
 - 28.7 Companion Experiment: FabWiki Data Dictionary & Lineage Wiki (fabwiki, Section 27.24)
 
+## Part IX: AI Infra Engineering Practice
+
+### Chapter 29: GPU Clusters and Distributed Training Infrastructure
+
+- 29.1 Wafer Fab AI Computing Demand Landscape
+  - 29.1.1 Training Load: Intermittent, High Throughput, Long Duration
+  - 29.1.2 Inference Load: Continuous, Low Latency, High Concurrency
+  - 29.1.3 Edge Load: Ultra-Low Latency, Offline Disaster Recovery, Resource Constrained
+  - 29.1.4 Computing Demand Matrix
+- 29.2 GPU Cluster Architecture Design and Selection
+  - 29.2.1 GPU Selection: A100/H100 vs L40S vs Edge GPUs
+  - 29.2.2 Cluster Topology: Single Machine 8-GPU vs Multi-Machine Multi-GPU
+  - 29.2.3 Network Selection: InfiniBand vs RoCE
+  - 29.2.4 Storage Architecture: IO Bottleneck for Training Data
+- 29.3 Distributed Training Engineering Practice
+  - 29.3.1 Data Parallelism: DDP vs FSDP vs ZeRO
+  - 29.3.2 Model Parallelism: Tensor Parallel vs Pipeline Parallel
+  - 29.3.3 Mixed-Precision Training
+  - 29.3.4 Practical Configuration: Yield Prediction Model Distributed Training
+- 29.4 High-Performance Data Processing Pipeline
+  - 29.4.1 Data Format Selection
+  - 29.4.2 Efficient Data Loader Design
+  - 29.4.3 Data Preprocessing Pipeline
+  - 29.4.4 Sample Imbalance Handling
+  - 29.4.5 Data Version Management
+- 29.5 Model Serving and Inference Gateway
+  - 29.5.1 Inference Engine Selection
+  - 29.5.2 Triton Inference Service Architecture
+  - 29.5.3 Dynamic Batching
+  - 29.5.4 Model Version Management and Canary Release
+  - 29.5.5 Inference Service High Availability
+- 29.6 Edge Deployment and Real-Time Inference
+  - 29.6.1 Edge Scenario Classification
+  - 29.6.2 Edge Hardware Selection
+  - 29.6.3 Model Compression and Optimization
+  - 29.6.4 Edge Inference Framework
+  - 29.6.5 Offline Disaster Recovery Design
+- 29.7 Computing Scheduling and Resource Isolation
+  - 29.7.1 Scheduling Strategy
+  - 29.7.2 Multi-Tenant Isolation
+  - 29.7.3 Elastic Scaling
+  - 29.7.4 Job Scheduling System
+- 29.8 Computing Cost Modeling and TCO Analysis
+  - 29.8.1 TCO Composition
+  - 29.8.2 TCO Comparison: Self-Built vs Cloud vs Hybrid
+  - 29.8.3 ROI Calculation Framework
+  - 29.8.4 Cost Optimization Strategies
+- 29.9 Infrastructure Monitoring and Self-Healing
+  - 29.9.1 Monitoring Metrics System
+  - 29.9.2 DCGM Exporter + Prometheus
+  - 29.9.3 Alert Rules
+  - 29.9.4 Self-Healing Mechanisms
+- 29.10 Computing Infrastructure Acceptance Benchmarks and Stress Testing
+  - 29.10.1 Acceptance Dimensions
+  - 29.10.2 Training Performance Stress Testing
+  - 29.10.3 Inference Performance Stress Testing
+  - 29.10.4 Stability Stress Testing
+  - 29.10.5 Acceptance Checklist
+
+### Chapter 30: MLOps Platforms and Model Serving
+
+- 30.1 AI Platform Positioning and Layered Architecture
+  - 30.1.1 Platform Position in AI Engineering
+  - 30.1.2 Platform Four-Layer Architecture
+  - 30.1.3 Platform Selection: Self-Built vs Commercial vs Open Source
+- 30.2 Experiment Management and Reproducibility
+  - 30.2.1 Why Experiment Management is Needed
+  - 30.2.2 MLflow Experiment Management
+  - 30.2.3 Weights & Biases (W&B)
+  - 30.2.4 Experiment Reproducibility Assurance
+  - 30.2.5 Experiment Metadata Management
+- 30.3 Model Registry and Version Governance
+  - 30.3.1 Role of Model Registry
+  - 30.3.2 MLflow Model Registry
+  - 30.3.3 Model Card
+  - 30.3.4 Model Approval Workflow
+- 30.4 CI/CD for ML Pipeline
+  - 30.4.1 ML Pipeline vs Traditional CI/CD
+  - 30.4.2 Data Change Triggered Retraining
+  - 30.4.3 Automated Evaluation Gates
+  - 30.4.4 Canary Release and A/B Testing
+- 30.5 Feature Platform and Online Feature Service
+  - 30.5.1 Role of Feature Platform
+  - 30.5.2 Feast Feature Store
+  - 30.5.3 Feature Serving
+- 30.6 LLM/Agent Service Platform
+  - 30.6.1 LLM Service Architecture
+  - 30.6.2 LLM Gateway Implementation
+  - 30.6.3 Prompt Template Management
+  - 30.6.4 RAG Service Integration
+- 30.7 Developer Portal and Self-Service
+  - 30.7.1 Role of Developer Portal
+  - 30.7.2 Backstage Developer Portal
+  - 30.7.3 Notebook Environment
+- 30.8 Multi-Tenant Isolation and Permission System
+  - 30.8.1 Necessity of Multi-Tenant Isolation
+  - 30.8.2 Kubernetes Multi-Tenancy
+  - 30.8.3 RBAC Permission Control
+- 30.9 Platform Observability and SLO Management
+  - 30.9.1 Three Pillars of Observability
+  - 30.9.2 SLO Definition
+  - 30.9.3 Monitoring Alerts
+- 30.10 Platform Evolution Roadmap and Organizational Support
+  - 30.10.1 Three-Stage Evolution Roadmap
+  - 30.10.2 Organizational Support
+  - 30.10.3 Capability Building Focus
+
+### Chapter 31: Production-Grade AI Operations and Security Compliance
+
+- 31.1 AI System Production Challenges Overview
+  - 31.1.1 Wafer Fab AI vs Internet AI
+  - 31.1.2 Three Rigid Constraints of Productionization
+  - 31.1.3 Operations Maturity Model
+- 31.2 Model Change Management and Approval Workflow
+  - 31.2.1 Change Classification
+  - 31.2.2 Approval Process
+  - 31.2.3 Change Windows
+  - 31.2.4 Change Implementation
+  - 31.2.5 Change Records and Auditing
+- 31.3 Data Security and IP Protection in Practice
+  - 31.3.1 Data Classification and Grading
+  - 31.3.2 Data Masking
+  - 31.3.3 Model IP Protection
+  - 31.3.4 Cross-Customer Data Isolation
+- 31.4 Compliance Framework and Audit Evidence Chain
+  - 31.4.1 Compliance Requirements
+  - 31.4.2 Audit Evidence Chain
+  - 31.4.3 Compliance Report Generation
+- 31.5 AI System Resilience Engineering
+  - 31.5.1 Resilience Design Principles
+  - 31.5.2 High Availability Architecture
+  - 31.5.3 Fault Self-Healing
+  - 31.5.4 Degradation Strategies
+- 31.6 Refined Cost Operations
+  - 31.6.1 Cost Allocation Model
+  - 31.6.2 Resource Optimization
+  - 31.6.3 Cost Optimization Checklist
+- 31.7 Model Drift Monitoring and Retraining Triggers
+  - 31.7.1 Drift Types
+  - 31.7.2 Drift Detection
+  - 31.7.3 Retraining Triggers
+- 31.8 Knowledge Accumulation and Feedback Closed-Loop
+  - 31.8.1 Knowledge Graph Feedback
+  - 31.8.2 Experience Accumulation
+- 31.9 Supplier and Open Source Component Governance
+  - 31.9.1 Dependency Version Management
+  - 31.9.2 Security Patch Validation
+  - 31.9.3 Supply Chain Risk Assessment
+- 31.10 AI Infra Maturity Self-Assessment and Evolution
+  - 31.10.1 Maturity Model
+  - 31.10.2 Self-Assessment Checklist
+  - 31.10.3 Evolution Roadmap
+
 ## References
 
 See [references.md](../references.md), comprising 102 academic references organized into the following seven categories:
