@@ -25,7 +25,7 @@
 
 <div align="center">
 
-![License](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey) ![Chapters](https://img.shields.io/badge/31%20Chapters-1a237e) ![Languages](https://img.shields.io/badge/3%20Languages-green) ![Demos](https://img.shields.io/badge/20%2B%20Demos-FF9800)
+![License](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey) ![Chapters](https://img.shields.io/badge/32%20Chapters-1a237e) ![Languages](https://img.shields.io/badge/3%20Languages-green) ![Demos](https://img.shields.io/badge/20%2B%20Demos-FF9800)
 
 </div>
 
@@ -49,7 +49,7 @@
 | 落地任务 | 良率分析、虚拟量测、缺陷检测、智能排程、预测性维护、能源管理、NPI协同、数据安全、供应链透明化 |
 | 产业案例 | 台积电、三星、Intel、SK海力士、美光、格罗方德、Palantir、NVIDIA、KLA、ASML |
 
-> **本书数据**：31 章 · 3 种语言 · 20+ Demo 脚本 · 22 个动手实验 · 47 张配图 · 100+ 产业案例引用
+> **本书数据**：32 章 · 3 种语言 · 20+ Demo 脚本 · 22 个动手实验 · 47 张配图 · 100+ 产业案例引用
 
 ## 🖥️ Demo 可视化
 
@@ -129,6 +129,9 @@
 ├── 第 29 章 GPU 集群与分布式训练基础设施
 ├── 第 30 章 MLOps 平台与模型服务化
 └── 第 31 章 生产级 AI 运维与安全合规
+
+第十部分  世界模型
+└── 第 32 章 世界模型在晶圆厂的应用——让AI在"脑中"预演晶圆厂
 ```
 
 ### 双线交织结构
@@ -282,8 +285,9 @@ streamlit run app.py
 | 第七部分   | 已完成         |
 | 第八部分   | 已完成         |
 | 第九部分   | 已完成         |
+| 第十部分   | 已完成         |
 
-全书31章初稿已完成，持续修订中。
+全书32章初稿已完成，持续修订中。
 
 ---
 
@@ -294,7 +298,8 @@ streamlit run app.py
 - **扩展至26章**——新增第26章具身智能的应用（当AI走进晶圆厂的物理世界）
 - **扩展至27章**——新增第27章动手实验实验室，配套 22 个可运行实验项目（LLM/Agent/良率/调度/专家系统等）
 - **扩展至28章**——新增第28章晶圆厂数据体系，系统讲解数据源全景、血缘与隐性知识、数据治理、语义层与知识图谱、LLM/Agent数据消费模式及落地路径
-- **扩展至31章（当前）**——新增第九部分"AI Infra工程化实战"（第29-31章），系统讲解GPU集群与分布式训练、MLOps平台与模型服务化、生产级AI运维与安全合规
+- **扩展至31章**——新增第九部分"AI Infra工程化实战"（第29-31章），系统讲解GPU集群与分布式训练、MLOps平台与模型服务化、生产级AI运维与安全合规
+- **扩展至32章（当前）**——新增第十部分"世界模型"，系统讲解世界模型的概念、四层架构、三种建模技术，以及在良率工艺、制造运营、设备能源三大领域的应用
 
 全书处于持续修订中，欢迎通过 Issues 提出建议。
 

@@ -937,6 +937,42 @@
   - 31.10.2 Self-Assessment Checklist
   - 31.10.3 Evolution Roadmap
 
+
+## Part X: World Models
+
+### Chapter 32: World Models in the Wafer Fab — Letting AI "Rehearse" the Fab in Its Head
+
+- 32.1 From Digital Twins to World Models: The "Rehearsal Capability" of Fab AI
+  - 32.1.1 Digital Twins: The Already-Widely-Accepted "Mirror"
+  - 32.1.2 World Models: From "Mirror" to "A Brain That Rehearses"
+  - 32.1.3 Why Fabs Especially Need World Models
+- 32.2 The Four-Layer Architecture of a Fab World Model
+  - 32.2.1 From Equipment to Fab: Four Layers (L1 equipment / L2 process / L3 line / L4 fab)
+  - 32.2.2 Collaboration Modes (prediction aggregation / scenario replay)
+  - 32.2.3 The "Data-Model-Closed-Loop" Three Elements
+- 32.3 Three Key Modeling Technologies
+  - 32.3.1 Physics-Based Mechanism Models (White-box)
+  - 32.3.2 Data-Driven Models (Black-box)
+  - 32.3.3 Hybrid Modeling (Grey-box): Physics Constraints + Data Fitting
+  - 32.3.4 Selection Guide for the Three Routes
+- 32.4 World Models in Yield and Process Optimization
+  - 32.4.1 Virtual Yield Ramp: Rehearsing Process Development in Imagination
+  - 32.4.2 Virtual Metrology and Process-Control Enhancement
+  - 32.4.3 Virtual DOE and Bayesian Optimization
+- 32.5 World Models in Manufacturing Operations
+  - 32.5.1 WIP-Flow and Bottleneck Rehearsal
+  - 32.5.2 Dynamic Scheduling and What-If Scenarios
+  - 32.5.3 Digital-Twin-Driven Scheduling Closed Loop
+- 32.6 World Models in Equipment and Energy Management
+  - 32.6.1 Equipment-Degradation Rehearsal and Predictive Maintenance
+  - 32.6.2 Energy-Scheduling Rehearsal
+  - 32.6.3 Cross-Domain Collaboration: The "Global View"
+- 32.7 Challenges and Outlook
+  - 32.7.1 Accuracy and Trustworthiness Challenges
+  - 32.7.2 Data and Compute Challenges
+  - 32.7.3 The Fusion Outlook with LLM/Agent/Ontology
+  - 32.7.4 Evolution Roadmap Outlook
+
 ## References
 
 See [references.md](../references.md), comprising 102 academic references organized into the following seven categories:

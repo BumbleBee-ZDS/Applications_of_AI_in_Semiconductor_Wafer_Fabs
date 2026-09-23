@@ -84,6 +84,9 @@ Part 9  AI Infra Engineering Practice
 ├── Chapter 29   GPU Clusters and Distributed Training Infrastructure
 ├── Chapter 30   MLOps Platforms and Model Serving
 └── Chapter 31   Production-Grade AI Operations and Security Compliance
+
+Part 10  World Models
+└── Chapter 32   World Models in the Wafer Fab — Letting AI "Rehearse" the Fab in Its Head
 ```
 
 ### Dual-Mainline Interwoven Structure
@@ -143,8 +146,9 @@ The book is under continuous writing, adopting an open-source collaborative appr
 | Part VII | Complete |
 | Part VIII | Complete |
 | Part IX | Complete |
+| Part X | Complete |
 
-The first drafts of all 31 chapters are complete; continuous revision is ongoing.
+The first drafts of all 32 chapters are complete; continuous revision is ongoing.
 
 ---
 
